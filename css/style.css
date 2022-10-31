@@ -1,0 +1,349 @@
+:root {
+    /* Font Family*/
+    --font-family-outfit: 'Outfit', sans-serif;
+
+    /* Font sizes */
+    --font-size-500: 1.5rem;
+    --font-size-400: 1.25rem;
+    --font-size-300: 1rem;
+    --font-size-200: 0.875rem;
+    --font-size-100: 0.875rem;
+
+    /* Font weights */
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /*  Colors */
+    --light-blue: hsl(178, 60%, 48%);
+    --light-blue-hover: hsl(178, 75%, 65%);
+    --light-yellow: hsl(39, 88%, 58%);
+    --light-yellow-hover: hsl(39, 100%, 69%);
+    --dark-navy: hsl(202, 32%, 15%);
+    --semi-dark-navy: hsl(199, 35%, 19%);
+    --silver: hsl(198, 23%, 72%);
+    --silver-hover: hsl(197, 33%, 89%);
+
+    --raw-light-yellow: 39, 88%, 58%;
+    --raw-light-blue: 178, 60%, 48%;
+    --raw-semi-dark-navy: 199, 35%, 19%;
+    --raw-silver: 198, 23%, 72%;
+
+    /* Spacing */
+    --flow-space: 1.25rem;
+
+}
+
+@media (min-width: 48em) {
+    :root {
+        --font-size-500: 2.5rem;
+        --font-size-400: 1.5rem;
+        --font-size-300: 1.25rem;
+        --font-size-200: 1rem;
+        --flow-space: 1.5rem;
+    }
+}
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+}
+
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    font-family: var(--font-family-outfit);
+    background-color: var(--dark-navy);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/****************************/
+/* Choice Selection Section */
+/****************************/
+.game-active .choice-selection-section {
+    display: none;
+}
+
+.choice-container {
+    min-width: 15rem;
+}
+
+.mark-selection-wrapper {
+    padding: 1.5rem 1rem;
+    margin: 2.5rem 0;
+    box-shadow: 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.choice__logo-container {
+    margin-bottom: 2rem;
+}
+
+.mark-selection__buttons-wrapper {
+    padding: 0.5rem;
+}
+
+.mark-selection__button {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 2rem;
+    transition: background-color 0.3s ease;
+}
+
+.mark-selection__active-button {
+    background-color: var(--silver);
+}
+
+.mark-selection__button img {
+    max-width: 50% !important;
+}
+
+.mark-selection-wrapper p:last-child {
+    color: hsl(var(--raw-silver), 0.4);
+}
+
+.new-game-button {
+    display: block;
+    width: 100%;
+    padding: 1rem 1rem !important;
+    transition: all 0.3s ease;
+}
+
+.new-game-button.player-vs-cpu,
+.next-round-button,
+.agree-restart {
+    box-shadow: 0 6px hsl(var(--raw-light-yellow), 0.6);
+}
+
+.new-game-button.player-vs-player {
+    box-shadow: 0 6px hsl(var(--raw-light-blue), 0.6);
+}
+
+.new-game-button.player-vs-cpu:hover,
+.next-round-button:hover,
+.agree-restart:hover {
+    background-color: var(--light-yellow-hover) !important;
+}
+
+.new-game-button.player-vs-player:hover {
+    background-color: var(--light-blue-hover) !important
+}
+
+@media (min-width: 32em) {
+    .choice-container {
+        min-width: 25rem;
+    }
+
+    .mark-selection__button img {
+        max-width: 25% !important;
+    }
+}
+
+@media (min-width: 48rem) {
+    .choice-container {
+        min-width: 30rem;
+    }
+
+    .mark-selection-wrapper {
+        padding: 2rem 2rem;
+    }
+
+}
+
+/*****************/
+/* Game Section  */
+/*****************/
+.game-section {
+    display: none;
+}
+
+.game-active .game-section {
+    display: block;
+}
+
+.choice-button {
+    min-width: 5rem;
+    min-height: 5rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease-out;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    box-shadow: 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.hover-icon-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hover-icon {
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.choice-button:hover .hover-icon {
+    opacity: 1;
+}
+
+.choice-button:disabled .hover-icon {
+    opacity: 0;
+}
+
+.current-turn-wrapper {
+    padding: 0.75rem 0;
+}
+
+.current-turn__icon {
+    max-width: 15% !important;
+}
+
+.restart-button:hover,
+.quit-button:hover,
+.cancel-button:hover {
+    background-color: var(--silver-hover) !important;
+    transition: all 0.3s ease;
+}
+
+.game-overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    z-index: 999;
+}
+
+.game-overlay.hidden {
+    display: none;
+}
+
+
+/* Score */
+.score-box {
+    padding: 1rem;
+    width: 100%;
+}
+
+.score-box p:nth-child(1) > span {
+    margin-left: 0.25rem;
+}
+
+
+@media (min-width: 32em) {
+    .choice-button {
+        min-width: 6rem;
+        min-height: 6rem;
+    }
+}
+
+@media (min-width: 48rem) {
+    .choice-button {
+        min-width: 9rem;
+        min-height: 9rem;
+    }
+
+    .choice-button > img {
+        max-width: 100% !important;
+    }
+}
+
+/**************************/
+/* Game Finished Section  */
+/**************************/
+.game-finished-section,
+.restart-section {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    padding: 1.5rem 0;
+}
+
+@media (min-width: 48rem) {
+    .game-finished-section,
+    .restart-section {
+        padding: 2rem 0;
+    }
+
+}
+
+.game-finished .game-finished-section {
+    display: block;
+}
+
+.game-container {
+    --grid-gap: 1.5rem;
+}
+
+.result-icon {
+    max-width: 15% !important;
+}
+
+.draw-result {
+    display: none;
+}
+
+/* When the result is draw */
+.draw .draw-result {
+    display: block;
+}
+
+.draw .result-wrapper {
+    display: none;
+}
+
+.opponent-thinking-text-wrapper {
+    display: none;
+}
+
+.game-finished__round-text.x-won {
+    color: var(--light-blue) !important;
+}
+
+.quit-button,
+.cancel-button {
+  box-shadow: 0 6px hsl(var(--raw-silver), 0.6);
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    display: block;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+
+/********************/
+/* Restart Section  */
+/********************/
+
+.restart-prompt .restart-section {
+    display: block;
+}
+

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utility.css">
+    <title>Frontend Mentor | Tic Tac Toe</title>
+</head>
+<body>
+
+<main>
+    <section class="choice-selection-section">
+        <div class="container choice-container flow border-radius">
+            <div class="choice__logo-container">
+                <a href="#" class="logo-link"><img src="images/logo.svg" alt="Logo" class="margin-auto"></a>
+            </div>
+
+            <div class="mark-selection-wrapper background-semi-dark-navy flow text-align-center border-radius">
+                <p class="mark-selection__text font-size-200 text-color-silver uppercase font-weight-bold">
+                    Pick player 1's mark
+                </p>
+                <div class="mark-selection__buttons-wrapper background-dark-navy grid grid-2-columns border-radius">
+                    <button class="mark-selection__button flex flex-justify-center x-selection border-radius"><img
+                            src="images/icon-x-silver.svg" alt="x icon" class="mark-selection__icon"></button>
+                    <button class="mark-selection__button flex flex-justify-center mark-selection__active-button o-selection border-radius">
+                        <img src="images/icon-o-dark-navy.svg" class="mark-selection__icon" alt="o icon"></button>
+                </div>
+                <p class="mark-selection__text font-size-100 uppercase">
+                    Remember: X goes first
+                </p>
+            </div>
+
+            <button class="new-game-button player-vs-cpu btn font-size-300 background-light-yellow text-color-dark-navy uppercase font-weight-bold border-radius">
+                New Game (vs CPU)
+            </button>
+            <button class="new-game-button player-vs-player btn font-size-300 background-light-blue text-color-dark-navy uppercase font-weight-bold border-radius">
+                New Game (vs player)
+            </button>
+        </div>
+    </section>
+
+    <section class="game-section">
+        <div class="container game-container flow">
+            <header class="game__header flex flex-justify-space-between flex-align-center">
+                <div class="game__logo-container">
+                    <a href="#" class="logo-link"><img src="images/logo.svg" alt="Logo"></a>
+                </div>
+                <div class="current-turn-wrapper background-semi-dark-navy border-radius flex flex-align-center flex-justify-center flex-gap">
+                    <img src="images/icon-o-silver.svg" class="current-turn__icon" alt="turn-icon">
+                    <p class="text-color-silver font-size-200 uppercase">Turn</p>
+                </div>
+                <button class="restart-button btn background-silver border-radius">
+                    <img src="images/icon-restart.svg" alt="restart-icon">
+                </button>
+            </header>
+
+            <div class="game__wrapper grid grid-3-columns grid-gap">
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
+                    <span class="hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                    </span>
+                </button>
+            </div>
+
+            <div class="score-wrapper text-color-dark-navy text-align-center flex flex-gap flex-justify-space-between">
+                <div class="x-score-box score-box background-light-blue border-radius">
+                    <p class="uppercase font-size-100 font-weight-bold">X<span class="x-user">(CPU)</span></p>
+                    <p class="x-score font-weight-bold font-size-400">0</p>
+                </div>
+                <div class="ties-score-box score-box background-silver border-radius">
+                    <p class="uppercase font-size-100 font-weight-bold">Ties</p>
+                    <p class="ties-score font-weight-bold font-size-400">0</p>
+                </div>
+                <div class="o-score-box score-box background-light-yellow border-radius">
+                    <p class="uppercase font-size-100 font-weight-bold">O<span class="o-user">(You)</span></p>
+                    <p class="o-score font-weight-bold font-size-400">0</p>
+                </div>
+            </div>
+
+            <div class="game-overlay hidden"></div>
+        </div>
+
+        <div class="opponent-thinking-text-wrapper">
+            <p class="font-size-100 text-color-silver uppercase text-align-center">Your opponent is thinking ...</p>
+        </div>
+    </section>
+</main>
+
+<section class="restart-section background-semi-dark-navy">
+    <div class="container result-container grid grid-gap grid-place-center">
+        <p class="text-align-center font-weight-bold font-size-500 text-color-silver uppercase">Restart Game?</p>
+        <div class="buttons-wrapper flex flex-gap">
+            <button class="cancel-button font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">No, Cancel</button>
+            <button class="agree-restart font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-dark-navy border-radius">Yes, Restart</button>
+        </div>
+    </div>
+</section>
+
+<section class="game-finished-section background-semi-dark-navy">
+    <div class="container game-container flow grid grid-place-center text-align-center">
+        <div class="result-wrapper flow">
+            <p class="result text-color-silver font-size-200 uppercase">You Won !</p>
+            <div class="win-lose-result flex flex-gap flex-align-center">
+                <img src="images/icon-o.svg" alt="icon" class="result-icon">
+                <p class="game-finished__round-text font-size-500 text-color-light-yellow uppercase">Takes the round</p>
+            </div>
+        </div>
+
+        <div class="draw-result">
+            <p class="game-finished__round-text font-weight-bold font-size-500 text-color-silver uppercase">Round
+                Tied</p>
+        </div>
+
+        <div class="buttons-wrapper flex flex-gap">
+            <button class="quit-button font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">
+                Quit
+            </button>
+            <button class="next-round-button font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-dark-navy border-radius">
+                Next Round
+            </button>
+        </div>
+    </div>
+</section>
+
+
+<div class="overlay hidden"></div>
+<script src="javascript/script.js"></script>
+
+</body>
+</html>
+
