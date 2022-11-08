@@ -66,10 +66,10 @@ const resultIcon = document.querySelector('.result-icon');
 const logoLinks = document.querySelectorAll('.logo-link');
 
 // Button elements
-const markSelectionButtons = document.querySelectorAll('.mark-selection__button');
-const markSelectionIcons = document.querySelectorAll('.mark-selection__icon');
-const newGamePlayerVsCpu = document.querySelector('.new-game-button.player-vs-cpu');
-const newGamePlayerVsPlayer = document.querySelector('.new-game-button.player-vs-player');
+const markButtons = document.querySelectorAll('.choice__mark-btn');
+const markIcons = document.querySelectorAll('.choice__mark-icon');
+const newGamePlayerVsCpu = document.querySelector('.choice__game-btn.choice__game-btn--pvp');
+const newGamePlayerVsPlayer = document.querySelector('.choice__game-btn.choice__game-btn--pvc');
 const restartButton = document.querySelector('.restart-button');
 const choiceButtons = document.querySelectorAll('.choice-button');
 const nextRoundButton = document.querySelector('.next-round-button');
@@ -135,22 +135,22 @@ const changeScoreUser = () => {
 
 // Updating selection
 function updateSelection() {
-    markSelectionButtons.forEach((markSelectionButton, index) => {
+    markButtons.forEach((markButton, index) => {
         if (currentChoiceIndex === index) {
-            markSelectionButton.classList.add('mark-selection__active-button');
-            markSelectionIcons[index].src = user.iconDarkNavy;
+            markButton.classList.add('choice__mark-btn--active');
+            markIcons[index].src = user.iconDarkNavy;
         } else {
-            markSelectionButton.classList.remove("mark-selection__active-button");
-            markSelectionIcons[index].src = computer.iconSilver;
+            markButton.classList.remove("choice__mark-btn--active");
+            markIcons[index].src = computer.iconSilver;
         }
     })
 }
 
 // Mark Selection
 let currentChoiceIndex = -1;
-markSelectionButtons.forEach((markSelectionButton, index) => {
+markButtons.forEach((markSelectionButton, index) => {
     markSelectionButton.addEventListener('click', () => {
-        if (markSelectionButton.classList.contains('x-selection')) {
+        if (markSelectionButton.classList.contains('choice__mark-btn--x')) {
             user = xElement;
             computer = oElement;
             changeHoverIcon('user');

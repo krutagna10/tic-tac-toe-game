@@ -87,6 +87,6 @@
 
  // Border Radius
 .border-radius {
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
 }
 

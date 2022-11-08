@@ -73,92 +73,94 @@ body {
 /****************************/
 /* Choice Selection Section */
 /****************************/
-.game-active .choice-selection-section {
+.game-active .choice-section {
     display: none;
 }
 
-.choice-container {
+.choice {
     min-width: 15rem;
 }
 
-.mark-selection-wrapper {
+.choice__mark-select {
     padding: 1.5rem 1rem;
     margin: 2.5rem 0;
     box-shadow: 0 8px rgba(0, 0, 0, 0.3);
 }
 
-.choice__logo-container {
+.choice__logo-wrapper {
     margin-bottom: 2rem;
 }
 
-.mark-selection__buttons-wrapper {
+.choice__marks-wrapper {
     padding: 0.5rem;
 }
 
-.mark-selection__button {
-    display: block;
+.choice__mark-btn {
     background-color: transparent;
     border: none;
     cursor: pointer;
     padding: 0.5rem 2rem;
     transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.5rem;
 }
 
-.mark-selection__active-button {
+.choice__mark-btn--active {
     background-color: var(--silver);
 }
 
-.mark-selection__button img {
+.choice__mark-btn img {
     max-width: 50% !important;
 }
 
-.mark-selection-wrapper p:last-child {
+.choice__mark-select p:last-child {
     color: hsl(var(--raw-silver), 0.4);
 }
 
-.new-game-button {
+.choice__game-btn {
     display: block;
     width: 100%;
     padding: 1rem 1rem !important;
     transition: all 0.3s ease;
 }
 
-.new-game-button.player-vs-cpu,
+.choice__game-btn.choice__game-btn--pvp,
 .next-round-button,
 .agree-restart {
     box-shadow: 0 6px hsl(var(--raw-light-yellow), 0.6);
 }
 
-.new-game-button.player-vs-player {
+.choice__game-btn.choice__game-btn--pvc {
     box-shadow: 0 6px hsl(var(--raw-light-blue), 0.6);
 }
 
-.new-game-button.player-vs-cpu:hover,
+.choice__game-btn.choice__game-btn--pvp:hover,
 .next-round-button:hover,
 .agree-restart:hover {
     background-color: var(--light-yellow-hover) !important;
 }
 
-.new-game-button.player-vs-player:hover {
+.choice__game-btn.choice__game-btn--pvc:hover {
     background-color: var(--light-blue-hover) !important
 }
 
 @media (min-width: 32em) {
-    .choice-container {
+    .choice {
         min-width: 25rem;
     }
 
-    .mark-selection__button img {
+    .choice__mark-btn img {
         max-width: 25% !important;
     }
 }
 
 @media (min-width: 48rem) {
-    .choice-container {
+    .choice {
         min-width: 30rem;
     }
 
-    .mark-selection-wrapper {
+    .choice__mark-select {
         padding: 2rem 2rem;
     }
 

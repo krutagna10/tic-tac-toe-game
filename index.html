@@ -15,31 +15,35 @@
 <body>
 
 <main>
-    <section class="choice-selection-section">
-        <div class="container choice-container flow border-radius">
-            <div class="choice__logo-container">
-                <a href="#" class="logo-link"><img src="images/logo.svg" alt="Logo" class="margin-auto"></a>
+    <section class="choice-section">
+        <div class="choice container flow border-radius">
+            <div class="choice__logo-wrapper">
+                <a href="#" class="choice__logo">
+                    <img src="images/logo.svg" alt="Logo" class="margin-auto">
+                </a>
             </div>
 
-            <div class="mark-selection-wrapper background-semi-dark-navy flow text-align-center border-radius">
-                <p class="mark-selection__text font-size-200 text-color-silver uppercase font-weight-bold">
+            <div class="choice__mark-select background-semi-dark-navy flow text-align-center border-radius">
+                <p class="choice__mark-select-text font-size-200 text-color-silver uppercase font-weight-bold">
                     Pick player 1's mark
                 </p>
-                <div class="mark-selection__buttons-wrapper background-dark-navy grid grid-2-columns border-radius">
-                    <button class="mark-selection__button flex flex-justify-center x-selection border-radius"><img
-                            src="images/icon-x-silver.svg" alt="x icon" class="mark-selection__icon"></button>
-                    <button class="mark-selection__button flex flex-justify-center mark-selection__active-button o-selection border-radius">
-                        <img src="images/icon-o-dark-navy.svg" class="mark-selection__icon" alt="o icon"></button>
+                <div class="choice__marks-wrapper background-dark-navy grid grid-2-columns border-radius">
+                    <button class="choice__mark-btn choice__mark-btn--x">
+                        <img class="choice__mark-icon" src="images/icon-x-silver.svg" alt="x icon">
+                    </button>
+                    <button class="choice__mark-btn choice__mark-btn--o choice__mark-btn--active">
+                        <img class="choice__mark-icon" src="images/icon-o-dark-navy.svg" alt="o icon">
+                    </button>
                 </div>
-                <p class="mark-selection__text font-size-100 uppercase">
+                <p class="choice__mark-select-text font-size-100 uppercase">
                     Remember: X goes first
                 </p>
             </div>
 
-            <button class="new-game-button player-vs-cpu btn font-size-300 background-light-yellow text-color-dark-navy uppercase font-weight-bold border-radius">
+            <button class="choice__game-btn choice__game-btn--pvp btn font-size-300 background-light-yellow text-color-dark-navy uppercase font-weight-bold border-radius">
                 New Game (vs CPU)
             </button>
-            <button class="new-game-button player-vs-player btn font-size-300 background-light-blue text-color-dark-navy uppercase font-weight-bold border-radius">
+            <button class="choice__game-btn choice__game-btn--pvc btn font-size-300 background-light-blue text-color-dark-navy uppercase font-weight-bold border-radius">
                 New Game (vs player)
             </button>
         </div>
@@ -136,8 +140,12 @@
     <div class="container result-container grid grid-gap grid-place-center">
         <p class="text-align-center font-weight-bold font-size-500 text-color-silver uppercase">Restart Game?</p>
         <div class="buttons-wrapper flex flex-gap">
-            <button class="cancel-button font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">No, Cancel</button>
-            <button class="agree-restart font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-dark-navy border-radius">Yes, Restart</button>
+            <button class="cancel-button font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">
+                No, Cancel
+            </button>
+            <button class="agree-restart font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-dark-navy border-radius">
+                Yes, Restart
+            </button>
         </div>
     </div>
 </section>
