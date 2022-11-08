@@ -1,0 +1,92 @@
+// Spacing
+.flow > * + * {
+  margin-top: var(--flow-space);
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+
+ // Background
+.background-light-blue {
+  background-color: var(--light-blue);
+}
+
+.background-light-yellow {
+  background-color: var(--light-yellow);
+}
+
+.background-semi-dark-navy {
+  background-color: var(--semi-dark-navy);
+}
+
+.background-dark-navy {
+  background-color: var(--dark-navy);
+}
+
+.background-silver {
+  background-color: var(--silver);
+}
+
+ // Text Color
+.text-color-silver {
+  color: var(--silver);
+}
+
+.text-color-dark-navy {
+  color: var(--dark-navy);
+}
+
+.text-color-light-yellow {
+  color: var(--light-yellow);
+}
+
+.text-color-light-blue {
+  color: var(--light-blue);
+}
+
+ // Font size
+.font-size-500 {
+  font-size: var(--font-size-500);
+}
+
+.font-size-400 {
+  font-size: var(--font-size-400);
+}
+
+.font-size-300 {
+  font-size: var(--font-size-300);
+}
+
+.font-size-200 {
+  font-size: var(--font-size-200);
+}
+
+.font-size-100 {
+  font-size: var(--font-size-100);
+}
+
+ // Font weight
+.font-weight-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.font-weight-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+// Text-styling
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+ // Border Radius
+.border-radius {
+  border-radius: 0.5rem;
+}
+

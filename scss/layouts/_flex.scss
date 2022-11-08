@@ -1,0 +1,33 @@
+.flex {
+  display: flex;
+}
+
+.flex-gap {
+  gap: 0.75rem;
+}
+
+@media (min-width: 48rem) {
+  .flex-gap {
+    gap: 1.5rem;
+  }
+
+  .grid-gap {
+    gap: 1.25rem;
+  }
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.flex-justify-center {
+  justify-content: center;
+}
+
+.flex-justify-space-between {
+  justify-content: space-between;
+}
