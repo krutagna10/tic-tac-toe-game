@@ -27,7 +27,7 @@
                 <p class="choice__mark-select-text font-size-200 text-color-silver uppercase font-weight-bold">
                     Pick player 1's mark
                 </p>
-                <div class="choice__marks-wrapper background-dark-navy grid grid-2-columns border-radius">
+                <div class="choice__marks-wrapper background-dark-navy grid grid--2-columns border-radius">
                     <button class="choice__mark-btn choice__mark-btn--x">
                         <img class="choice__mark-icon" src="images/icon-x-silver.svg" alt="x icon">
                     </button>
@@ -50,13 +50,15 @@
     </section>
 
     <section class="game-section">
-        <div class="container game-container flow">
-            <header class="game__header flex flex-justify-space-between flex-align-center">
-                <div class="game__logo-container">
-                    <a href="#" class="logo-link"><img src="images/logo.svg" alt="Logo"></a>
+        <div class="container game flow">
+            <header class="game__header flex flex--justify-space-between flex--align-center">
+                <div class="game__header-logo-wrapper">
+                    <a href="#" class="game__header-logo-wrapper">
+                        <img class="game__header-logo" src="images/logo.svg" alt="Game Logo">
+                    </a>
                 </div>
-                <div class="current-turn-wrapper background-semi-dark-navy border-radius flex flex-align-center flex-justify-center flex-gap">
-                    <img src="images/icon-o-silver.svg" class="current-turn__icon" alt="turn-icon">
+                <div class="game__current-turn background-semi-dark-navy border-radius flex flex--align-center flex--justify-center flex--gap">
+                    <img class="current-turn__icon" src="images/icon-o-silver.svg" alt="turn-icon">
                     <p class="text-color-silver font-size-200 uppercase">Turn</p>
                 </div>
                 <button class="restart-button btn background-silver border-radius">
@@ -64,86 +66,93 @@
                 </button>
             </header>
 
-            <div class="game__wrapper grid grid-3-columns grid-gap">
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+            <div class="game__board grid grid--3-columns grid--gap">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
-                <button class="choice-button grid grid-place-center background-semi-dark-navy border-radius">
-                    <span class="hover-icon-wrapper">
-                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="hover-icon">
+                <button class="game__card grid grid--place-center">
+                    <span class="game__card-hover-icon-wrapper">
+                        <img src="images/icon-o-outline.svg" alt="hover-icon" class="game__card-hover-icon">
                     </span>
                 </button>
             </div>
 
-            <div class="score-wrapper text-color-dark-navy text-align-center flex flex-gap flex-justify-space-between">
-                <div class="x-score-box score-box background-light-blue border-radius">
-                    <p class="uppercase font-size-100 font-weight-bold">X<span class="x-user">(CPU)</span></p>
-                    <p class="x-score font-weight-bold font-size-400">0</p>
+            <div class="game__scores text-color-dark-navy text-align-center flex flex--gap flex--justify-space-between">
+                <div class="game__score-box game__score-box--x background-light-blue border-radius">
+                    <p class="uppercase font-size-100 font-weight-bold">
+                        X<span class="game__user--x">(CPU)</span>
+                    </p>
+                    <p class="game__score game__score--x font-weight-bold font-size-400">0</p>
                 </div>
-                <div class="ties-score-box score-box background-silver border-radius">
+                <div class="game__score-box game__score-box--ties background-silver border-radius">
                     <p class="uppercase font-size-100 font-weight-bold">Ties</p>
-                    <p class="ties-score font-weight-bold font-size-400">0</p>
+                    <p class="game__score game__score--ties font-weight-bold font-size-400">0</p>
                 </div>
-                <div class="o-score-box score-box background-light-yellow border-radius">
-                    <p class="uppercase font-size-100 font-weight-bold">O<span class="o-user">(You)</span></p>
-                    <p class="o-score font-weight-bold font-size-400">0</p>
+                <div class="game__score-box game__score-box--o background-light-yellow border-radius">
+                    <p class="uppercase font-size-100 font-weight-bold">
+                        O<span class="game__user--o">(You)</span>
+                    </p>
+                    <p class="game__score game__score--o font-weight-bold font-size-400">0</p>
                 </div>
             </div>
 
-            <div class="game-overlay hidden"></div>
+            <div class="game__overlay hidden"></div>
         </div>
 
-        <div class="opponent-thinking-text-wrapper">
-            <p class="font-size-100 text-color-silver uppercase text-align-center">Your opponent is thinking ...</p>
+        <div class="game__thinking-text-wrapper">
+            <p class="game__thinking-text font-size-100 text-color-silver uppercase text-align-center">
+                Your opponent is thinking ...
+            </p>
         </div>
     </section>
 </main>
 
 <section class="restart-section background-semi-dark-navy">
-    <div class="container result-container grid grid-gap grid-place-center">
-        <p class="text-align-center font-weight-bold font-size-500 text-color-silver uppercase">Restart Game?</p>
-        <div class="buttons-wrapper flex flex-gap">
-            <button class="cancel-button font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">
+    <div class="restart-game container grid grid--gap grid--place-center">
+        <p class="restart-game__title text-align-center font-weight-bold font-size-500 text-color-silver uppercase">
+            Restart Game?</p>
+        <div class="restart-game__buttons flex flex--gap">
+            <button class="restart-game__button--cancel font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">
                 No, Cancel
             </button>
-            <button class="agree-restart font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-dark-navy border-radius">
+            <button class="restart-game__button-restart font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-dark-navy border-radius">
                 Yes, Restart
             </button>
         </div>
@@ -151,21 +160,24 @@
 </section>
 
 <section class="game-finished-section background-semi-dark-navy">
-    <div class="container game-container flow grid grid-place-center text-align-center">
+    <div class="game-finished container flow grid grid--place-center text-align-center">
         <div class="result-wrapper flow">
             <p class="result text-color-silver font-size-200 uppercase">You Won !</p>
-            <div class="win-lose-result flex flex-gap flex-align-center">
+            <div class="win-lose-result flex flex--gap flex-align--center">
                 <img src="images/icon-o.svg" alt="icon" class="result-icon">
-                <p class="game-finished__round-text font-size-500 text-color-light-yellow uppercase">Takes the round</p>
+                <p class="game-finished__round-text font-size-500 text-color-light-yellow uppercase">
+                    Takes the round
+                </p>
             </div>
         </div>
 
         <div class="draw-result">
-            <p class="game-finished__round-text font-weight-bold font-size-500 text-color-silver uppercase">Round
-                Tied</p>
+            <p class="game-finished__round-text font-weight-bold font-size-500 text-color-silver uppercase">
+                Round Tied
+            </p>
         </div>
 
-        <div class="buttons-wrapper flex flex-gap">
+        <div class="buttons-wrapper flex flex--gap">
             <button class="quit-button font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">
                 Quit
             </button>

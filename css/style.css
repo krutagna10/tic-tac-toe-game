@@ -30,6 +30,7 @@
 
     /* Spacing */
     --flow-space: 1.25rem;
+    --gap: 0.75rem;
 
 }
 
@@ -39,7 +40,9 @@
         --font-size-400: 1.5rem;
         --font-size-300: 1.25rem;
         --font-size-200: 1rem;
+
         --flow-space: 1.5rem;
+        --gap: 1.25rem;
     }
 }
 
@@ -127,7 +130,7 @@ body {
 
 .choice__game-btn.choice__game-btn--pvp,
 .next-round-button,
-.agree-restart {
+.restart-game__button-restart {
     box-shadow: 0 6px hsl(var(--raw-light-yellow), 0.6);
 }
 
@@ -137,7 +140,7 @@ body {
 
 .choice__game-btn.choice__game-btn--pvp:hover,
 .next-round-button:hover,
-.agree-restart:hover {
+.restart-game__button-restart:hover {
     background-color: var(--light-yellow-hover) !important;
 }
 
@@ -177,40 +180,43 @@ body {
     display: block;
 }
 
-.choice-button {
+.game__card {
     min-width: 5rem;
     min-height: 5rem;
     cursor: pointer;
     border: none;
+    background-color: var(--semi-dark-navy);
+    border-radius: var(--border-radius);
     transition: all 0.3s ease-out;
     position: relative;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50%;
     box-shadow: 0 8px rgba(0, 0, 0, 0.3);
+
 }
 
-.hover-icon-wrapper {
+.game__card-hover-icon-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.hover-icon {
+.game__card-hover-icon {
     opacity: 0;
     transition: all 0.3s ease;
 }
 
-.choice-button:hover .hover-icon {
+.game__card:hover .game__card-hover-icon {
     opacity: 1;
 }
 
-.choice-button:disabled .hover-icon {
+.game__card:disabled .game__card-hover-icon {
     opacity: 0;
 }
 
-.current-turn-wrapper {
+.game__current-turn {
     padding: 0.75rem 0;
 }
 
@@ -220,12 +226,12 @@ body {
 
 .restart-button:hover,
 .quit-button:hover,
-.cancel-button:hover {
+.restart-game__button--cancel:hover {
     background-color: var(--silver-hover) !important;
     transition: all 0.3s ease;
 }
 
-.game-overlay {
+.game__overlay {
     display: block;
     position: absolute;
     inset: 0;
@@ -233,36 +239,35 @@ body {
     z-index: 999;
 }
 
-.game-overlay.hidden {
+.game__overlay.hidden {
     display: none;
 }
 
-
 /* Score */
-.score-box {
+.game__score-box {
     padding: 1rem;
     width: 100%;
 }
 
-.score-box p:nth-child(1) > span {
+.game__score-box p:nth-child(1) > span {
     margin-left: 0.25rem;
 }
 
 
 @media (min-width: 32em) {
-    .choice-button {
+    .game__card {
         min-width: 6rem;
         min-height: 6rem;
     }
 }
 
 @media (min-width: 48rem) {
-    .choice-button {
+    .game__card {
         min-width: 9rem;
         min-height: 9rem;
     }
 
-    .choice-button > img {
+    .game__card > img {
         max-width: 100% !important;
     }
 }
@@ -294,10 +299,6 @@ body {
     display: block;
 }
 
-.game-container {
-    --grid-gap: 1.5rem;
-}
-
 .result-icon {
     max-width: 15% !important;
 }
@@ -315,7 +316,7 @@ body {
     display: none;
 }
 
-.opponent-thinking-text-wrapper {
+.game__thinking-text-wrapper {
     display: none;
 }
 
@@ -324,7 +325,7 @@ body {
 }
 
 .quit-button,
-.cancel-button {
+.restart-game__button--cancel {
   box-shadow: 0 6px hsl(var(--raw-silver), 0.6);
 }
 

@@ -57,9 +57,9 @@ const winConditions = [
 // Elements
 const body = document.querySelector('body');
 const gameFinishedSection = document.querySelector('.game-finished-section');
-const gameOverlay = document.querySelector('.game-overlay');
+const gameOverlay = document.querySelector('.game__overlay');
 const overlay = document.querySelector('.overlay');
-const opponentThinkingText = document.querySelector('.opponent-thinking-text-wrapper');
+const opponentThinkingText = document.querySelector('.game__thinking-text-wrapper');
 const roundText = document.querySelector('.game-finished__round-text');
 const resultText = document.querySelector('.result');
 const resultIcon = document.querySelector('.result-icon');
@@ -68,28 +68,28 @@ const logoLinks = document.querySelectorAll('.logo-link');
 // Button elements
 const markButtons = document.querySelectorAll('.choice__mark-btn');
 const markIcons = document.querySelectorAll('.choice__mark-icon');
-const newGamePlayerVsCpu = document.querySelector('.choice__game-btn.choice__game-btn--pvp');
-const newGamePlayerVsPlayer = document.querySelector('.choice__game-btn.choice__game-btn--pvc');
+const newGamePlayerVsCpu = document.querySelector('.choice__game-btn--pvp');
+const newGamePlayerVsPlayer = document.querySelector('.choice__game-btn--pvc');
 const restartButton = document.querySelector('.restart-button');
-const choiceButtons = document.querySelectorAll('.choice-button');
+const gameCard = document.querySelectorAll('.game__card');
 const nextRoundButton = document.querySelector('.next-round-button');
 const quitButton = document.querySelector('.quit-button');
-const cancelRestartButton = document.querySelector('.cancel-button');
-const agreeRestartButton = document.querySelector('.agree-restart');
+const cancelRestartButton = document.querySelector('.restart-game__button--cancel');
+const agreeRestartButton = document.querySelector('.restart-game__button-restart');
 
 // Icons
-const userChoiceIcons = document.querySelector('.choice-button > img');
-const hoverIcons = document.querySelectorAll('.hover-icon');
+const userChoiceIcons = document.querySelector('.game__card > img');
+const hoverIcons = document.querySelectorAll('.game__card-hover-icon');
 const turnIcon = document.querySelector('.current-turn__icon');
 
 //Users
-const xUser = document.querySelector('.x-user');
-const oUser = document.querySelector('.o-user');
+const xUser = document.querySelector('.game__user--x');
+const oUser = document.querySelector('.game__user--o');
 
 //Scores
-const xScoreElement = document.querySelector('.x-score');
-const oScoreElement = document.querySelector('.o-score');
-const tiesScoreElement = document.querySelector('.ties-score');
+const xScoreElement = document.querySelector('.game__score--x');
+const oScoreElement = document.querySelector('.game__score--o');
+const tiesScoreElement = document.querySelector('.game__score--ties');
 
 
 // Changing hover icon according to user selection
@@ -190,18 +190,18 @@ newGamePlayerVsPlayer.addEventListener('click', () => {
 const displayChoice = (player, index) => {
     if (playerVsCpu) {
         if (player.choice === computer.choice) {
-            choiceButtons[index].style.backgroundImage = computer.iconBackground;
+            gameCard[index].style.backgroundImage = computer.iconBackground;
         } else {
-            choiceButtons[index].style.backgroundImage = user.iconBackground;
+            gameCard[index].style.backgroundImage = user.iconBackground;
         }
     } else {
         if (player.choice === player1.choice) {
-            choiceButtons[index].style.backgroundImage = player1.iconBackground;
+            gameCard[index].style.backgroundImage = player1.iconBackground;
         } else {
-            choiceButtons[index].style.backgroundImage = player2.iconBackground;
+            gameCard[index].style.backgroundImage = player2.iconBackground;
         }
     }
-    choiceButtons[index].disabled = true;
+    gameCard[index].disabled = true;
 }
 
 // Updating Choices
@@ -239,11 +239,11 @@ const displayResult = (winner) => {
 
 const displayWin = (arr, player) => {
     for (const index of arr) {
-        choiceButtons[index].style.backgroundImage = player.iconDarkNavyBackground;
+        gameCard[index].style.backgroundImage = player.iconDarkNavyBackground;
         if (player.choice === xElement.choice) {
-            choiceButtons[index].style.backgroundColor = 'hsl(178, 60%, 48%)';
+            gameCard[index].style.backgroundColor = 'hsl(178, 60%, 48%)';
         } else {
-            choiceButtons[index].style.backgroundColor = 'hsl(39, 88%, 58%)';
+            gameCard[index].style.backgroundColor = 'hsl(39, 88%, 58%)';
         }
     }
 }
@@ -341,7 +341,7 @@ const changeActivePlayer = () => {
     }
 }
 
-choiceButtons.forEach((choiceButton, index) => {
+gameCard.forEach((choiceButton, index) => {
     choiceButton.addEventListener('click', () => {
         if (playerVsCpu) {
             // Displaying and updating choice
@@ -398,7 +398,7 @@ choiceButtons.forEach((choiceButton, index) => {
 });
 
 const resetScreen = () => {
-    for (const choiceButton of choiceButtons) {
+    for (const choiceButton of gameCard) {
         choiceButton.style.backgroundImage = '';
         choiceButton.style.backgroundColor = 'hsl(199, 35%, 19%)';
         userChoicesArray = [];
