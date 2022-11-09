@@ -93,19 +93,19 @@ body {
   background-color: var(--silver);
 }
 
-.game__current-turn-text {
+.text-color-silver {
   color: var(--silver);
 }
 
-.text-color-dark-navy {
+.text-color-navy {
   color: var(--dark-navy);
 }
 
-.text-color-light-yellow {
+.text-color-yellow {
   color: var(--light-yellow);
 }
 
-.text-color-light-blue {
+.text-color-blue {
   color: var(--light-blue);
 }
 
@@ -205,13 +205,14 @@ body {
 }
 
 .btn {
+  font-size: var(--font-size-300);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius);
   padding: 0.75rem 1rem;
   border: none;
   cursor: pointer;
   text-transform: uppercase;
   color: var(--dark-navy);
-  font-weight: var(--font-weight-bold);
-  border-radius: var(--border-radius);
   transition: all 0.3s ease;
 }
 
@@ -240,6 +241,10 @@ body {
 
 .btn--silver:hover {
   background-color: var(--silver-hover) !important;
+}
+
+.btn--font-size-200 {
+  font-size: var(--font-size-200);
 }
 
 /****************************/
@@ -294,27 +299,6 @@ body {
   display: block;
   width: 100%;
   padding: 1rem 1rem !important;
-  transition: all 0.3s ease;
-}
-
-.choice__game-btn.choice__game-btn--pvp,
-.game__finish-btn--round,
-.restart-game__button-restart {
-  box-shadow: 0 6px hsl(var(--raw-light-yellow), 0.6);
-}
-
-.choice__game-btn.choice__game-btn--pvc {
-  box-shadow: 0 6px hsl(var(--raw-light-blue), 0.6);
-}
-
-.choice__game-btn.choice__game-btn--pvp:hover,
-.game__finish-btn--round:hover,
-.restart-game__button-restart:hover {
-  background-color: var(--light-yellow-hover) !important;
-}
-
-.choice__game-btn.choice__game-btn--pvc:hover {
-  background-color: var(--light-blue-hover) !important;
 }
 
 @media (min-width: 32em) {
@@ -385,13 +369,6 @@ body {
 
 .game__current-turn-icon {
   max-width: 15% !important;
-}
-
-.game__restart-btn:hover,
-.game_finish__btn--quit:hover,
-.restart-game__button--cancel:hover {
-  background-color: var(--silver-hover) !important;
-  transition: all 0.3s ease;
 }
 
 .game__overlay {
@@ -479,11 +456,6 @@ body {
 
 .game-finished__round-text.x-won {
   color: var(--light-blue) !important;
-}
-
-.game_finish__btn--quit,
-.restart-game__button--cancel {
-  box-shadow: 0 6px hsl(var(--raw-silver), 0.6);
 }
 
 /* Overlay */

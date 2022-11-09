@@ -1,11 +1,12 @@
 .btn {
+  font-size: var(--font-size-300);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius);
   padding: 0.75rem 1rem;
   border: none;
   cursor: pointer;;
   text-transform: uppercase;
   color: var(--dark-navy);
-  font-weight: var(--font-weight-bold);
-  border-radius: var(--border-radius);
   transition: all 0.3s ease;
 }
 
@@ -34,4 +35,8 @@
 
 .btn--silver:hover {
   background-color: var(--silver-hover) !important;
+}
+
+.btn--font-size-200 {
+  font-size: var(--font-size-200);
 }

@@ -23,7 +23,7 @@
             </div>
 
             <div class="choice__mark-select background-semi-dark-navy flow text-align-center border-radius">
-                <p class="choice__mark-select-text font-size-200 game__current-turn-text uppercase font-weight-bold">
+                <p class="choice__mark-select-text font-size-200 text-color-silver uppercase font-weight-bold">
                     Pick player 1's mark
                 </p>
                 <div class="choice__marks-wrapper background-dark-navy grid grid--2-columns border-radius">
@@ -39,10 +39,10 @@
                 </p>
             </div>
 
-            <button class="choice__game-btn choice__game-btn--pvp btn font-size-300 background-light-yellow text-color-dark-navy uppercase font-weight-bold border-radius">
+            <button class="choice__game-btn choice__game-btn--pvp btn btn--yellow">
                 New Game (vs CPU)
             </button>
-            <button class="choice__game-btn choice__game-btn--pvc btn font-size-300 background-light-blue text-color-dark-navy uppercase font-weight-bold border-radius">
+            <button class="choice__game-btn choice__game-btn--pvc btn btn--blue">
                 New Game (vs player)
             </button>
         </div>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="game__current-turn background-semi-dark-navy border-radius flex flex--align-center flex--justify-center flex--gap">
                     <img class="game__current-turn-icon" src="images/icon-o-silver.svg" alt="turn-icon">
-                    <p class="game__current-turn-text font-size-200 uppercase">Turn</p>
+                    <p class="game__current-turn-text text-color-silver font-size-200 uppercase">Turn</p>
                 </div>
                 <button class="game__restart-btn btn background-silver border-radius">
                     <img class="game__restart-icon" src="images/icon-restart.svg" alt="restart-icon">
@@ -113,7 +113,7 @@
                 </button>
             </div>
 
-            <div class="game__scores text-color-dark-navy text-align-center flex flex--gap flex--justify-space-between">
+            <div class="game__scores text-color-navy text-align-center flex flex--gap flex--justify-space-between">
                 <div class="game__score-box game__score-box--x background-light-blue border-radius">
                     <p class="uppercase font-size-100 font-weight-bold">
                         X<span class="game__user--x">(CPU)</span>
@@ -136,7 +136,7 @@
         </div>
 
         <div class="game__thinking-text-wrapper">
-            <p class="game__thinking-text font-size-100 game__current-turn-text uppercase text-align-center">
+            <p class="game__thinking-text font-size-100 text-color-silver uppercase text-align-center">
                 Your opponent is thinking ...
             </p>
         </div>
@@ -145,13 +145,13 @@
 
 <section class="restart-section background-semi-dark-navy">
     <div class="restart-game container grid grid--gap grid--place-center">
-        <p class="restart-game__title text-align-center font-weight-bold font-size-500 game__current-turn-text uppercase">
+        <p class="restart-game__title text-align-center font-weight-bold font-size-500 text-color-silver uppercase">
             Restart Game?</p>
         <div class="restart-game__buttons flex flex--gap">
-            <button class="restart-game__button--cancel font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">
+            <button class="restart-game__button--cancel font-weight-bold btn font-size-200 uppercase background-silver text-color-navy border-radius">
                 No, Cancel
             </button>
-            <button class="restart-game__button-restart font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-dark-navy border-radius">
+            <button class="restart-game__button-restart font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-navy border-radius">
                 Yes, Restart
             </button>
         </div>
@@ -161,26 +161,26 @@
 <section class="game-finish-section background-semi-dark-navy">
     <div class="game-finish container flow grid grid--place-center text-align-center">
         <div class="game-finish__result-wrapper flow">
-            <p class="game-finish__result game__current-turn-text font-size-200 uppercase">You Won !</p>
+            <p class="game-finish__result text-color-silver font-size-200 uppercase">You Won !</p>
             <div class="game-finish__result-description flex flex--gap flex-align--center">
                 <img class="game-finish__result-icon" src="images/icon-o.svg" alt="icon">
-                <p class="game-finish__text font-size-500 text-color-light-yellow uppercase">
+                <p class="game-finish__text font-size-500 text-color-yellow uppercase">
                     Takes the round
                 </p>
             </div>
         </div>
 
         <div class="game-finish__result-description--draw">
-            <p class="game-finish__text font-weight-bold font-size-500 game__current-turn-text uppercase">
+            <p class="game-finish__text font-weight-bold font-size-500 text-color-silver uppercase">
                 Round Tied
             </p>
         </div>
 
         <div class="game-finish__buttons flex flex--gap">
-            <button class="game_finish__btn--quit font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">
+            <button class="game_finish__btn--quit font-weight-bold btn font-size-200 uppercase background-silver text-color-navy border-radius">
                 Quit
             </button>
-            <button class="game__finish-btn--round font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-dark-navy border-radius">
+            <button class="game__finish-btn--round font-weight-bold btn font-size-200 uppercase background-light-yellow text-color-navy border-radius">
                 Next Round
             </button>
         </div>
@@ -189,7 +189,7 @@
 
 
 <div class="overlay hidden"></div>
-<script src="javascript/script.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
