@@ -1,6 +1,4 @@
-/****************************/
-/* Choice Selection Section */
-/****************************/
+// Choice Sedtion
 .game-active .choice-section {
   display: none;
 }
@@ -73,9 +71,7 @@
 
 }
 
-/*****************/
-/* Game Section  */
-/*****************/
+// Game section
 .game-section {
   display: none;
 }
@@ -169,9 +165,7 @@
   }
 }
 
-/**************************/
-/* Game Finished Section  */
-/**************************/
+// Game finish section and restart section
 .game-finish-section,
 .restart-section {
   display: none;
@@ -189,10 +183,13 @@
   .restart-section {
     padding: 2rem 0;
   }
-
 }
 
 .game-finished .game-finish-section {
+  display: block;
+}
+
+.restart-prompt .restart-section {
   display: block;
 }
 
@@ -221,7 +218,7 @@
   color: var(--light-blue) !important;
 }
 
-/* Overlay */
+// Overlay
 .overlay {
   position: absolute;
   display: block;
@@ -233,12 +230,4 @@
   display: none;
 }
 
-
-/********************/
-/* Restart Section  */
-/********************/
-
-.restart-prompt .restart-section {
-  display: block;
-}
 
