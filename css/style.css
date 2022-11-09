@@ -129,7 +129,7 @@ body {
 }
 
 .choice__game-btn.choice__game-btn--pvp,
-.next-round-button,
+.game__finish-btn--round,
 .restart-game__button-restart {
     box-shadow: 0 6px hsl(var(--raw-light-yellow), 0.6);
 }
@@ -139,7 +139,7 @@ body {
 }
 
 .choice__game-btn.choice__game-btn--pvp:hover,
-.next-round-button:hover,
+.game__finish-btn--round:hover,
 .restart-game__button-restart:hover {
     background-color: var(--light-yellow-hover) !important;
 }
@@ -225,7 +225,7 @@ body {
 }
 
 .game__restart-btn:hover,
-.quit-button:hover,
+.game_finish__btn--quit:hover,
 .restart-game__button--cancel:hover {
     background-color: var(--silver-hover) !important;
     transition: all 0.3s ease;
@@ -324,7 +324,7 @@ body {
     color: var(--light-blue) !important;
 }
 
-.quit-button,
+.game_finish__btn--quit,
 .restart-game__button--cancel {
   box-shadow: 0 6px hsl(var(--raw-silver), 0.6);
 }

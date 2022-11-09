@@ -68,6 +68,8 @@ const opponentThinkingText = document.querySelector('.game__thinking-text-wrappe
 const gameFinishedText = document.querySelector('.game-finish__text');
 const gameResult = document.querySelector('.game-finish__result');
 const resultIcon = document.querySelector('.game-finish__result-icon');
+const nextRoundButton = document.querySelector('.game__finish-btn--round');
+const quitButton = document.querySelector('.game_finish__btn--quit');
 
 
 const logoLinks = document.querySelectorAll('.logo-link');
@@ -79,8 +81,7 @@ const newGamePlayerVsCpu = document.querySelector('.choice__game-btn--pvp');
 const newGamePlayerVsPlayer = document.querySelector('.choice__game-btn--pvc');
 const restartButton = document.querySelector('.game__restart-btn');
 const gameCard = document.querySelectorAll('.game__card');
-const nextRoundButton = document.querySelector('.next-round-button');
-const quitButton = document.querySelector('.quit-button');
+
 const cancelRestartButton = document.querySelector('.restart-game__button--cancel');
 const agreeRestartButton = document.querySelector('.restart-game__button-restart');
 
