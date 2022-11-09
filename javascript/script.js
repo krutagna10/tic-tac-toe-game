@@ -77,6 +77,7 @@ const turnIcon = document.querySelector('.game__current-turn-icon');
 const gameFinishedSection = document.querySelector('.game-finish-section');
 const gameOverlay = document.querySelector('.game__overlay');
 const opponentThinkingText = document.querySelector('.game__thinking-text-wrapper');
+const gameLogo = document.querySelector('.game__header-logo');
 
 // Restart Section
 const cancelRestartButton = document.querySelector('.restart-game__button--cancel');
@@ -463,9 +464,8 @@ const resetEverything = () => {
 // Quit Button
 quitButton.addEventListener('click', resetEverything);
 
-for (const logoLink of logoLinks) {
-    logoLink.addEventListener('click', resetEverything);
-}
+// Game Logo
+gameLogo.addEventListener('click', resetEverything);
 
 
 
