@@ -24,7 +24,7 @@
             </div>
 
             <div class="choice__mark-select background-semi-dark-navy flow text-align-center border-radius">
-                <p class="choice__mark-select-text font-size-200 text-color-silver uppercase font-weight-bold">
+                <p class="choice__mark-select-text font-size-200 game__current-turn-text uppercase font-weight-bold">
                     Pick player 1's mark
                 </p>
                 <div class="choice__marks-wrapper background-dark-navy grid grid--2-columns border-radius">
@@ -58,8 +58,8 @@
                     </a>
                 </div>
                 <div class="game__current-turn background-semi-dark-navy border-radius flex flex--align-center flex--justify-center flex--gap">
-                    <img class="current-turn__icon" src="images/icon-o-silver.svg" alt="turn-icon">
-                    <p class="text-color-silver font-size-200 uppercase">Turn</p>
+                    <img class="game__current-turn-icon" src="images/icon-o-silver.svg" alt="turn-icon">
+                    <p class="game__current-turn-text font-size-200 uppercase">Turn</p>
                 </div>
                 <button class="game__restart-btn btn background-silver border-radius">
                     <img class="game__restart-icon" src="images/icon-restart.svg" alt="restart-icon">
@@ -137,7 +137,7 @@
         </div>
 
         <div class="game__thinking-text-wrapper">
-            <p class="game__thinking-text font-size-100 text-color-silver uppercase text-align-center">
+            <p class="game__thinking-text font-size-100 game__current-turn-text uppercase text-align-center">
                 Your opponent is thinking ...
             </p>
         </div>
@@ -146,7 +146,7 @@
 
 <section class="restart-section background-semi-dark-navy">
     <div class="restart-game container grid grid--gap grid--place-center">
-        <p class="restart-game__title text-align-center font-weight-bold font-size-500 text-color-silver uppercase">
+        <p class="restart-game__title text-align-center font-weight-bold font-size-500 game__current-turn-text uppercase">
             Restart Game?</p>
         <div class="restart-game__buttons flex flex--gap">
             <button class="restart-game__button--cancel font-weight-bold btn font-size-200 uppercase background-silver text-color-dark-navy border-radius">
@@ -162,7 +162,7 @@
 <section class="game-finish-section background-semi-dark-navy">
     <div class="game-finish container flow grid grid--place-center text-align-center">
         <div class="game-finish__result-wrapper flow">
-            <p class="game-finish__result text-color-silver font-size-200 uppercase">You Won !</p>
+            <p class="game-finish__result game__current-turn-text font-size-200 uppercase">You Won !</p>
             <div class="game-finish__result-description flex flex--gap flex-align--center">
                 <img class="game-finish__result-icon" src="images/icon-o.svg" alt="icon">
                 <p class="game-finish__text font-size-500 text-color-light-yellow uppercase">
@@ -172,7 +172,7 @@
         </div>
 
         <div class="game-finish__result-description--draw">
-            <p class="game-finish__text font-weight-bold font-size-500 text-color-silver uppercase">
+            <p class="game-finish__text font-weight-bold font-size-500 game__current-turn-text uppercase">
                 Round Tied
             </p>
         </div>

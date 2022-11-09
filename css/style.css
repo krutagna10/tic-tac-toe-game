@@ -220,7 +220,7 @@ body {
     padding: 0.75rem 0;
 }
 
-.current-turn__icon {
+.game__current-turn-icon {
     max-width: 15% !important;
 }
 

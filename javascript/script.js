@@ -56,48 +56,38 @@ const winConditions = [
 
 // Elements
 const body = document.querySelector('body');
+const overlay = document.querySelector('.overlay');
+
+// Choice Section elements
+const newGamePlayerVsCpu = document.querySelector('.choice__game-btn--pvp');
+const newGamePlayerVsPlayer = document.querySelector('.choice__game-btn--pvc');
+const markButtons = document.querySelectorAll('.choice__mark-btn');
+const markIcons = document.querySelectorAll('.choice__mark-icon');
+
+// Game section elements
+const gameCard = document.querySelectorAll('.game__card');
+const restartButton = document.querySelector('.game__restart-btn');
+const xUser = document.querySelector('.game__user--x');
+const oUser = document.querySelector('.game__user--o');
+const xScoreElement = document.querySelector('.game__score--x');
+const oScoreElement = document.querySelector('.game__score--o');
+const tiesScoreElement = document.querySelector('.game__score--ties');
+const hoverIcons = document.querySelectorAll('.game__card-hover-icon');
+const turnIcon = document.querySelector('.game__current-turn-icon');
 const gameFinishedSection = document.querySelector('.game-finish-section');
 const gameOverlay = document.querySelector('.game__overlay');
-const overlay = document.querySelector('.overlay');
 const opponentThinkingText = document.querySelector('.game__thinking-text-wrapper');
 
-// Game Section
+// Restart Section
+const cancelRestartButton = document.querySelector('.restart-game__button--cancel');
+const agreeRestartButton = document.querySelector('.restart-game__button-restart');
 
-
-// Game finish elements
+// Game finish section elements
 const gameFinishedText = document.querySelector('.game-finish__text');
 const gameResult = document.querySelector('.game-finish__result');
 const resultIcon = document.querySelector('.game-finish__result-icon');
 const nextRoundButton = document.querySelector('.game__finish-btn--round');
 const quitButton = document.querySelector('.game_finish__btn--quit');
-
-
-const logoLinks = document.querySelectorAll('.logo-link');
-
-// Button elements
-const markButtons = document.querySelectorAll('.choice__mark-btn');
-const markIcons = document.querySelectorAll('.choice__mark-icon');
-const newGamePlayerVsCpu = document.querySelector('.choice__game-btn--pvp');
-const newGamePlayerVsPlayer = document.querySelector('.choice__game-btn--pvc');
-const restartButton = document.querySelector('.game__restart-btn');
-const gameCard = document.querySelectorAll('.game__card');
-
-const cancelRestartButton = document.querySelector('.restart-game__button--cancel');
-const agreeRestartButton = document.querySelector('.restart-game__button-restart');
-
-// Icons
-const userChoiceIcons = document.querySelector('.game__card > img');
-const hoverIcons = document.querySelectorAll('.game__card-hover-icon');
-const turnIcon = document.querySelector('.current-turn__icon');
-
-//Users
-const xUser = document.querySelector('.game__user--x');
-const oUser = document.querySelector('.game__user--o');
-
-//Scores
-const xScoreElement = document.querySelector('.game__score--x');
-const oScoreElement = document.querySelector('.game__score--o');
-const tiesScoreElement = document.querySelector('.game__score--ties');
 
 
 // Changing hover icon according to user selection
