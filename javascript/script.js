@@ -56,13 +56,20 @@ const winConditions = [
 
 // Elements
 const body = document.querySelector('body');
-const gameFinishedSection = document.querySelector('.game-finished-section');
+const gameFinishedSection = document.querySelector('.game-finish-section');
 const gameOverlay = document.querySelector('.game__overlay');
 const overlay = document.querySelector('.overlay');
 const opponentThinkingText = document.querySelector('.game__thinking-text-wrapper');
-const roundText = document.querySelector('.game-finished__round-text');
-const resultText = document.querySelector('.result');
-const resultIcon = document.querySelector('.result-icon');
+
+// Game Section
+
+
+// Game finish elements
+const gameFinishedText = document.querySelector('.game-finish__text');
+const gameResult = document.querySelector('.game-finish__result');
+const resultIcon = document.querySelector('.game-finish__result-icon');
+
+
 const logoLinks = document.querySelectorAll('.logo-link');
 
 // Button elements
@@ -70,7 +77,7 @@ const markButtons = document.querySelectorAll('.choice__mark-btn');
 const markIcons = document.querySelectorAll('.choice__mark-icon');
 const newGamePlayerVsCpu = document.querySelector('.choice__game-btn--pvp');
 const newGamePlayerVsPlayer = document.querySelector('.choice__game-btn--pvc');
-const restartButton = document.querySelector('.restart-button');
+const restartButton = document.querySelector('.game__restart-btn');
 const gameCard = document.querySelectorAll('.game__card');
 const nextRoundButton = document.querySelector('.next-round-button');
 const quitButton = document.querySelector('.quit-button');
@@ -214,23 +221,23 @@ const displayResult = (winner) => {
     gameFinishedSection.classList.remove('draw');
     body.classList.add('game-finished');
     overlay.classList.remove('hidden');
-    winner.choice === 'x' ? roundText.classList.add('x-won') : roundText.classList.remove('x-won');
+    winner.choice === 'x' ? gameFinishedText.classList.add('x-won') : gameFinishedText.classList.remove('x-won');
     displayScore();
 
     if (playerVsCpu) {
         if (winner.choice === user.choice) {
-            resultText.textContent = 'You won!';
+            gameResult.textContent = 'You won!';
             resultIcon.src = user.icon;
         } else {
-            resultText.textContent = 'Oh no, you lost!';
+            gameResult.textContent = 'Oh no, you lost!';
             resultIcon.src = computer.icon;
         }
     } else {
         if (winner.choice === player1.choice) {
-            resultText.textContent = 'Player 1 won';
+            gameResult.textContent = 'Player 1 won';
             resultIcon.src = player1.icon;
         } else {
-            resultText.textContent = 'Player 2 won';
+            gameResult.textContent = 'Player 2 won';
             resultIcon.src = player2.icon;
 
         }

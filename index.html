@@ -61,8 +61,8 @@
                     <img class="current-turn__icon" src="images/icon-o-silver.svg" alt="turn-icon">
                     <p class="text-color-silver font-size-200 uppercase">Turn</p>
                 </div>
-                <button class="restart-button btn background-silver border-radius">
-                    <img src="images/icon-restart.svg" alt="restart-icon">
+                <button class="game__restart-btn btn background-silver border-radius">
+                    <img class="game__restart-icon" src="images/icon-restart.svg" alt="restart-icon">
                 </button>
             </header>
 
@@ -159,20 +159,20 @@
     </div>
 </section>
 
-<section class="game-finished-section background-semi-dark-navy">
-    <div class="game-finished container flow grid grid--place-center text-align-center">
-        <div class="result-wrapper flow">
-            <p class="result text-color-silver font-size-200 uppercase">You Won !</p>
-            <div class="win-lose-result flex flex--gap flex-align--center">
-                <img src="images/icon-o.svg" alt="icon" class="result-icon">
-                <p class="game-finished__round-text font-size-500 text-color-light-yellow uppercase">
+<section class="game-finish-section background-semi-dark-navy">
+    <div class="game-finish container flow grid grid--place-center text-align-center">
+        <div class="game-finish__result-wrapper flow">
+            <p class="game-finish__result text-color-silver font-size-200 uppercase">You Won !</p>
+            <div class="game-finish__result-description flex flex--gap flex-align--center">
+                <img class="game-finish__result-icon" src="images/icon-o.svg" alt="icon">
+                <p class="game-finish__text font-size-500 text-color-light-yellow uppercase">
                     Takes the round
                 </p>
             </div>
         </div>
 
-        <div class="draw-result">
-            <p class="game-finished__round-text font-weight-bold font-size-500 text-color-silver uppercase">
+        <div class="game-finish__result-description--draw">
+            <p class="game-finish__text font-weight-bold font-size-500 text-color-silver uppercase">
                 Round Tied
             </p>
         </div>
