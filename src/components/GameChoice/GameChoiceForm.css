@@ -3,11 +3,12 @@
 }
 
 .choice__form-wrapper {
-    min-width: 25rem;
+    min-width: 30rem;
 }
 
 .choice__form-control {
     padding: 1.25rem;
+    border-radius: var(--border-radius);
 }
 
 .choice__form-text {
@@ -16,6 +17,8 @@
 
 .choice__input-wrapper {
     background-color: var(--dark-navy);
+    border-radius: var(--border-radius);
+    padding: 0.25rem;
 }
 
 .choice__label {
@@ -23,8 +26,9 @@
     min-height: 4.5rem;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 20%;
+    background-size: 15%;
     cursor: pointer;
+    border-radius: var(--border-radius);
 }
 
 .choice__label--x {
