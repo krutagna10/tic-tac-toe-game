@@ -1,9 +1,5 @@
-.choice__input {
-    display: none;
-}
-
 .choice__form-wrapper {
-    min-width: 30rem;
+    width: 100%;
 }
 
 .choice__form-control {
@@ -11,14 +7,14 @@
     border-radius: var(--border-radius);
 }
 
-.choice__form-text {
-    color: hsl(var(--raw-silver) / 0.5);
+.choice__input {
+    display: none;
 }
 
 .choice__input-wrapper {
     background-color: var(--dark-navy);
     border-radius: var(--border-radius);
-    padding: 0.25rem;
+    padding: 0.5rem;
 }
 
 .choice__label {
@@ -26,9 +22,21 @@
     min-height: 4.5rem;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 15%;
+    background-size: 40%;
     cursor: pointer;
     border-radius: var(--border-radius);
+}
+
+@media (min-width: 32em) {
+    .choice__label {
+        background-size: 20%;
+    }
+}
+
+@media (min-width: 48em) {
+    .choice__label {
+        background-size: 15%;
+    }
 }
 
 .choice__label--x {
@@ -52,8 +60,13 @@
     background-image: url('/src/assets/icon-o-dark-navy.svg');
 }
 
+.choice__form-text {
+    color: hsl(var(--raw-silver) / 0.5);
+}
+
 .choice__btn {
     width: 100%;
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 

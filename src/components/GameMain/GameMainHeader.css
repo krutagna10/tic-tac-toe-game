@@ -1,0 +1,9 @@
+.game__turn-icon {
+    max-width: 25%;
+}
+
+.game__turn {
+    --gap: 0.5rem;
+
+    padding: 0.5rem;
+}

@@ -1,9 +1,8 @@
 import './GameChoiceForm.css'
 import {useState} from "react";
 
-const GameChoiceForm = () => {
+const GameChoiceForm = (props) => {
     const [userChoice, setUserChoice] = useState('o');
-    const [computerChoice, setComputerChoice] = useState('x');
 
     const clickHandler = (event) => {
         setUserChoice(event.target.value);
@@ -11,11 +10,13 @@ const GameChoiceForm = () => {
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
+        let computerChoice = userChoice === 'x' ? 'o' : 'x';
+        props.onChoice(userChoice, computerChoice);
     }
 
     return (
         <div className='choice__form-wrapper'>
-            <form className='choice__form flow' onSubmit={formSubmitHandler}>
+            <form className='choice__form' onSubmit={formSubmitHandler}>
                 <div className='choice__form-control background-semi-dark-navy flow'>
                     <h1 className='choice__form-heading font-size-300 text-silver'>
                         Pick player 1's mark
@@ -27,6 +28,7 @@ const GameChoiceForm = () => {
                                className='choice__input'
                                onChange={clickHandler}
                                value='x'
+                               checked={userChoice === 'x'}
                         />
                         <label
                             className='choice__label choice__label--x'
@@ -39,7 +41,7 @@ const GameChoiceForm = () => {
                                className='choice__input'
                                onChange={clickHandler}
                                value='o'
-                               checked
+                               checked={userChoice === 'o'}
                         />
                         <label
                             className='choice__label choice__label--o'
