@@ -39,7 +39,7 @@ const GameChoiceForm = () => {
                                className='choice__input'
                                onChange={clickHandler}
                                value='o'
-                               checked
+                               defaultChecked
                         />
                         <label
                             className='choice__label choice__label--o'
