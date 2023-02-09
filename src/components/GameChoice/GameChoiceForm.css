@@ -20,6 +20,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40%;
+    cursor: pointer;
 }
 
 .choice__label--x {
@@ -30,16 +31,16 @@
     background-image: url('/src/assets/icon-o-silver.svg');
 }
 
-.choice__label--active {
+.choice__input:checked + .choice__label {
     background-color: var(--silver);
 }
 
-.choice__label--x.choice__label--active {
+#choice__input--x:checked + .choice__label--x{
     background-image: url('/src/assets/icon-x-dark-navy.svg');
 }
 
 
-.choice__label--o.choice__label--active {
+#choice__input--o:checked + .choice__label--o {
     background-image: url('/src/assets/icon-o-dark-navy.svg');
 }
 
