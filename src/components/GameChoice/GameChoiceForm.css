@@ -2,6 +2,10 @@
     display: none;
 }
 
+.choice__form-wrapper {
+    min-width: 25rem;
+}
+
 .choice__form-control {
     padding: 1.25rem;
 }
@@ -10,7 +14,7 @@
     color: hsl(var(--raw-silver) / 0.5);
 }
 
-.choice__label-wrapper {
+.choice__input-wrapper {
     background-color: var(--dark-navy);
 }
 
@@ -19,7 +23,7 @@
     min-height: 4.5rem;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 40%;
+    background-size: 20%;
     cursor: pointer;
 }
 

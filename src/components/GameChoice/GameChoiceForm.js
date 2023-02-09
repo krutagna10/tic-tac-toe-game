@@ -20,7 +20,7 @@ const GameChoiceForm = () => {
                     <h1 className='choice__form-heading font-size-300 text-silver'>
                         Pick player 1's mark
                     </h1>
-                    <div className='choice__label-wrapper flex'>
+                    <div className='choice__input-wrapper flex'>
                         <input type='radio'
                                name='choice__input'
                                id='choice__input--x'
@@ -48,7 +48,7 @@ const GameChoiceForm = () => {
                     </div>
                     <p className='choice__form-text font-size-100'>Remember: X goes first</p>
                 </div>
-                <button className='choice__btn btn btn--yellow'>New Game (vs CPU)</button>
+                <button className='choice__btn btn btn--yellow font-size-300'>New Game (vs CPU)</button>
             </form>
         </div>
     )
