@@ -1,0 +1,54 @@
+.choice__input {
+    display: none;
+}
+
+.choice__form-control {
+    padding: 1.25rem;
+}
+
+.choice__form-text {
+    color: hsl(var(--raw-silver) / 0.5);
+}
+
+.choice__label-wrapper {
+    background-color: var(--dark-navy);
+}
+
+.choice__label {
+    width: 100%;
+    min-height: 4.5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    border: 1px solid red;
+}
+
+.choice__label--x {
+    background-image: url('/src/assets/icon-x-silver.svg');
+}
+
+.choice__label--o {
+    background-image: url('/src/assets/icon-o-silver.svg');
+}
+
+.choice__label--active {
+    background-color: var(--silver);
+}
+
+.choice__label--x.choice__label--active {
+    background-image: url('/src/assets/icon-x-dark-navy.svg');
+}
+
+
+.choice__label--o.choice__label--active {
+    background-image: url('/src/assets/icon-o-dark-navy.svg');
+}
+
+.choice__btn {
+    width: 100%;
+}
+
+
+
+
+
