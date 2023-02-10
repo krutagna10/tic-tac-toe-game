@@ -2,9 +2,9 @@ import GameChoiceForm from "./GameChoiceForm";
 import logo from '../../assets/logo.svg';
 import './GameChoice.css';
 
-const GameChoice = () => {
+const GameChoice = (props) => {
     const getChoiceHandler = (userChoice, computerChoice) => {
-        console.log(`User Choice : ${userChoice} | Computer Choice : ${computerChoice}`);
+        props.onChoice(userChoice, computerChoice);
     }
 
     return (

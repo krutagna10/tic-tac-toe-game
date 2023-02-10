@@ -4,21 +4,28 @@ import './Game.css';
 import {useState} from "react";
 
 const Game = () => {
-    const [choiceSelected, setChoiceSelected] = useState(false);
+    const [choiceSelected, setChoiceSelected] = useState(true);
+    const [userChoice, setUserChoice] = useState('x');
+    const [computerChoice, setComputerChoice] = useState('o');
 
-    const choiceSelectedHandler = () => {
-        setChoiceSelected(true);
+    const setChoicesHandler = (userChoice, computerChoice) => {
+        setUserChoice(userChoice);
+        setComputerChoice(computerChoice);
+        setChoiceSelected(true)
     }
 
     return (
         <div className='game'>
             {!choiceSelected && (
                 <GameChoice
-                    onChoice={choiceSelectedHandler}
+                    onChoice={setChoicesHandler}
                 />
             )}
             {choiceSelected && (
-                <GameMain/>
+                <GameMain
+                    userChoice={userChoice}
+                    computerChoice={computerChoice}
+                />
             )}
         </div>
     )
