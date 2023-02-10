@@ -79,6 +79,7 @@ body {
     text-rendering: optimizeSpeed;
     font-family: var(--font-family-outfit);
     background-color: var(--dark-navy);
+    font-weight: var(--font-weight-medium);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,19 +197,19 @@ body {
 }
 
 /* Background */
-.background-light-blue {
+.background-blue {
     background-color: var(--light-blue);
 }
 
-.background-light-yellow {
+.background-yellow {
     background-color: var(--light-yellow);
 }
 
-.background-semi-dark-navy {
+.background-semi-dark {
     background-color: var(--semi-dark-navy);
 }
 
-.background-dark-navy {
+.background-dark {
     background-color: var(--dark-navy);
 }
 

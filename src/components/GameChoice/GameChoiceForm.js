@@ -17,7 +17,7 @@ const GameChoiceForm = (props) => {
     return (
         <div className='choice__form-wrapper'>
             <form className='choice__form' onSubmit={formSubmitHandler}>
-                <div className='choice__form-control background-semi-dark-navy flow'>
+                <div className='choice__form-control background-semi-dark flow'>
                     <h1 className='choice__form-heading font-size-300 text-silver'>
                         Pick player 1's mark
                     </h1>

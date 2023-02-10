@@ -12,7 +12,7 @@ const GameMainHeader = () => {
                      alt='Rock Paper Scissors'
                 />
             </div>
-            <div className='game__turn flex flex--gap flex--justify-center flex--align-center background-semi-dark-navy'>
+            <div className='game__turn flex flex--gap flex--justify-center flex--align-center background-semi-dark'>
                 <img className='game__turn-icon'
                      src={turnIcon}
                      alt=''

@@ -1,0 +1,15 @@
+.result {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    min-height: 18rem;
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    padding-block: 3rem;
+}
+
+.result__heading {
+    text-transform: uppercase;
+}
