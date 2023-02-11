@@ -37,6 +37,7 @@ const GameMain = (props) => {
     const gameBtnNine = useRef(null);
     const gameButtons = [gameBtnOne, gameBtnTwo, gameBtnThree, gameBtnFour, gameBtnFive, gameBtnSix, gameBtnSeven, gameBtnEight, gameBtnNine];
 
+    // Function that checks for win
     const checkForWin = (arr) => {
         for (const condition of winConditions) {
             if (condition.every(element => arr.includes(element))) {
@@ -46,43 +47,45 @@ const GameMain = (props) => {
         return false;
     }
 
+    // Function that checks for draw
     const checkForDraw = () => {
         return choices.length === 0;
     }
 
+    // Function that sets background image, disables the buttons and splices the array
+    const playerHandler = (player, value) => {
+        gameButtons[value].current.style.backgroundImage = `url(${icons[player.choice]})`;
+        gameButtons[value].current.disabled = true;
+
+        const index = choices.indexOf(value);
+        choices.splice(index, 1);
+    }
+
+
+    // Function to get computer choice
     const getComputerChoice = () => {
         let random = choices[Math.floor(Math.random() * choices.length)];
-
         computerChoicesArray.push(random);
 
-        gameButtons[random].current.style.backgroundImage = `url(${icons[props.computerChoice]})`;
-        gameButtons[random].current.disabled = true;
-
-        const index = choices.findIndex(element => element === random);
-        choices.splice(index, 1);
+        playerHandler(props.computer, random);
 
         if (checkForWin(computerChoicesArray)) {
-            props.onResult('computer');
+            props.onResult('lose');
         }
         if (checkForDraw()) {
             props.onResult('draw');
         }
     }
 
+    // Function when user clicks on game Button
     const clickHandler = (event) => {
         const value = Number(event.target.dataset.value)
         userChoicesArray.push(value);
 
-        gameButtons[value].current.style.backgroundImage = `url(${icons[props.userChoice]})`;
-        gameButtons[value].current.disabled = true;
-
-
-        // Removing value from choices
-        const index = choices.findIndex(element => element === value);
-        choices.splice(index, 1);
+        playerHandler(props.user, value);
 
         if (checkForWin(userChoicesArray)) {
-            props.onResult('user');
+            props.onResult('win');
         } else if (checkForDraw()) {
             props.onResult('draw');
         } else {
@@ -95,15 +98,15 @@ const GameMain = (props) => {
         <div className='game flow'>
             <GameMainHeader/>
             <div className='game__board grid grid--3-columns grid--gap'>
-                <button className='game__btn' data-value='0' onClick={clickHandler} ref={gameBtnOne}></button>
-                <button className='game__btn' data-value='1' onClick={clickHandler} ref={gameBtnTwo}></button>
-                <button className='game__btn' data-value='2' onClick={clickHandler} ref={gameBtnThree}></button>
-                <button className='game__btn' data-value='3' onClick={clickHandler} ref={gameBtnFour}></button>
-                <button className='game__btn' data-value='4' onClick={clickHandler} ref={gameBtnFive}></button>
-                <button className='game__btn' data-value='5' onClick={clickHandler} ref={gameBtnSix}></button>
-                <button className='game__btn' data-value='6' onClick={clickHandler} ref={gameBtnSeven}></button>
-                <button className='game__btn' data-value='7' onClick={clickHandler} ref={gameBtnEight}></button>
-                <button className='game__btn' data-value='8' onClick={clickHandler} ref={gameBtnNine}></button>
+                {gameButtons.map((element, index) => (
+                    <button
+                        className='game__btn'
+                        key={index}
+                        data-value={index.toString()}
+                        onClick={clickHandler}
+                        ref={element}
+                    />
+                ))}
             </div>
         </div>
     )

@@ -8,20 +8,36 @@ const Game = () => {
     const [choiceSelected, setChoiceSelected] = useState(false);
     const [gameFinished, setGameFinished] = useState(false);
 
-    const [userChoice, setUserChoice] = useState('');
-    const [computerChoice, setComputerChoice] = useState('');
+    const [user, setUser] = useState({choice: ''});
+    const [computer, setComputer] = useState({choice: ''});
+    const [winner, setWinner] = useState({choice: ''});
+
     const [result, setResult] = useState('');
 
+    console.log(user, computer);
+
     const setChoicesHandler = (userChoice, computerChoice) => {
-        setUserChoice(userChoice);
-        setComputerChoice(computerChoice);
+        setUser(prevState => {
+            prevState.choice = userChoice;
+            return prevState;
+        })
+        setComputer(prevState => {
+            prevState.choice = computerChoice;
+            return prevState;
+        })
         setChoiceSelected(true)
     }
 
     const setResultHandler = (result) => {
         setResult(result);
+        if (result === 'win') {
+            setWinner({...user});
+        } else if (result === 'lose') {
+            setWinner({...computer});
+        }
         setGameFinished(true);
     }
+
 
     return (
         <div className='game'>
@@ -32,15 +48,14 @@ const Game = () => {
             )}
             {choiceSelected && (
                 <GameMain
-                    userChoice={userChoice}
-                    computerChoice={computerChoice}
+                    user={user}
+                    computer={computer}
                     onResult={setResultHandler}
                 />
             )}
             {gameFinished && (<GameResult
-                userChoice={userChoice}
-                computerChoice={computerChoice}
                 result={result}
+                winner={winner}
             />)}
         </div>
     )

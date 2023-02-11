@@ -1,5 +1,3 @@
-import {useState} from "react";
-
 import xIcon from '../../assets/icon-x.svg';
 import oIcon from '../../assets/icon-o.svg';
 import './GameResult.css';
@@ -11,25 +9,37 @@ const icons = {
 
 const GameResult = (props) => {
     let resultText = '';
-    console.log(props)
-    if (props.result === 'user') {
+    let roundText = props.result === 'draw' ? 'Round Tied' : 'Takes the round';
+    let roundTextClassList = 'result__heading font-size-500 ';
+
+    if (props.winner.choice === 'x') {
+        roundTextClassList = roundTextClassList + 'text-blue';
+    } else if (props.winner.choice === 'o') {
+        roundTextClassList = roundTextClassList + 'text-yellow';
+    } else {
+        roundTextClassList = roundTextClassList + 'text-silver';
+    }
+
+    if (props.result === 'win') {
         resultText = 'You won';
-    } else if (props.result === 'computer') {
+    } else if (props.result === 'lose') {
         resultText = 'Oh no, you lost...';
     }
 
     return (
         <section className='result-section'>
             <div className='result grid grid--items-center background-semi-dark'>
-                <p className='result__text font-size-200 text-silver'>{resultText}</p>
+                {props.result !== 'draw' && (
+                    <p className='result__text font-size-200 text-silver'>{resultText}</p>
+                )}
 
                 <div className='result__label flex flex--gap flex--align-center'>
-                    <img className='result__icon'
-                         src={icons[props.userChoice]}
+                    {props.result !== 'draw' && (<img className='result__icon'
+                         src={icons[props.winner.choice]}
                          alt=''
                          aria-hidden='true'
-                    />
-                    <h1 className='result__heading font-size-500 text-blue'>Takes the round</h1>
+                    />)}
+                    <h1 className={roundTextClassList}>{roundText}</h1>
                 </div>
 
                 <div className='result__buttons flex flex--gap'>
