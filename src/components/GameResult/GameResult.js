@@ -9,7 +9,7 @@ const icons = {
 
 const GameResult = (props) => {
     let resultText = '';
-    let roundText = props.result === 'draw' ? 'Round Tied' : 'Takes the round';
+    let roundText = props.result === 'Draw' ? 'Round Tied' : 'Takes the round';
     let roundTextClassList = 'result__heading font-size-500 ';
 
     if (props.winner.choice === 'x') {
