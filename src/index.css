@@ -140,7 +140,6 @@ body {
     margin: 0 auto;
 }
 
-/* Flex Utility */
 .flex {
     display: flex;
 }
@@ -169,7 +168,6 @@ body {
 .flex--justify-space {
     justify-content: space-between;
 }
-
 
 /* Grid Utility */
 .grid {
@@ -233,6 +231,7 @@ body {
 .text-blue {
     color: var(--light-blue);
 }
+
 
 /* Font size */
 .font-size-500 {
