@@ -140,6 +140,7 @@ body {
     margin: 0 auto;
 }
 
+/* Flex Utility */
 .flex {
     display: flex;
 }
