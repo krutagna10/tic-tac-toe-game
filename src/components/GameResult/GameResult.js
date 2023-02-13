@@ -9,7 +9,7 @@ const icons = {
 
 const GameResult = (props) => {
     let resultText = '';
-    let roundText = props.result === 'Draw' ? 'Round Tied' : 'Takes the round';
+    let roundText = props.result === 'draw' ? 'Round Tied' : 'Takes the round';
     let roundTextClassList = 'result__heading font-size-500 ';
 
     if (props.winner.choice === 'x') {
@@ -44,7 +44,7 @@ const GameResult = (props) => {
 
                 <div className='result__buttons flex flex--gap'>
                     <button className='btn btn--silver'>Quit</button>
-                    <button className='btn btn--yellow'>Next Round</button>
+                    <button className='btn btn--yellow' onClick={props.onNextRound}>Next Round</button>
                 </div>
             </div>
         </section>

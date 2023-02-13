@@ -9,7 +9,11 @@ const icons = {
     o: oIcon,
 }
 
-const choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+const userChoicesArray = [];
+
+const computerChoicesArray = [];
 
 const winConditions = [
     [0, 1, 2],
@@ -23,9 +27,6 @@ const winConditions = [
 ]
 
 const GameMain = (props) => {
-    const userChoicesArray = [];
-    const computerChoicesArray = [];
-
     const gameBtnOne = useRef(null);
     const gameBtnTwo = useRef(null);
     const gameBtnThree = useRef(null);
@@ -92,7 +93,6 @@ const GameMain = (props) => {
             getComputerChoice();
         }
     }
-
 
     return (
         <div className='game flow'>
