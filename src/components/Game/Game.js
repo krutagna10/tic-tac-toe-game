@@ -66,9 +66,16 @@ const Game = (props) => {
 
     // Function that sets background image, disables the buttons and splices the array
     const playerHandler = (player, value) => {
+        // Pushing values to the array
+        player.name === 'user' ? userArray.push(value) : computerArray.push(value);
+
+        // Changing background of button
         gameButtons[value].current.style.backgroundImage = `url(${icons[player.choice]})`;
+
+        // Disabling the button so that user cannot click again
         gameButtons[value].current.disabled = true;
 
+        // Removing the value from choices
         const index = choices.indexOf(value);
         choices.splice(index, 1);
     }
@@ -77,10 +84,7 @@ const Game = (props) => {
     // Function to get computer choice
     const getComputerChoice = () => {
         let random = choices[Math.floor(Math.random() * choices.length)];
-        computerArray.push(random);
-
         playerHandler(props.computer, random);
-
         checkForWin(computerArray, 'computer');
         checkForDraw();
     }
@@ -88,10 +92,7 @@ const Game = (props) => {
     // Function when user clicks on game Button
     const clickHandler = (event) => {
         const value = Number(event.target.dataset.value)
-        userArray.push(value);
-
         playerHandler(props.user, value);
-
         if (!checkForWin(userArray, 'user') && !checkForDraw()) {
             getComputerChoice();
         }
