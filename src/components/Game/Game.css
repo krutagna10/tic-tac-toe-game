@@ -1,0 +1,13 @@
+.game__btn {
+    min-width: 8rem;
+    min-height: 8rem;
+    background-color: var(--semi-dark-navy);
+    border: 1px solid black;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.game__btn:disabled {
+    pointer-events: none;
+}

@@ -1,12 +1,11 @@
-import './App.css';
 import Choice from './components/Choice/Choice';
 import Game from './components/Game/Game';
 import {useState} from "react";
 
 function App() {
     const [choiceSelected, setChoiceSelected] = useState(false);
-    const [user, setUser] = useState({choice: 'x'});
-    const [computer, setComputer] = useState({choice: 'o'});
+    const [user, setUser] = useState({ name: 'user', choice: 'x'});
+    const [computer, setComputer] = useState({ name: 'computer', choice: 'o'});
 
     const setChoicesHandler = (userChoice, computerChoice) => {
         setUser(user => {

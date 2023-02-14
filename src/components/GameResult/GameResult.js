@@ -10,15 +10,7 @@ const icons = {
 const GameResult = (props) => {
     let resultText = '';
     let roundText = props.result === 'draw' ? 'Round Tied' : 'Takes the round';
-    let roundTextClassList = 'result__heading font-size-500 ';
 
-    if (props.winner.choice === 'x') {
-        roundTextClassList = roundTextClassList + 'text-blue';
-    } else if (props.winner.choice === 'o') {
-        roundTextClassList = roundTextClassList + 'text-yellow';
-    } else {
-        roundTextClassList = roundTextClassList + 'text-silver';
-    }
 
     if (props.result === 'win') {
         resultText = 'You won';
@@ -34,17 +26,20 @@ const GameResult = (props) => {
                 )}
 
                 <div className='result__label flex flex--gap flex--align-center'>
-                    {props.result !== 'draw' && (<img className='result__icon'
-                         src={icons[props.winner.choice]}
-                         alt=''
-                         aria-hidden='true'
-                    />)}
-                    <h1 className={roundTextClassList}>{roundText}</h1>
+                    {props.result !== 'draw' && (
+                        <img className='result__icon'
+                             src={icons[props.user.choice]}
+                             alt=''
+                             aria-hidden='true'
+                        />)}
+                    <h1 className='result__heading font-size-500 text-blue'>
+                        {roundText}
+                    </h1>
                 </div>
 
                 <div className='result__buttons flex flex--gap'>
                     <button className='btn btn--silver'>Quit</button>
-                    <button className='btn btn--yellow' onClick={props.onNextRound}>Next Round</button>
+                    <button className='btn btn--yellow'>Next Round</button>
                 </div>
             </div>
         </section>
