@@ -1,7 +1,7 @@
-import './GameChoiceForm.css'
+import './ChoiceForm.css'
 import {useState} from "react";
 
-const GameChoiceForm = (props) => {
+const ChoiceForm = (props) => {
     const [userChoice, setUserChoice] = useState('o');
 
     const clickHandler = (event) => {
@@ -56,4 +56,4 @@ const GameChoiceForm = (props) => {
     )
 };
 
-export default GameChoiceForm;
+export default ChoiceForm;

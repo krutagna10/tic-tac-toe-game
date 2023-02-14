@@ -1,8 +1,8 @@
-import GameChoiceForm from "./GameChoiceForm";
+import ChoiceForm from "./ChoiceForm";
 import logo from '../../assets/logo.svg';
-import './GameChoice.css';
+import './Choice.css';
 
-const GameChoice = (props) => {
+const Choice = (props) => {
     const getChoiceHandler = (userChoice, computerChoice) => {
         props.onChoice(userChoice, computerChoice);
     }
@@ -16,7 +16,7 @@ const GameChoice = (props) => {
                         alt='Tic Tac Toe Game'
                     />
                 </div>
-                <GameChoiceForm
+                <ChoiceForm
                     onChoice={getChoiceHandler}
                 />
             </div>
@@ -24,4 +24,4 @@ const GameChoice = (props) => {
     )
 }
 
-export default GameChoice;
+export default Choice;

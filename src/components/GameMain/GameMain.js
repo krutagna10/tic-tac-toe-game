@@ -104,7 +104,6 @@ const GameMain = (props) => {
         });
     };
 
-    props.onPlayAgain(resetGameHandler);
 
     return (
         <div className='game flow'>
