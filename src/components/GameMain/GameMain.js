@@ -1,8 +1,8 @@
 import GameMainHeader from "./GameMainHeader";
+import { useRef } from "react";
 import './GameMain.css';
 import xIcon from '../../assets/icon-x.svg';
 import oIcon from '../../assets/icon-o.svg';
-import {useRef} from "react";
 
 const icons = {
     x: xIcon,
@@ -11,9 +11,9 @@ const icons = {
 
 let choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-const userChoicesArray = [];
+let userChoicesArray = [];
 
-const computerChoicesArray = [];
+let computerChoicesArray = [];
 
 const winConditions = [
     [0, 1, 2],
@@ -92,7 +92,19 @@ const GameMain = (props) => {
         } else {
             getComputerChoice();
         }
-    }
+    };
+
+    const resetGameHandler = () => {
+        choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+        userChoicesArray = [];
+        computerChoicesArray = [];
+        gameButtons.forEach(gameButton => {
+            gameButton.current.disabled = false;
+            gameButton.current.style.backgroundImage = 'none';
+        });
+    };
+
+    props.onPlayAgain(resetGameHandler);
 
     return (
         <div className='game flow'>

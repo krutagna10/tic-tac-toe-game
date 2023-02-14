@@ -11,11 +11,6 @@ const Game = () => {
     const [user, setUser] = useState({choice: 'x'});
     const [computer, setComputer] = useState({choice: 'o'});
     const [winner, setWinner] = useState({choice: ''});
-    const [scores, setScores] = useState({
-        user: 0,
-        computer: 0,
-        tie: 0,
-    });
 
     const [result, setResult] = useState('');
 
@@ -33,7 +28,6 @@ const Game = () => {
 
     const setResultHandler = (result) => {
         setResult(result);
-        setScores(result);
 
         if (result === 'win') {
             setWinner({...user});
@@ -41,24 +35,18 @@ const Game = () => {
             setWinner({...computer});
         }
         setGameFinished(true);
-    }
+    };
 
-    const setScoresHandler = (result) => {
-        setScores(prevScores => {
-            if (result === 'win') {
-                prevScores.user = prevScores.user + 1;
-            } else if (result === 'lose') {
-                prevScores.computer = prevScores.computer + 1;
-            } else {
-                prevScores.tie = prevScores.tie + 1;
-            }
-            return prevScores;
-        })
+    let resetFunction;
+
+    const passFunctionHandler = (reset) => {
+        resetFunction = reset;
     }
 
     const nextRoundHandler = () => {
         setGameFinished(false);
-    }
+        resetFunction();
+    };
 
     return (
         <div className='game'>
@@ -72,7 +60,7 @@ const Game = () => {
                     user={user}
                     computer={computer}
                     onResult={setResultHandler}
-                    onSetScores={setScoresHandler}
+                    onPlayAgain={passFunctionHandler}
                 />
             )}
             {gameFinished && (<GameResult
