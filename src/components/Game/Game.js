@@ -11,12 +11,16 @@ const icons = {
     o: oIcon,
 }
 
+// Choices Array which contains all the choices
 let choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
+// User Array which contains user choices
 let userArray = [];
 
+// Computer Array which contains computer choices
 let computerArray = [];
 
+// Win Conditions Array
 const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -29,10 +33,13 @@ const winConditions = [
 ]
 
 const Game = (props) => {
+    // Game Finished state for displaying or hiding the result
     const [gameFinished, setGameFinished] = useState(false);
-    const [result, setResult] = useState('');
-    const [winner, setWinner] = useState({});
 
+    // Result state for passing result text to GameResult.js
+    const [result, setResult] = useState('');
+
+    // Assigning Game Button to useRef
     const gameBtnOne = useRef(null);
     const gameBtnTwo = useRef(null);
     const gameBtnThree = useRef(null);
@@ -42,6 +49,8 @@ const Game = (props) => {
     const gameBtnSeven = useRef(null);
     const gameBtnEight = useRef(null);
     const gameBtnNine = useRef(null);
+
+    // Creating an array that stores gameButtons
     const gameButtons = [gameBtnOne, gameBtnTwo, gameBtnThree, gameBtnFour, gameBtnFive, gameBtnSix, gameBtnSeven, gameBtnEight, gameBtnNine];
 
     // Function that checks for win
@@ -54,9 +63,11 @@ const Game = (props) => {
                 // Setting Game Finished to true
                 setGameFinished(true)
 
+                // Returning true is user or computer has won the round
                 return true;
             }
         }
+        // Returning false when no won has won the round
         return false;
     }
 
@@ -92,21 +103,31 @@ const Game = (props) => {
 
     // Function to get computer choice
     const getComputerChoice = () => {
-        let random = choices[Math.floor(Math.random() * choices.length)];
+        // Generating a random value
+        const random = choices[Math.floor(Math.random() * choices.length)];
+
+        // Calling the player handler function with computer
         playerHandler(props.computer, random);
+
+        // Checking for win
         checkForWin(computerArray, 'computer');
+
+        // Checking for draw
         checkForDraw();
     }
 
     // Function when user clicks on game Button
     const getUserChoice = (value) => {
+        // Calling the player handler function with user
         playerHandler(props.user, value);
+
+        // Check for win and checking for draw, and if they are both false the calling the getComputerChoice() function
         if (!checkForWin(userArray, 'user') && !checkForDraw()) {
             getComputerChoice();
         }
     };
 
-    const nextRoundHandler = () => {
+    const resetHandler = () => {
         // Resetting choices array
         choices = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
@@ -116,12 +137,16 @@ const Game = (props) => {
         // Resetting computer array
         computerArray = [];
 
-
         // Remove backgroundImage of gameButtons and enabling them
         gameButtons.forEach(gameButton => {
             gameButton.current.disabled = false;
             gameButton.current.style.backgroundImage = 'none';
         });
+    }
+
+    const nextRoundHandler = () => {
+        // Resetting the data
+        resetHandler();
 
         // Setting game finished to false
         setGameFinished(false);
@@ -144,6 +169,7 @@ const Game = (props) => {
                     user={props.user}
                     computer={props.computer}
                     onNextRound={nextRoundHandler}
+                    onQuit={props.quitHandler}
                 />
             )}
         </div>

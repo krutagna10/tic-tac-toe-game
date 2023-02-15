@@ -17,8 +17,11 @@ function App() {
             return computer;
         })
         setChoiceSelected(true)
-    }
+    };
 
+    const quitHandler = () => {
+        setChoiceSelected(false);
+    }
 
     return (
         <div className="app">
@@ -29,6 +32,7 @@ function App() {
                 <Game
                     user={user}
                     computer={computer}
+                    quitHandler={quitHandler}
                 />
             )}
         </div>

@@ -49,7 +49,7 @@ const GameResult = (props) => {
                 </div>
 
                 <div className='result__buttons flex flex--gap'>
-                    <button className='btn btn--silver'>Quit</button>
+                    <button className='btn btn--silver' onClick={props.onQuit}>Quit</button>
                     <button className='btn btn--yellow' onClick={props.onNextRound}>Next Round</button>
                 </div>
             </div>
