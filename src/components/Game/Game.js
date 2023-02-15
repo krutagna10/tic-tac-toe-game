@@ -1,4 +1,5 @@
-import GameBoardHeader from "../GameBoard/GameBoardHeader";
+import BoardHeader from "../GameBoard/BoardHeader";
+import BoardBody from "../GameBoard/BoardBody";
 import GameResult from "../GameResult/GameResult";
 import {useRef, useState} from "react";
 import './Game.css';
@@ -50,6 +51,9 @@ const Game = (props) => {
                 // Setting the result to win or lose
                 player === 'user' ? setResult('win') : setResult('lose');
 
+                // Setting Game Finished to true
+                setGameFinished(true)
+
                 return true;
             }
         }
@@ -59,7 +63,12 @@ const Game = (props) => {
     // Function that checks for draw
     const checkForDraw = () => {
         if (choices.length === 0) {
+            // Setting result to draw
             setResult('draw');
+
+            // Setting game finished to true
+            setGameFinished(true);
+
             return true;
         }
     }
@@ -90,39 +99,51 @@ const Game = (props) => {
     }
 
     // Function when user clicks on game Button
-    const clickHandler = (event) => {
-        const value = Number(event.target.dataset.value)
+    const getUserChoice = (value) => {
         playerHandler(props.user, value);
         if (!checkForWin(userArray, 'user') && !checkForDraw()) {
             getComputerChoice();
         }
     };
 
+    const nextRoundHandler = () => {
+        // Resetting choices array
+        choices = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+        // Resetting user array
+        userArray = [];
+
+        // Resetting computer array
+        computerArray = [];
+
+
+        // Remove backgroundImage of gameButtons and enabling them
+        gameButtons.forEach(gameButton => {
+            gameButton.current.disabled = false;
+            gameButton.current.style.backgroundImage = 'none';
+        });
+
+        // Setting game finished to false
+        setGameFinished(false);
+    };
+
 
     return (
         <div className='game'>
-
-            {!gameFinished && (
-                <div className='game__board flow'>
-                    <GameBoardHeader></GameBoardHeader>
-                    <div className='game__board-body grid grid--3-columns grid--gap'>
-                        {gameButtons.map((element, index) => (
-                            <button
-                                key={index}
-                                className='game__btn'
-                                data-value={index}
-                                onClick={clickHandler}
-                                ref={element}
-                            />
-                        ))}
-                    </div>
-                </div>
-            )}
+            <div className='game__board flow'>
+                <BoardHeader/>
+                <BoardBody
+                    gameButtons={gameButtons}
+                    onUserChoice={getUserChoice}
+                />
+            </div>
 
             {gameFinished && (
                 <GameResult
                     result={result}
                     user={props.user}
+                    computer={props.computer}
+                    onNextRound={nextRoundHandler}
                 />
             )}
         </div>

@@ -8,6 +8,17 @@ const icons = {
 }
 
 const GameResult = (props) => {
+    let winner = {};
+
+    if (props.result === 'win') {
+        winner = {...props.user};
+    } else if (props.result === 'lose') {
+        winner = {...props.computer};
+    } else {
+        // When the result is draw
+        winner = {name: 'draw', choice: ''};
+    }
+
     let resultText = '';
     let roundText = props.result === 'draw' ? 'Round Tied' : 'Takes the round';
 
@@ -28,7 +39,7 @@ const GameResult = (props) => {
                 <div className='result__label flex flex--gap flex--align-center'>
                     {props.result !== 'draw' && (
                         <img className='result__icon'
-                             src={icons[props.user.choice]}
+                             src={icons[winner.choice]}
                              alt=''
                              aria-hidden='true'
                         />)}
@@ -39,7 +50,7 @@ const GameResult = (props) => {
 
                 <div className='result__buttons flex flex--gap'>
                     <button className='btn btn--silver'>Quit</button>
-                    <button className='btn btn--yellow'>Next Round</button>
+                    <button className='btn btn--yellow' onClick={props.onNextRound}>Next Round</button>
                 </div>
             </div>
         </section>

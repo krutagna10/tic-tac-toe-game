@@ -1,9 +1,9 @@
 import gameLogo from "../../assets/logo.svg";
 import turnIcon from "../../assets/icon-x-silver.svg";
 import restartIcon from "../../assets/icon-restart.svg";
-import './GameBoardHeader.css'
+import './BoardHeader.css'
 
-const GameBoardHeader = () => {
+const BoardHeader = () => {
     return (
         <div className='game__header flex flex--justify-space flex--align-center'>
             <div className='game__logo-wrapper'>
@@ -31,4 +31,4 @@ const GameBoardHeader = () => {
     )
 };
 
-export default GameBoardHeader;
+export default BoardHeader;
