@@ -4,27 +4,36 @@ import {useState} from "react";
 
 function App() {
     // Choice selected state for hiding or displaying Game
-    const [choiceSelected, setChoiceSelected] = useState(true);
+    const [choiceSelected, setChoiceSelected] = useState(false);
 
     // User state which is an object with name: user, and choice: userChoice
-    const [user, setUser] = useState({ name: 'user', choice: 'o'});
+    const [user, setUser] = useState({ name: 'user', choice: ''});
 
     // Computer state which is an object with name: computer, and choice: computerChoice
-    const [computer, setComputer] = useState({ name: 'computer', choice: 'x'});
+    const [computer, setComputer] = useState({ name: 'computer', choice: ''});
 
 
     const setChoicesHandler = (userChoice, computerChoice) => {
-        setUser(user => {
-            user.choice = userChoice;
-            return user;
-        })
+        // Updating user choice
+        setUser(prevState => ({...prevState, choice: userChoice}));
 
-        setComputer(computer => {
-            computer.choice = computerChoice;
-            return computer;
-        })
+        // Updating computer choice
+        setComputer(prevState => ({...prevState, choice: computerChoice}));
+
+        // Setting choice selected to true
         setChoiceSelected(true)
     };
+
+    const swapChoicesHandler = () => {
+        // Storing userChoice in tempChoice variable
+        let tempChoice = user.choice;
+
+        // Setting userChoice to computerChoice
+        setUser(prevState => ({...prevState, choice: computer.choice}));
+
+        // Setting computerChoice to userChoice
+        setComputer(prevState => ({...prevState, choice: tempChoice}));
+    }
 
     // Quit Button Handler
     const quitHandler = () => {
@@ -41,6 +50,7 @@ function App() {
                     user={user}
                     computer={computer}
                     onQuit={quitHandler}
+                    swapChoices={swapChoicesHandler}
                 />
             )}
         </div>

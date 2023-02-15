@@ -35,6 +35,7 @@ const winConditions = [
 const Game = (props) => {
     const [gameFinished, setGameFinished] = useState(false);
     const [result, setResult] = useState('');
+    const [winner, setWinner] = useState('');
 
     // Assigning Game Button to useRef
     const gameBtnOne = useRef(null);
@@ -50,12 +51,16 @@ const Game = (props) => {
     // Creating an array that stores gameButtons
     const gameButtons = [gameBtnOne, gameBtnTwo, gameBtnThree, gameBtnFour, gameBtnFive, gameBtnSix, gameBtnSeven, gameBtnEight, gameBtnNine];
 
+
     // Function that checks for win
     const checkForWin = (arr, player) => {
         for (const condition of winConditions) {
             if (condition.every(element => arr.includes(element))) {
                 // Setting the result to win or lose
                 player === 'user' ? setResult('win') : setResult('lose');
+
+                // Setting the winner to user or computer
+                player === 'user' ? setWinner({...props.user}) : setWinner({...props.computer});
 
                 // Setting Game Finished to true
                 setGameFinished(true)
@@ -71,6 +76,9 @@ const Game = (props) => {
     // Function that checks for draw
     const checkForDraw = () => {
         if (choices.length === 0) {
+            // Setting the winner to draw
+            setWinner({name: 'none', choice: 'draw'});
+
             // Setting result to draw
             setResult('draw');
 
@@ -142,17 +150,23 @@ const Game = (props) => {
         });
     }
 
+    // Handler when user clicks on next round button
     const nextRoundHandler = () => {
         // Resetting the data
         resetHandler();
+
+        // Swapping Choices
+        props.swapChoices();
 
         // Setting game finished to false
         setGameFinished(false);
     };
 
-    // Quit Handler
     const quitHandler = () => {
+        // Resetting the data
         resetHandler();
+
+        // Calling App.js quitHandler
         props.onQuit();
     }
 
@@ -170,8 +184,7 @@ const Game = (props) => {
             {gameFinished && (
                 <GameResult
                     result={result}
-                    user={props.user}
-                    computer={props.computer}
+                    winner={winner}
                     onNextRound={nextRoundHandler}
                     onQuit={quitHandler}
                 />
