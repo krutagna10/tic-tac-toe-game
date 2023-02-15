@@ -1,4 +1,4 @@
-
+import './BoardBody.css';
 
 const BoardBody = (props) => {
     const clickHandler = (event) => {

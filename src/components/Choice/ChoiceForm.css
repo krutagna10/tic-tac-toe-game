@@ -4,7 +4,7 @@
 
 .choice__form-control {
     padding: 1.25rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-1);
 }
 
 .choice__input {
@@ -13,7 +13,7 @@
 
 .choice__input-wrapper {
     background-color: var(--dark-navy);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-1);
     padding: 0.5rem;
 }
 
@@ -24,7 +24,7 @@
     background-repeat: no-repeat;
     background-size: 40%;
     cursor: pointer;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-1);
 }
 
 @media (min-width: 32em) {

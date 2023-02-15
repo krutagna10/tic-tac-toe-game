@@ -1,0 +1,16 @@
+.game__btn {
+    min-width: 8rem;
+    min-height: 8rem;
+    background-color: var(--semi-dark-navy);
+    border-radius: var(--border-radius-1);
+    border: none;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* First value indicates horizontal offset, second value vertical offset and third value blur */
+    box-shadow: 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.game__btn:disabled {
+    pointer-events: none;
+}

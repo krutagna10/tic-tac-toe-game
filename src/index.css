@@ -29,7 +29,7 @@
     --raw-silver: 198 23% 72%;
 
     /* Border Radius */
-    --border-radius: 0.75rem;
+    --border-radius-1: 0.75rem;
 
     /* Spacing */
     --flow-space: 1.25rem;
@@ -103,7 +103,7 @@ body {
     color: var(--dark-navy);
     transition: all 0.3s ease;
     white-space: nowrap;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-1);
 }
 
 .btn--yellow {

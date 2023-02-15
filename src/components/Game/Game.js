@@ -1,5 +1,6 @@
 import BoardHeader from "../GameBoard/BoardHeader";
 import BoardBody from "../GameBoard/BoardBody";
+import BoardFooter from "../GameBoard/BoardFooter";
 import GameResult from "../GameResult/GameResult";
 import {useRef, useState} from "react";
 import './Game.css';
@@ -179,6 +180,7 @@ const Game = (props) => {
                     gameButtons={gameButtons}
                     onUserChoice={getUserChoice}
                 />
+                <BoardFooter/>
             </div>
 
             {gameFinished && (
