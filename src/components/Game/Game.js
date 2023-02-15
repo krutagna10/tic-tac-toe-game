@@ -33,10 +33,7 @@ const winConditions = [
 ]
 
 const Game = (props) => {
-    // Game Finished state for displaying or hiding the result
     const [gameFinished, setGameFinished] = useState(false);
-
-    // Result state for passing result text to GameResult.js
     const [result, setResult] = useState('');
 
     // Assigning Game Button to useRef
@@ -80,6 +77,7 @@ const Game = (props) => {
             // Setting game finished to true
             setGameFinished(true);
 
+            // Returning true is there is a draw
             return true;
         }
     }
@@ -152,6 +150,12 @@ const Game = (props) => {
         setGameFinished(false);
     };
 
+    // Quit Handler
+    const quitHandler = () => {
+        resetHandler();
+        props.onQuit();
+    }
+
 
     return (
         <div className='game'>
@@ -169,7 +173,7 @@ const Game = (props) => {
                     user={props.user}
                     computer={props.computer}
                     onNextRound={nextRoundHandler}
-                    onQuit={props.quitHandler}
+                    onQuit={quitHandler}
                 />
             )}
         </div>

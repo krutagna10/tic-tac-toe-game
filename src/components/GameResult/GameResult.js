@@ -7,6 +7,12 @@ const icons = {
     o: oIcon,
 }
 
+const roundTextColor = {
+    x: 'text-blue',
+    o: 'text-yellow',
+    draw: 'text-silver',
+}
+
 const GameResult = (props) => {
     let winner = {};
 
@@ -16,7 +22,7 @@ const GameResult = (props) => {
         winner = {...props.computer};
     } else {
         // When the result is draw
-        winner = {name: 'draw', choice: ''};
+        winner = {name: 'draw', choice: 'draw'};
     }
 
     let resultText = '';
@@ -43,7 +49,7 @@ const GameResult = (props) => {
                              alt=''
                              aria-hidden='true'
                         />)}
-                    <h1 className='result__heading font-size-500 text-blue'>
+                    <h1 className={`result__heading font-size-500 ${roundTextColor[winner.choice]}`}>
                         {roundText}
                     </h1>
                 </div>
