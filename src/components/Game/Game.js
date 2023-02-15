@@ -37,6 +37,7 @@ const Game = (props) => {
     const [gameFinished, setGameFinished] = useState(false);
     const [result, setResult] = useState('');
     const [winner, setWinner] = useState('');
+    const [scores, setScores] = useState({user: 0, computer: 0, draw: 0});
 
     // Assigning Game Button to useRef
     const gameBtnOne = useRef(null);
@@ -57,11 +58,17 @@ const Game = (props) => {
     const checkForWin = (arr, player) => {
         for (const condition of winConditions) {
             if (condition.every(element => arr.includes(element))) {
-                // Setting the result to win or lose
-                player === 'user' ? setResult('win') : setResult('lose');
-
-                // Setting the winner to user or computer
-                player === 'user' ? setWinner({...props.user}) : setWinner({...props.computer});
+                if (player.name === 'user') {
+                    // When the winner is user
+                    setResult('win');
+                    setWinner({...props.user});
+                    setScores(prevState => ({...prevState, user: scores.user + 1}))
+                } else {
+                    // When the winner is computer
+                    setResult('lose');
+                    setWinner({...props.computer});
+                    setScores(prevState => ({...prevState, computer: scores.computer + 1}));
+                }
 
                 // Setting Game Finished to true
                 setGameFinished(true)
@@ -85,6 +92,9 @@ const Game = (props) => {
 
             // Setting game finished to true
             setGameFinished(true);
+
+            // Incrementing draw score
+            setScores(prevState => ({...prevState, draw: prevState.draw + 1}));
 
             // Returning true is there is a draw
             return true;
@@ -117,7 +127,7 @@ const Game = (props) => {
         playerHandler(props.computer, random);
 
         // Checking for win
-        checkForWin(computerArray, 'computer');
+        checkForWin(computerArray, props.computer);
 
         // Checking for draw
         checkForDraw();
@@ -129,7 +139,7 @@ const Game = (props) => {
         playerHandler(props.user, value);
 
         // Check for win and checking for draw, and if they are both false the calling the getComputerChoice() function
-        if (!checkForWin(userArray, 'user') && !checkForDraw()) {
+        if (!checkForWin(userArray, props.user) && !checkForDraw()) {
             getComputerChoice();
         }
     };
@@ -180,7 +190,10 @@ const Game = (props) => {
                     gameButtons={gameButtons}
                     onUserChoice={getUserChoice}
                 />
-                <BoardFooter/>
+                <BoardFooter
+                    scores={scores}
+                    user={props.user}
+                />
             </div>
 
             {gameFinished && (
