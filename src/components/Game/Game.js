@@ -3,9 +3,9 @@ import BoardBody from "../GameBoard/BoardBody";
 import BoardFooter from "../GameBoard/BoardFooter";
 import GameResult from "../GameResult/GameResult";
 import {useRef, useState} from "react";
-import './Game.css';
 import xIcon from "../../assets/icon-x.svg";
 import oIcon from "../../assets/icon-o.svg";
+import './Game.css';
 
 const icons = {
     x: xIcon,
@@ -20,18 +20,6 @@ let userArray = [];
 
 // Computer Array which contains computer choices
 let computerArray = [];
-
-// Win Conditions Array
-const winConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-]
 
 const Game = (props) => {
     const [gameFinished, setGameFinished] = useState(false);
@@ -53,10 +41,8 @@ const Game = (props) => {
     // Creating an array that stores gameButtons
     const gameButtons = [gameBtnOne, gameBtnTwo, gameBtnThree, gameBtnFour, gameBtnFive, gameBtnSix, gameBtnSeven, gameBtnEight, gameBtnNine];
 
-
-    // Function that checks for win
     const checkForWin = (arr, player) => {
-        for (const condition of winConditions) {
+        for (const condition of props.winConditions) {
             if (condition.every(element => arr.includes(element))) {
                 if (player.name === 'user') {
                     // When the winner is user
@@ -73,7 +59,7 @@ const Game = (props) => {
                 // Setting Game Finished to true
                 setGameFinished(true)
 
-                // Returning true is user or computer has won the round
+                // Returning true if user or computer has won the round
                 return true;
             }
         }
@@ -81,7 +67,6 @@ const Game = (props) => {
         return false;
     }
 
-    // Function that checks for draw
     const checkForDraw = () => {
         if (choices.length === 0) {
             // Setting the winner to draw
@@ -90,18 +75,17 @@ const Game = (props) => {
             // Setting result to draw
             setResult('draw');
 
-            // Setting game finished to true
-            setGameFinished(true);
-
             // Incrementing draw score
             setScores(prevState => ({...prevState, draw: prevState.draw + 1}));
+
+            // Setting game finished to true
+            setGameFinished(true);
 
             // Returning true is there is a draw
             return true;
         }
     }
 
-    // Function that sets background image, disables the buttons and splices the array
     const playerHandler = (player, value) => {
         // Pushing values to the array
         player.name === 'user' ? userArray.push(value) : computerArray.push(value);
@@ -118,7 +102,6 @@ const Game = (props) => {
     }
 
 
-    // Function to get computer choice
     const getComputerChoice = () => {
         // Generating a random value
         const random = choices[Math.floor(Math.random() * choices.length)];
@@ -126,10 +109,8 @@ const Game = (props) => {
         // Calling the player handler function with computer
         playerHandler(props.computer, random);
 
-        // Checking for win
+        // Checking for win and draw
         checkForWin(computerArray, props.computer);
-
-        // Checking for draw
         checkForDraw();
     }
 

@@ -2,22 +2,27 @@ import Choice from './components/Choice/Choice';
 import Game from './components/Game/Game';
 import {useState} from "react";
 
+// Win Condition Array
+const winConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+]
+
 function App() {
-    // Choice selected state for hiding or displaying Game
     const [choiceSelected, setChoiceSelected] = useState(true);
-
-    // User state which is an object with name: user, and choice: userChoice
     const [user, setUser] = useState({ name: 'user', choice: 'o'});
-
-    // Computer state which is an object with name: computer, and choice: computerChoice
     const [computer, setComputer] = useState({ name: 'computer', choice: 'x'});
 
 
     const setChoicesHandler = (userChoice, computerChoice) => {
-        // Updating user choice
+        // Updating user choice and computer choice
         setUser(prevState => ({...prevState, choice: userChoice}));
-
-        // Updating computer choice
         setComputer(prevState => ({...prevState, choice: computerChoice}));
 
         // Setting choice selected to true
@@ -25,13 +30,10 @@ function App() {
     };
 
     const swapChoicesHandler = () => {
-        // Storing userChoice in tempChoice variable
         let tempChoice = user.choice;
 
-        // Setting userChoice to computerChoice
+        // Swapping the choices
         setUser(prevState => ({...prevState, choice: computer.choice}));
-
-        // Setting computerChoice to userChoice
         setComputer(prevState => ({...prevState, choice: tempChoice}));
     }
 
@@ -49,6 +51,7 @@ function App() {
                 <Game
                     user={user}
                     computer={computer}
+                    winConditions={winConditions}
                     onQuit={quitHandler}
                     swapChoices={swapChoicesHandler}
                 />
