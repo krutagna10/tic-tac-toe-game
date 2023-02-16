@@ -139,6 +139,7 @@ const Game = (props) => {
         gameButtons.forEach(gameButton => {
             gameButton.current.disabled = false;
             gameButton.current.style.backgroundImage = 'none';
+            gameButton.current.classList.remove('clicked');
         });
     }
 
@@ -168,6 +169,7 @@ const Game = (props) => {
             <div className='game__board flow'>
                 <BoardHeader/>
                 <BoardBody
+                    user={props.user}
                     gameButtons={gameButtons}
                     onUserChoice={getUserChoice}
                 />
