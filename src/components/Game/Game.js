@@ -82,11 +82,6 @@ const Game = (props) => {
     }
 
     const playerHandler = (player, value) => {
-        // Pushing values to the array
-        player.name === 'user' ?
-            setUserArray(prevState => [...prevState, value]) : setComputerArray(prevState => [...prevState, value]);
-
-
         // Removing the value from choices
         const index = choices.indexOf(value);
         choices.splice(index, 1);
@@ -100,9 +95,14 @@ const Game = (props) => {
         // Calling the player handler function with computer
         playerHandler(props.computer, random);
 
+        // Setting the new state of computerArray
+        setComputerArray([...computerArray, random]);
+
         // Checking for win and draw
-        checkForWin(computerArray, props.computer);
-        checkForDraw();
+        setTimeout(() => {
+            checkForWin([...computerArray, random], props.computer);
+            checkForDraw();
+        }, 0);
     }
 
     // Function when user clicks on game Button
@@ -110,10 +110,15 @@ const Game = (props) => {
         // Calling the player handler function with user
         playerHandler(props.user, value);
 
+        // Setting the new state of userArray
+        setUserArray([...userArray, value]);
+
         // Check for win and checking for draw, and if they are both false the calling the getComputerChoice() function
-        if (!checkForWin(userArray, props.user) && !checkForDraw()) {
-            getComputerChoice();
-        }
+        setTimeout(() => {
+            if (!checkForWin([...userArray, value], props.user) && !checkForDraw()) {
+                getComputerChoice();
+            }
+        }, 0);
     };
 
     const resetHandler = () => {

@@ -15,29 +15,32 @@ const BoardBody = (props) => {
         props.onUserChoice(value);
     }
 
+    const indexExists = (index) => {
+        // Used set for faster performance
+        const indices = new Set([...props.userArray, ...props.computerArray]);
+
+        return indices.has(index);
+    }
+
 
     return (
         <div className='game__board-body grid grid--3-columns grid--gap'>
-            {[...new Array(9)].map((_, index) => {
-                if (props.userArray.includes(index) || props.computerArray.includes(index)) {
-                    return (
-                        <button key={index}
-                                className='game__btn clicked'
-                                data-value={index}
-                                onClick={clickHandler}
-                                style={{backgroundImage: icons.x}}
-                        />
-                    )
-                } else {
-                    return (
-                        <button key={index}
-                                className='game__btn'
-                                data-value={index}
-                                onClick={clickHandler}
-                        />
-                    )
-                }
-            })}
+            {[...new Array(9)].map((_, index) => (
+                indexExists(index) ? (
+                    <button key={index}
+                            className='game__btn clicked'
+                            data-value={index}
+                            onClick={clickHandler}
+                            style={{backgroundImage: `${props.userArray.includes(index) ? icons.x : icons.o}`}}
+                    />
+                ) : (
+                    <button key={index}
+                            className='game__btn'
+                            data-value={index}
+                            onClick={clickHandler}
+                    />
+                )
+            ))}
         </div>
     )
 }
