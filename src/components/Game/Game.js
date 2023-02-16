@@ -2,26 +2,24 @@ import BoardHeader from "../GameBoard/BoardHeader";
 import BoardBody from "../GameBoard/BoardBody";
 import BoardFooter from "../GameBoard/BoardFooter";
 import GameResult from "../GameResult/GameResult";
-import {useRef, useState} from "react";
-import xIcon from "../../assets/icon-x.svg";
-import oIcon from "../../assets/icon-o.svg";
+import {useState} from "react";
 import './Game.css';
 import GameRestart from "../GameRestart/GameRestart";
 
-const icons = {
-    x: xIcon,
-    o: oIcon,
-}
+// Win Condition Array
+const winConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+]
 
 // Choices Array which contains all the choices
 let choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-
-// User Array which contains user choices
-let userArray = [];
-
-// Computer Array which contains computer choices
-let computerArray = [];
-
 
 const Game = (props) => {
     const [gameFinished, setGameFinished] = useState(false);
@@ -30,23 +28,12 @@ const Game = (props) => {
     const [winner, setWinner] = useState('');
     const [scores, setScores] = useState({user: 0, computer: 0, draw: 0});
 
-    // Assigning Game Button to useRef
-    const gameBtnOne = useRef(null);
-    const gameBtnTwo = useRef(null);
-    const gameBtnThree = useRef(null);
-    const gameBtnFour = useRef(null);
-    const gameBtnFive = useRef(null);
-    const gameBtnSix = useRef(null);
-    const gameBtnSeven = useRef(null);
-    const gameBtnEight = useRef(null);
-    const gameBtnNine = useRef(null);
-
-    // Creating an array that stores gameButtons
-    const gameButtons = [gameBtnOne, gameBtnTwo, gameBtnThree, gameBtnFour, gameBtnFive, gameBtnSix, gameBtnSeven, gameBtnEight, gameBtnNine];
+    const [userArray, setUserArray] = useState([]);
+    const [computerArray, setComputerArray] = useState([]);
 
 
     const checkForWin = (arr, player) => {
-        for (const condition of props.winConditions) {
+        for (const condition of winConditions) {
             if (condition.every(element => arr.includes(element))) {
                 // Setting the result
                 player.name === 'user' ? setResult('win') : setResult('lose');
@@ -96,13 +83,9 @@ const Game = (props) => {
 
     const playerHandler = (player, value) => {
         // Pushing values to the array
-        player.name === 'user' ? userArray.push(value) : computerArray.push(value);
+        player.name === 'user' ?
+            setUserArray(prevState => [...prevState, value]) : setComputerArray(prevState => [...prevState, value]);
 
-        // Changing background of button
-        gameButtons[value].current.style.backgroundImage = `url(${icons[player.choice]})`;
-
-        // Disabling the button so that user cannot click again
-        gameButtons[value].current.classList.add('clicked');
 
         // Removing the value from choices
         const index = choices.indexOf(value);
@@ -138,16 +121,11 @@ const Game = (props) => {
         choices = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
         // Resetting user array
-        userArray = [];
+        setUserArray([]);
 
         // Resetting computer array
-        computerArray = [];
+        setComputerArray([]);
 
-        // Removing background images of computer and removed clicked classes
-        gameButtons.forEach(gameButton => {
-            gameButton.current.style.backgroundImage = 'none';
-            gameButton.current.classList.remove('clicked');
-        });
     }
 
     // Handler when user clicks on next round button
@@ -197,7 +175,8 @@ const Game = (props) => {
                 <BoardHeader onRestart={showRestartHandler}/>
                 <BoardBody
                     user={props.user}
-                    gameButtons={gameButtons}
+                    userArray={userArray}
+                    computerArray={computerArray}
                     onUserChoice={getUserChoice}
                 />
                 <BoardFooter scores={scores} user={props.user}/>

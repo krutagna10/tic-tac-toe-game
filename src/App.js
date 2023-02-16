@@ -3,22 +3,10 @@ import Game from './components/Game/Game';
 import {useState} from "react";
 import './App.css';
 
-// Win Condition Array
-const winConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-]
-
 function App() {
-    const [choiceSelected, setChoiceSelected] = useState(false);
-    const [user, setUser] = useState({ name: 'user', choice: ''});
-    const [computer, setComputer] = useState({ name: 'computer', choice: ''});
+    const [choiceSelected, setChoiceSelected] = useState(true);
+    const [user, setUser] = useState({ name: 'user', choice: 'x'});
+    const [computer, setComputer] = useState({ name: 'computer', choice: 'o'});
     const [showOverlay, setShowOverlay] = useState(false);
 
 
@@ -68,7 +56,6 @@ function App() {
                 <Game
                     user={user}
                     computer={computer}
-                    winConditions={winConditions}
                     onQuit={quitHandler}
                     swapChoices={swapChoicesHandler}
                     showOverlay={showOverlayHandler}
