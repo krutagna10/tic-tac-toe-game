@@ -16,9 +16,9 @@ const winConditions = [
 ]
 
 function App() {
-    const [choiceSelected, setChoiceSelected] = useState(true);
-    const [user, setUser] = useState({ name: 'user', choice: 'o'});
-    const [computer, setComputer] = useState({ name: 'computer', choice: 'x'});
+    const [choiceSelected, setChoiceSelected] = useState(false);
+    const [user, setUser] = useState({ name: 'user', choice: ''});
+    const [computer, setComputer] = useState({ name: 'computer', choice: ''});
     const [showOverlay, setShowOverlay] = useState(false);
 
 
