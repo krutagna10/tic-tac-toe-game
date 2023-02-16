@@ -1,6 +1,7 @@
 import Choice from './components/Choice/Choice';
 import Game from './components/Game/Game';
 import {useState} from "react";
+import './App.css';
 
 // Win Condition Array
 const winConditions = [
@@ -18,6 +19,7 @@ function App() {
     const [choiceSelected, setChoiceSelected] = useState(true);
     const [user, setUser] = useState({ name: 'user', choice: 'o'});
     const [computer, setComputer] = useState({ name: 'computer', choice: 'x'});
+    const [showOverlay, setShowOverlay] = useState(false);
 
 
     const setChoicesHandler = (userChoice, computerChoice) => {
@@ -40,13 +42,28 @@ function App() {
     // Quit Button Handler
     const quitHandler = () => {
         setChoiceSelected(false);
+        hideOverlayHandler();
+    };
+
+    // Overlay Handlers
+    const showOverlayHandler = () => {
+        setShowOverlay(true);
+    }
+
+    const hideOverlayHandler = () => {
+        setShowOverlay(false);
     }
 
     return (
         <div className="app">
+            {showOverlay && (
+                <div className='overlay'></div>
+            )}
+
             {!choiceSelected && (
                 <Choice onChoice={setChoicesHandler}/>
             )}
+
             {choiceSelected && (
                 <Game
                     user={user}
@@ -54,6 +71,8 @@ function App() {
                     winConditions={winConditions}
                     onQuit={quitHandler}
                     swapChoices={swapChoicesHandler}
+                    showOverlay={showOverlayHandler}
+                    hideOverlay={hideOverlayHandler}
                 />
             )}
         </div>

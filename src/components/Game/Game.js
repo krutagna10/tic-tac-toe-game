@@ -6,6 +6,7 @@ import {useRef, useState} from "react";
 import xIcon from "../../assets/icon-x.svg";
 import oIcon from "../../assets/icon-o.svg";
 import './Game.css';
+import GameRestart from "../GameRestart/GameRestart";
 
 const icons = {
     x: xIcon,
@@ -23,6 +24,7 @@ let computerArray = [];
 
 const Game = (props) => {
     const [gameFinished, setGameFinished] = useState(false);
+    const [gameRestart, setGameRestart] = useState(false);
     const [result, setResult] = useState('');
     const [winner, setWinner] = useState('');
     const [scores, setScores] = useState({user: 0, computer: 0, draw: 0});
@@ -59,6 +61,9 @@ const Game = (props) => {
                 // Setting Game Finished to true
                 setGameFinished(true)
 
+                // Showing overlay
+                props.showOverlay();
+
                 // Returning true if user or computer has won the round
                 return true;
             }
@@ -80,6 +85,9 @@ const Game = (props) => {
 
             // Setting game finished to true
             setGameFinished(true);
+
+            // Showing overlay
+            props.showOverlay();
 
             // Returning true is there is a draw
             return true;
@@ -151,6 +159,9 @@ const Game = (props) => {
         // Swapping Choices
         props.swapChoices();
 
+        // Hiding the overlay
+        props.hideOverlay();
+
         // Setting game finished to false
         setGameFinished(false);
     };
@@ -161,22 +172,36 @@ const Game = (props) => {
 
         // Calling App.js quitHandler
         props.onQuit();
-    }
+    };
+
+    const showRestartHandler = () => {
+        setGameRestart(true);
+        props.showOverlay();
+    };
+
+    const hideRestartHandler = () => {
+        props.hideOverlay();
+        setGameRestart(false);
+    };
+
+    const restartHandler = () => {
+        resetHandler();
+        setScores({user: 0, computer: 0, draw: 0});
+        hideRestartHandler();
+        setGameRestart(false);
+    };
 
 
     return (
         <div className='game'>
             <div className='game__board flow'>
-                <BoardHeader/>
+                <BoardHeader onRestart={showRestartHandler}/>
                 <BoardBody
                     user={props.user}
                     gameButtons={gameButtons}
                     onUserChoice={getUserChoice}
                 />
-                <BoardFooter
-                    scores={scores}
-                    user={props.user}
-                />
+                <BoardFooter scores={scores} user={props.user}/>
             </div>
 
             {gameFinished && (
@@ -185,6 +210,13 @@ const Game = (props) => {
                     winner={winner}
                     onNextRound={nextRoundHandler}
                     onQuit={quitHandler}
+                />
+            )}
+
+            {gameRestart && (
+                <GameRestart
+                    onCancel={hideRestartHandler}
+                    onRestart={restartHandler}
                 />
             )}
         </div>
