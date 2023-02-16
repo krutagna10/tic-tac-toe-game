@@ -24,7 +24,8 @@ const BoardBody = (props) => {
         if (!event.target.classList.contains('clicked')) {
             event.target.style.backgroundImage = `none`;
         }
-    }
+    };
+
 
     return (
         <div className='game__board-body grid grid--3-columns grid--gap'>

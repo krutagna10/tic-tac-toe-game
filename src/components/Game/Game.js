@@ -22,6 +22,7 @@ let userArray = [];
 // Computer Array which contains computer choices
 let computerArray = [];
 
+
 const Game = (props) => {
     const [gameFinished, setGameFinished] = useState(false);
     const [gameRestart, setGameRestart] = useState(false);
@@ -43,20 +44,20 @@ const Game = (props) => {
     // Creating an array that stores gameButtons
     const gameButtons = [gameBtnOne, gameBtnTwo, gameBtnThree, gameBtnFour, gameBtnFive, gameBtnSix, gameBtnSeven, gameBtnEight, gameBtnNine];
 
+
     const checkForWin = (arr, player) => {
         for (const condition of props.winConditions) {
             if (condition.every(element => arr.includes(element))) {
-                if (player.name === 'user') {
-                    // When the winner is user
-                    setResult('win');
-                    setWinner({...props.user});
-                    setScores(prevState => ({...prevState, user: scores.user + 1}))
-                } else {
-                    // When the winner is computer
-                    setResult('lose');
-                    setWinner({...props.computer});
+                // Setting the result
+                player.name === 'user' ? setResult('win') : setResult('lose');
+
+                // Setting the winner
+                player.name === 'user' ? setWinner({...props.user}) : setWinner({...props.computer});
+
+                // Setting the scores
+                player.name === 'user' ?
+                    setScores(prevState => ({...prevState, user: scores.user + 1})) :
                     setScores(prevState => ({...prevState, computer: scores.computer + 1}));
-                }
 
                 // Setting Game Finished to true
                 setGameFinished(true)
@@ -64,7 +65,6 @@ const Game = (props) => {
                 // Showing overlay
                 props.showOverlay();
 
-                // Returning true if user or computer has won the round
                 return true;
             }
         }
@@ -102,7 +102,7 @@ const Game = (props) => {
         gameButtons[value].current.style.backgroundImage = `url(${icons[player.choice]})`;
 
         // Disabling the button so that user cannot click again
-        gameButtons[value].current.disabled = true;
+        gameButtons[value].current.classList.add('clicked');
 
         // Removing the value from choices
         const index = choices.indexOf(value);
@@ -143,9 +143,8 @@ const Game = (props) => {
         // Resetting computer array
         computerArray = [];
 
-        // Remove backgroundImage of gameButtons and enabling them
+        // Removing background images of computer and removed clicked classes
         gameButtons.forEach(gameButton => {
-            gameButton.current.disabled = false;
             gameButton.current.style.backgroundImage = 'none';
             gameButton.current.classList.remove('clicked');
         });
@@ -175,8 +174,8 @@ const Game = (props) => {
     };
 
     const showRestartHandler = () => {
-        setGameRestart(true);
         props.showOverlay();
+        setGameRestart(true);
     };
 
     const hideRestartHandler = () => {
