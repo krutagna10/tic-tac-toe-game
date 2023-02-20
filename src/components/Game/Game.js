@@ -99,10 +99,8 @@ const Game = (props) => {
         setComputerArray([...computerArray, random]);
 
         // Checking for win and draw
-        setTimeout(() => {
-            checkForWin([...computerArray, random], props.computer);
-            checkForDraw();
-        }, 0);
+        checkForWin([...computerArray, random], props.computer);
+        checkForDraw();
     }
 
     // Function when user clicks on game Button
@@ -114,11 +112,9 @@ const Game = (props) => {
         setUserArray([...userArray, value]);
 
         // Check for win and checking for draw, and if they are both false the calling the getComputerChoice() function
-        setTimeout(() => {
-            if (!checkForWin([...userArray, value], props.user) && !checkForDraw()) {
-                getComputerChoice();
-            }
-        }, 0);
+        if (!checkForWin([...userArray, value], props.user) && !checkForDraw()) {
+            getComputerChoice();
+        }
     };
 
     const resetHandler = () => {
@@ -180,6 +176,7 @@ const Game = (props) => {
                 <BoardHeader onRestart={showRestartHandler}/>
                 <BoardBody
                     user={props.user}
+                    computer={props.computer}
                     userArray={userArray}
                     computerArray={computerArray}
                     onUserChoice={getUserChoice}

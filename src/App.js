@@ -4,9 +4,9 @@ import {useState} from "react";
 import './App.css';
 
 function App() {
-    const [choiceSelected, setChoiceSelected] = useState(true);
-    const [user, setUser] = useState({ name: 'user', choice: 'x'});
-    const [computer, setComputer] = useState({ name: 'computer', choice: 'o'});
+    const [choiceSelected, setChoiceSelected] = useState(false);
+    const [user, setUser] = useState({ name: 'user', choice: ''});
+    const [computer, setComputer] = useState({ name: 'computer', choice: ''});
     const [showOverlay, setShowOverlay] = useState(false);
 
 

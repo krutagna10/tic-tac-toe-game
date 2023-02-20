@@ -31,7 +31,11 @@ const BoardBody = (props) => {
                             className='game__btn clicked'
                             data-value={index}
                             onClick={clickHandler}
-                            style={{backgroundImage: `${props.userArray.includes(index) ? icons.x : icons.o}`}}
+                            style={{
+                                backgroundImage: props.userArray.includes(index)
+                                    ? icons[props.user.choice]
+                                    : icons[props.computer.choice]
+                            }}
                     />
                 ) : (
                     <button key={index}
