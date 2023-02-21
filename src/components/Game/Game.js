@@ -56,7 +56,7 @@ const Game = (props) => {
         }
         // Returning false when no won has won the round
         return false;
-    }
+    };
 
     const checkForDraw = () => {
         if (choices.length === 0) {
@@ -78,21 +78,15 @@ const Game = (props) => {
             // Returning true is there is a draw
             return true;
         }
-    }
-
-    const playerHandler = (player, value) => {
-        // Removing the value from choices
-        const index = choices.indexOf(value);
-        choices.splice(index, 1);
-    }
+    };
 
 
-    const getComputerChoice = () => {
+    const handleComputerChoice = () => {
         // Generating a random value
         const random = choices[Math.floor(Math.random() * choices.length)];
 
-        // Calling the player handler function with computer
-        playerHandler(props.computer, random);
+        // Removing the value from choices;
+        choices.splice(choices.indexOf(random), 1);
 
         const newChoices = [...computerArray, random]
 
@@ -106,20 +100,20 @@ const Game = (props) => {
 
 
     // Function when user clicks on game Button
-    const getUserChoice = (value) => {
-        // Calling the player handler function with user
-        playerHandler(props.user, value);
+    const handleUserChoice = (value) => {
+        // Removing the value from choices;
+        choices.splice(choices.indexOf(value), 1);
 
         // Setting the new state of userArray
         setUserArray([...userArray, value]);
 
         // Check for win and checking for draw, and if they are both false the calling the getComputerChoice() function
         if (!checkForWin([...userArray, value], props.user) && !checkForDraw()) {
-            getComputerChoice();
+            handleComputerChoice();
         }
     };
 
-    const resetHandler = () => {
+    const handleReset = () => {
         // Resetting choices array
         choices = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
@@ -132,9 +126,9 @@ const Game = (props) => {
     };
 
     // Handler when user clicks on next round button
-    const nextRoundHandler = () => {
+    const handleNextRound = () => {
         // Resetting the data
-        resetHandler();
+        handleReset();
 
         // Swapping Choices
         props.swapChoices();
@@ -146,28 +140,28 @@ const Game = (props) => {
         setGameFinished(false);
     };
 
-    const quitHandler = () => {
+    const handleQuit = () => {
         // Resetting the data
-        resetHandler();
+        handleReset();
 
-        // Calling App.js quitHandler
+        // Calling App.js handleQuit
         props.onQuit();
     };
 
-    const showRestartHandler = () => {
+    const handleShowRestart = () => {
         props.showOverlay();
         setGameRestart(true);
     };
 
-    const hideRestartHandler = () => {
+    const handleHideRestart = () => {
         props.hideOverlay();
         setGameRestart(false);
     };
 
-    const restartHandler = () => {
-        resetHandler();
+    const handleRestart = () => {
+        handleReset();
         setScores({user: 0, computer: 0, draw: 0});
-        hideRestartHandler();
+        handleHideRestart();
         setGameRestart(false);
     };
 
@@ -175,13 +169,13 @@ const Game = (props) => {
     return (
         <div className='game'>
             <div className='game__board flow'>
-                <BoardHeader onRestart={showRestartHandler}/>
+                <BoardHeader onRestart={handleShowRestart}/>
                 <BoardBody
                     user={props.user}
                     computer={props.computer}
                     userArray={userArray}
                     computerArray={computerArray}
-                    onUserChoice={getUserChoice}
+                    onUserChoice={handleUserChoice}
                 />
                 <BoardFooter scores={scores} user={props.user}/>
             </div>
@@ -190,15 +184,15 @@ const Game = (props) => {
                 <Result
                     result={result}
                     winner={winner}
-                    onNextRound={nextRoundHandler}
-                    onQuit={quitHandler}
+                    onNextRound={handleNextRound}
+                    onQuit={handleQuit}
                 />
             )}
 
             {gameRestart && (
                 <Restart
-                    onCancel={hideRestartHandler}
-                    onRestart={restartHandler}
+                    onCancel={handleHideRestart}
+                    onRestart={handleRestart}
                 />
             )}
         </div>

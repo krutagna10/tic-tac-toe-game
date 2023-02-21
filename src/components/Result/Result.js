@@ -1,4 +1,6 @@
 import Grid from '../../layouts/Grid/Grid.js';
+import Flex from "../../layouts/Flex/Flex";
+import Button from "../UI/Button/Button";
 import xIcon from '../../assets/icon-x.svg';
 import oIcon from '../../assets/icon-o.svg';
 import './Result.css';
@@ -19,38 +21,38 @@ const resultText = {
     lose: 'You lose',
 }
 
-const Result = (props) => {
-    let roundText = props.result === 'draw' ? 'Round Tied' : 'Takes the round';
+const Result = ({result, winner, onNextRound, onQuit}) => {
+    let roundText = result === 'draw' ? 'Round Tied' : 'Takes the round';
 
     return (
         <section className='result-section'>
             <Grid className='result background-semi-dark grid--items-center'>
-                {props.result !== 'draw' && (
+                {result !== 'draw' && (
                     <p className='result__text font-size-200 text-silver'>
-                        {resultText[props.result]}
+                        {resultText[result]}
                     </p>
                 )}
 
-                <div className='result__label flex flex--gap flex--align-center'>
-                    {props.result !== 'draw' && (
+                <Flex className='result__label flex--gap flex--align-center'>
+                    {result !== 'draw' && (
                         <img className='result__icon'
-                             src={icons[props.winner.choice]}
+                             src={icons[winner.choice]}
                              alt=''
                              aria-hidden='true'
                         />)}
-                    <h1 className={`result__heading font-size-500 ${roundTextColor[props.winner.choice]}`}>
+                    <h1 className={`result__heading font-size-500 ${roundTextColor[winner.choice]}`}>
                         {roundText}
                     </h1>
-                </div>
+                </Flex>
 
-                <div className='result__buttons flex flex--gap'>
-                    <button className='btn btn--silver' onClick={props.onQuit}>
+                <Flex className='result__buttons flex--gap'>
+                    <Button className='btn--silver' onClick={onQuit}>
                         Quit
-                    </button>
-                    <button className='btn btn--yellow' onClick={props.onNextRound}>
+                    </Button>
+                    <Button className='btn--yellow' onClick={onNextRound}>
                         Next Round
-                    </button>
-                </div>
+                    </Button>
+                </Flex>
             </Grid>
         </section>
     )
