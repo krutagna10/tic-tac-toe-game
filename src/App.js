@@ -12,8 +12,8 @@ function App() {
 
     const handleChoice = (userChoice, computerChoice) => {
         // Updating user choice and computer choice
-        setUser(prevState => ({...prevState, choice: userChoice}));
-        setComputer(prevState => ({...prevState, choice: computerChoice}));
+        setUser({...user, choice: userChoice});
+        setComputer({...computer, choice: computerChoice});
 
         // Setting choice selected to true
         setChoiceSelected(true)
@@ -23,8 +23,8 @@ function App() {
         let tempChoice = user.choice;
 
         // Swapping the choices
-        setUser(prevState => ({...prevState, choice: computer.choice}));
-        setComputer(prevState => ({...prevState, choice: tempChoice}));
+        setUser({...user, choice: computer.choice})
+        setComputer({...computer, choice: tempChoice});
     }
 
     // Quit Button Handler
