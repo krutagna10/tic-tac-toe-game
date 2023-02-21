@@ -1,13 +1,9 @@
 .choice {
     --gap: clamp(1.5rem, 4vw, 2.5rem);
+
     text-align: center;
-    min-width: 16rem;
+    min-width: min(100vw, 32rem);
 }
 
-@media (min-width: 32em) {
-    .choice {
-        min-width: 30rem;
-    }
-}
 
 

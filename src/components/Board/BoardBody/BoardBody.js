@@ -1,7 +1,7 @@
 import './BoardBody.css';
 
-import xIcon from "../../assets/icon-x.svg";
-import oIcon from "../../assets/icon-o.svg";
+import xIcon from "../../../assets/icon-x.svg";
+import oIcon from "../../../assets/icon-o.svg";
 
 const icons = {
     x: `url(${xIcon})`,

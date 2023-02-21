@@ -1,6 +1,10 @@
+.game__board-body {
+
+}
+
 .game__btn {
-    min-width: 8rem;
-    min-height: 8rem;
+    min-width: min(25vw, 8rem);
+    min-height: min(25vw, 8rem);
     background-color: var(--semi-dark-navy);
     border-radius: var(--border-radius-1);
     border: none;
@@ -15,6 +19,3 @@
     pointer-events: none;
 }
 
-.game__btn:disabled {
-    pointer-events: none;
-}

@@ -1,6 +1,6 @@
-import gameLogo from "../../assets/logo.svg";
-import turnIcon from "../../assets/icon-x-silver.svg";
-import restartIcon from "../../assets/icon-restart.svg";
+import gameLogo from "../../../assets/logo.svg";
+
+import restartIcon from "../../../assets/icon-restart.svg";
 import './BoardHeader.css'
 
 
@@ -12,14 +12,6 @@ const BoardHeader = (props) => {
                      src={gameLogo}
                      alt='Tic Tac Toe'
                 />
-            </div>
-            <div className='game__turn flex flex--gap flex--justify-center flex--align-center background-semi-dark'>
-                <img className='game__turn-icon'
-                     src={turnIcon}
-                     alt=''
-                     aria-hidden='true'
-                />
-                <p className='game__turn-text text-silver'>Turn</p>
             </div>
             <button className='game__restart-btn btn btn--silver' onClick={props.onRestart}>
                 <img className='game__restart-icon'

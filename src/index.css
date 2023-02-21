@@ -80,10 +80,9 @@ body {
     font-family: var(--font-family-outfit);
     background-color: var(--dark-navy);
     font-weight: var(--font-weight-medium);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+    display: grid;
+    place-content: center;
     text-transform: uppercase;
 }
 

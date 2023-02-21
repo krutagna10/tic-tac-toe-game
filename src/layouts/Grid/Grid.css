@@ -1,0 +1,23 @@
+.grid {
+    display: grid;
+}
+
+.grid--gap {
+    gap: var(--gap);
+}
+
+.grid--items-center {
+    place-items: center;
+}
+
+.grid--content-center {
+    place-content: center;
+}
+
+.grid--2-columns {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-columns {
+    grid-template-columns: repeat(3, 1fr);
+}

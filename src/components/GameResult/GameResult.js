@@ -23,7 +23,7 @@ const GameResult = (props) => {
 
     return (
         <section className='result-section'>
-            <div className='result grid grid--items-center background-semi-dark'>
+            <div className='result grid grid--content-center background-semi-dark'>
                 {props.result !== 'draw' && (
                     <p className='result__text font-size-200 text-silver'>
                         {resultText[props.result]}

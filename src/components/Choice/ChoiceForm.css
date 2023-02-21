@@ -22,20 +22,14 @@
     min-height: 4.5rem;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 40%;
+    background-size: 20%;
     cursor: pointer;
     border-radius: var(--border-radius-1);
 }
 
 @media (min-width: 32em) {
     .choice__label {
-        background-size: 20%;
-    }
-}
-
-@media (min-width: 48em) {
-    .choice__label {
-        background-size: 15%;
+        background-size: 17.5%;
     }
 }
 

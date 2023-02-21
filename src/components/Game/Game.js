@@ -1,6 +1,6 @@
-import BoardHeader from "../GameBoard/BoardHeader";
-import BoardBody from "../GameBoard/BoardBody";
-import BoardFooter from "../GameBoard/BoardFooter";
+import BoardHeader from "../Board/BoardHeader/BoardHeader";
+import BoardBody from "../Board/BoardBody/BoardBody";
+import BoardFooter from "../Board/BoardFooter/BoardFooter";
 import GameResult from "../GameResult/GameResult";
 import {useState} from "react";
 import './Game.css';
@@ -30,7 +30,6 @@ const Game = (props) => {
 
     const [userArray, setUserArray] = useState([]);
     const [computerArray, setComputerArray] = useState([]);
-
 
     const checkForWin = (arr, player) => {
         for (const condition of winConditions) {
@@ -95,13 +94,16 @@ const Game = (props) => {
         // Calling the player handler function with computer
         playerHandler(props.computer, random);
 
-        // Setting the new state of computerArray
-        setComputerArray([...computerArray, random]);
+        const newChoices = [...computerArray, random]
+
+        // Setting the new array
+        setComputerArray([...newChoices]);
 
         // Checking for win and draw
-        checkForWin([...computerArray, random], props.computer);
+        checkForWin([...newChoices], props.computer);
         checkForDraw();
-    }
+    };
+
 
     // Function when user clicks on game Button
     const getUserChoice = (value) => {
@@ -127,7 +129,7 @@ const Game = (props) => {
         // Resetting computer array
         setComputerArray([]);
 
-    }
+    };
 
     // Handler when user clicks on next round button
     const nextRoundHandler = () => {
