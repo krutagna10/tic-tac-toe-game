@@ -3,8 +3,8 @@ import BoardBody from "../Board/BoardBody/BoardBody";
 import BoardFooter from "../Board/BoardFooter/BoardFooter";
 import Result from "../Result/Result";
 import {useState} from "react";
-import './Game.css';
 import Restart from "../Restart/Restart";
+import './Game.css';
 
 // Win Condition Array
 const winConditions = [

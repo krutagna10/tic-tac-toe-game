@@ -5,12 +5,12 @@ import './App.css';
 
 function App() {
     const [choiceSelected, setChoiceSelected] = useState(true);
-    const [user, setUser] = useState({ name: 'user', choice: 'x'});
-    const [computer, setComputer] = useState({ name: 'computer', choice: 'o'});
+    const [user, setUser] = useState({name: 'user', choice: 'x'});
+    const [computer, setComputer] = useState({name: 'computer', choice: 'o'});
     const [showOverlay, setShowOverlay] = useState(false);
 
 
-    const setChoicesHandler = (userChoice, computerChoice) => {
+    const handleChoice = (userChoice, computerChoice) => {
         // Updating user choice and computer choice
         setUser(prevState => ({...prevState, choice: userChoice}));
         setComputer(prevState => ({...prevState, choice: computerChoice}));
@@ -19,7 +19,7 @@ function App() {
         setChoiceSelected(true)
     };
 
-    const swapChoicesHandler = () => {
+    const handleChoiceSwap = () => {
         let tempChoice = user.choice;
 
         // Swapping the choices
@@ -28,38 +28,34 @@ function App() {
     }
 
     // Quit Button Handler
-    const quitHandler = () => {
+    const handleQuit = () => {
         setChoiceSelected(false);
-        hideOverlayHandler();
+        handleHideOverlay();
     };
 
     // Overlay Handlers
-    const showOverlayHandler = () => {
+    const handleShowOverlay = () => {
         setShowOverlay(true);
     }
 
-    const hideOverlayHandler = () => {
+    const handleHideOverlay = () => {
         setShowOverlay(false);
     }
 
     return (
         <div className="app">
-            {showOverlay && (
-                <div className='overlay'></div>
-            )}
+            {showOverlay && <div className='overlay'></div>}
 
-            {!choiceSelected && (
-                <Choice onChoice={setChoicesHandler}/>
-            )}
-
-            {choiceSelected && (
+            {!choiceSelected ? (
+                <Choice onChoice={handleChoice}/>
+            ) : (
                 <Game
                     user={user}
                     computer={computer}
-                    onQuit={quitHandler}
-                    swapChoices={swapChoicesHandler}
-                    showOverlay={showOverlayHandler}
-                    hideOverlay={hideOverlayHandler}
+                    onQuit={handleQuit}
+                    swapChoices={handleChoiceSwap}
+                    showOverlay={handleShowOverlay}
+                    hideOverlay={handleHideOverlay}
                 />
             )}
         </div>
