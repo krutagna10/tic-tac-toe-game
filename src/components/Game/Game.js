@@ -41,9 +41,9 @@ const Game = (props) => {
                 player.name === 'user' ? setWinner({...props.user}) : setWinner({...props.computer});
 
                 // Setting the scores
-                player.name === 'user' ?
-                    setScores(prevState => ({...prevState, user: scores.user + 1})) :
-                    setScores(prevState => ({...prevState, computer: scores.computer + 1}));
+                player.name === 'user'
+                    ? setScores({...scores, user: scores.user + 1})
+                    : setScores({...scores, computer: scores.computer + 1});
 
                 // Setting Game Finished to true
                 setGameFinished(true)
@@ -67,7 +67,7 @@ const Game = (props) => {
             setResult('draw');
 
             // Incrementing draw score
-            setScores(prevState => ({...prevState, draw: prevState.draw + 1}));
+            setScores({...scores, draw: scores.draw + 1});
 
             // Setting game finished to true
             setGameFinished(true);
