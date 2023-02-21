@@ -3,9 +3,9 @@ import './BoardFooter.css'
 
 const BoardFooter = ({scores, user}) => {
     const xLabelText = user.choice === 'x' ? 'X(You)' : 'X(Cpu)';
-    let oLabelText = user.choice === 'x' ? 'O(Cpu)' : 'O(You)'
-    let xScore = user.choice === 'x' ? scores.user : scores.computer;
-    let oScore = user.choice === 'x' ? scores.computer : scores.user;
+    const oLabelText = user.choice === 'x' ? 'O(Cpu)' : 'O(You)'
+    const xScore = user.choice === 'x' ? scores.user : scores.computer;
+    const oScore = user.choice === 'x' ? scores.computer : scores.user;
 
     return (
         <Flex className='game__board-footer flex--justify-space flex--gap'>
