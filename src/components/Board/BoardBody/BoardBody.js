@@ -1,7 +1,9 @@
+import Grid from '../../../layouts/Grid/Grid';
 import './BoardBody.css';
 
 import xIcon from "../../../assets/icon-x.svg";
 import oIcon from "../../../assets/icon-o.svg";
+
 
 const icons = {
     x: `url(${xIcon})`,
@@ -24,7 +26,7 @@ const BoardBody = (props) => {
 
 
     return (
-        <div className='game__board-body grid grid--3-columns grid--gap'>
+        <Grid className='game__board-body grid grid--3-columns grid--gap'>
             {[...new Array(9)].map((_, index) => (
                 indexExists(index) ? (
                     <button key={index}
@@ -45,7 +47,7 @@ const BoardBody = (props) => {
                     />
                 )
             ))}
-        </div>
+        </Grid>
     )
 }
 

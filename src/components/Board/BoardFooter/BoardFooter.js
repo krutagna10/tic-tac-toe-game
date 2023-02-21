@@ -1,3 +1,4 @@
+import Flex from '../../../layouts/Flex/Flex';
 import './BoardFooter.css'
 
 const BoardFooter = (props) => {
@@ -25,7 +26,7 @@ const BoardFooter = (props) => {
     }
 
     return (
-        <div className='game__board-footer flex flex--justify-space flex--gap'>
+        <Flex className='game__board-footer flex--justify-space flex--gap'>
             <div className='game__score-wrapper background-blue'>
                 <p className='game__score-label'>{xLabelText}</p>
                 <p className='game__score game__score--x'>{xScore}</p>
@@ -38,7 +39,7 @@ const BoardFooter = (props) => {
                 <p className='game__score-label'>{oLabelText}</p>
                 <p className='game__score game__score-o'>{oScore}</p>
             </div>
-        </div>
+        </Flex>
     )
 }
 

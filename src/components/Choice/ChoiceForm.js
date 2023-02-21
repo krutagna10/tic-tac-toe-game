@@ -1,5 +1,7 @@
-import './ChoiceForm.css'
 import {useState} from "react";
+import Flex from '../../layouts/Flex/Flex';
+import Button from '../UI/Button/Button';
+import './ChoiceForm.css'
 
 const ChoiceForm = (props) => {
     const [userChoice, setUserChoice] = useState('o');
@@ -21,7 +23,7 @@ const ChoiceForm = (props) => {
                     <h1 className='choice__form-heading font-size-300 text-silver'>
                         Pick player 1's mark
                     </h1>
-                    <div className='choice__input-wrapper flex'>
+                    <Flex className='choice__input-wrapper'>
                         <input type='radio'
                                name='choice__input'
                                id='choice__input--x'
@@ -47,10 +49,10 @@ const ChoiceForm = (props) => {
                             className='choice__label choice__label--o'
                             htmlFor='choice__input--o'
                         />
-                    </div>
+                    </Flex>
                     <p className='choice__form-text font-size-100'>Remember: X goes first</p>
                 </div>
-                <button className='choice__btn btn btn--yellow font-size-300'>New Game (vs CPU)</button>
+                <Button type='submit' className='choice__btn btn--yellow font-size-300'>New Game (vs CPU)</Button>
             </form>
         </div>
     )

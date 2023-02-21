@@ -1,6 +1,10 @@
-const Grid = ({className}) => {
+import './Grid.css'
+
+const Grid = ({className, children}) => {
     return (
-        <div className={`grid ${className}`}></div>
+        <div className={`grid ${className}`}>
+            {children}
+        </div>
     );
 };
 

@@ -1,10 +1,10 @@
 import BoardHeader from "../Board/BoardHeader/BoardHeader";
 import BoardBody from "../Board/BoardBody/BoardBody";
 import BoardFooter from "../Board/BoardFooter/BoardFooter";
-import GameResult from "../GameResult/GameResult";
+import Result from "../Result/Result";
 import {useState} from "react";
 import './Game.css';
-import GameRestart from "../GameRestart/GameRestart";
+import Restart from "../Restart/Restart";
 
 // Win Condition Array
 const winConditions = [
@@ -187,7 +187,7 @@ const Game = (props) => {
             </div>
 
             {gameFinished && (
-                <GameResult
+                <Result
                     result={result}
                     winner={winner}
                     onNextRound={nextRoundHandler}
@@ -196,7 +196,7 @@ const Game = (props) => {
             )}
 
             {gameRestart && (
-                <GameRestart
+                <Restart
                     onCancel={hideRestartHandler}
                     onRestart={restartHandler}
                 />

@@ -1,4 +1,5 @@
 import ChoiceForm from "./ChoiceForm";
+import Grid from '../../layouts/Grid/Grid';
 import logo from '../../assets/logo.svg';
 import './Choice.css';
 
@@ -9,7 +10,7 @@ const Choice = (props) => {
 
     return (
         <section className='choice-section'>
-            <div className='choice container grid grid--items-center grid--gap'>
+            <Grid className='choice container grid--items-center grid--gap'>
                 <div className='choice__logo-wrapper'>
                     <img
                         src={logo}
@@ -19,7 +20,7 @@ const Choice = (props) => {
                 <ChoiceForm
                     onChoice={getChoiceHandler}
                 />
-            </div>
+            </Grid>
         </section>
     )
 }

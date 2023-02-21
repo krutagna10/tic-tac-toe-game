@@ -135,8 +135,7 @@ body {
 /* Layouts*/
 .container {
     max-width: 32rem;
-    padding: 1rem;
-    margin: 0 auto;
+    padding-inline: 1rem;
 }
 
 /* Flex Utility */

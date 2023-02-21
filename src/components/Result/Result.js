@@ -1,6 +1,7 @@
+import Grid from '../../layouts/Grid/Grid.js';
 import xIcon from '../../assets/icon-x.svg';
 import oIcon from '../../assets/icon-o.svg';
-import './GameResult.css';
+import './Result.css';
 
 const icons = {
     x: xIcon,
@@ -18,12 +19,12 @@ const resultText = {
     lose: 'You lose',
 }
 
-const GameResult = (props) => {
+const Result = (props) => {
     let roundText = props.result === 'draw' ? 'Round Tied' : 'Takes the round';
 
     return (
         <section className='result-section'>
-            <div className='result grid grid--content-center background-semi-dark'>
+            <Grid className='result background-semi-dark grid--items-center'>
                 {props.result !== 'draw' && (
                     <p className='result__text font-size-200 text-silver'>
                         {resultText[props.result]}
@@ -50,9 +51,9 @@ const GameResult = (props) => {
                         Next Round
                     </button>
                 </div>
-            </div>
+            </Grid>
         </section>
     )
 };
 
-export default GameResult;
+export default Result;
