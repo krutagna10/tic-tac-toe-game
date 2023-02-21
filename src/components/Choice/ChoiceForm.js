@@ -6,11 +6,11 @@ import './ChoiceForm.css'
 const ChoiceForm = (props) => {
     const [userChoice, setUserChoice] = useState('o');
 
-    const clickHandler = (event) => {
+    const handleUserChoiceChange = (event) => {
         setUserChoice(event.target.value);
     }
 
-    const formSubmitHandler = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         let computerChoice = userChoice === 'x' ? 'o' : 'x';
         props.onChoice(userChoice, computerChoice);
@@ -18,7 +18,7 @@ const ChoiceForm = (props) => {
 
     return (
         <div className='choice__form-wrapper'>
-            <form className='choice__form' onSubmit={formSubmitHandler}>
+            <form className='choice__form' onSubmit={handleSubmit}>
                 <div className='choice__form-control background-semi-dark flow'>
                     <h1 className='choice__form-heading font-size-300 text-silver'>
                         Pick player 1's mark
@@ -28,7 +28,7 @@ const ChoiceForm = (props) => {
                                name='choice__input'
                                id='choice__input--x'
                                className='choice__input'
-                               onChange={clickHandler}
+                               onChange={handleUserChoiceChange}
                                value='x'
                                checked={userChoice === 'x'}
                         />
@@ -41,7 +41,7 @@ const ChoiceForm = (props) => {
                                name='choice__input'
                                id='choice__input--o'
                                className='choice__input'
-                               onChange={clickHandler}
+                               onChange={handleUserChoiceChange}
                                value='o'
                                checked={userChoice === 'o'}
                         />
