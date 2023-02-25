@@ -8,9 +8,10 @@
 
 .flex--direction-column {
     flex-direction: column;
+
 }
 
-.flex--align-justify-center {
+.flex--center {
     align-items: center;
     justify-content: center;
 }

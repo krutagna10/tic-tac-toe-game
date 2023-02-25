@@ -2,7 +2,6 @@ import BoardHeader from "../Board/BoardHeader/BoardHeader";
 import BoardBody from "../Board/BoardBody/BoardBody";
 import BoardFooter from "../Board/BoardFooter/BoardFooter";
 import Result from "../Result/Result";
-import Restart from "../Restart/Restart";
 import { useState, useEffect } from "react";
 import "./Game.css";
 
@@ -23,7 +22,6 @@ let choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 const Game = (props) => {
   const [isGameFinished, setIsGameFinished] = useState(false);
-  const [isRestartVisible, setIsRestartVisible] = useState(false);
   const [result, setResult] = useState("");
   const [winner, setWinner] = useState("");
   const [scores, setScores] = useState({ user: 0, computer: 0, draw: 0 });
@@ -149,31 +147,10 @@ const Game = (props) => {
     props.onQuit();
   };
 
-  const showRestart = () => {
-    props.showOverlay();
-    setIsRestartVisible(true);
-  };
-
-  const hideRestart = () => {
-    props.hideOverlay();
-    setIsRestartVisible(false);
-  };
-
-  const handleRestart = () => {
-    // Resetting the values
-    setScores({ user: 0, computer: 0, draw: 0 });
-
-    // Handling reset
-    handleReset();
-
-    // Hiding Restart
-    hideRestart();
-  };
-
   return (
     <div className="game">
       <div className="game__board flow">
-        <BoardHeader onRestart={showRestart} />
+        <BoardHeader />
         <BoardBody
           user={props.user}
           computer={props.computer}
@@ -191,10 +168,6 @@ const Game = (props) => {
           onNextRound={handleNextRound}
           onQuit={handleQuit}
         />
-      )}
-
-      {isRestartVisible && (
-        <Restart onCancel={hideRestart} onRestart={handleRestart} />
       )}
     </div>
   );

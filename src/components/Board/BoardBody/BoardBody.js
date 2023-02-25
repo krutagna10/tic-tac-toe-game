@@ -12,7 +12,6 @@ const icons = {
 const BoardBody = (props) => {
   const clickHandler = (event) => {
     const value = Number(event.target.dataset.value);
-    event.target.classList.add("clicked");
     props.onUserChoice(value);
   };
 

@@ -18,7 +18,7 @@ function App() {
     setIsChoiceSelected(true);
   };
 
-  const handleChoiceSwap = () => {
+  const handleSwapChoices = () => {
     let tempChoice = user.choice;
 
     // Swapping the choices
@@ -52,7 +52,7 @@ function App() {
           user={user}
           computer={computer}
           onQuit={handleQuit}
-          swapChoices={handleChoiceSwap}
+          swapChoices={handleSwapChoices}
           showOverlay={showOverlay}
           hideOverlay={hideOverlay}
         />
