@@ -1,6 +1,6 @@
 import Choice from "./components/Choice/Choice";
 import Game from "./components/Game/Game";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -43,8 +43,8 @@ function App() {
 
   return (
     <div className="app">
+      <h1 className="sr-only">Tic Tac Toe</h1>
       {isOverlayVisible && <div className="overlay"></div>}
-
       {!isChoiceSelected ? (
         <Choice onChoice={handleChoice} />
       ) : (

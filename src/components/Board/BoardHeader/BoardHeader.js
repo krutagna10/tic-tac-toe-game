@@ -1,9 +1,8 @@
 import Flex from "../../../layouts/Flex/Flex";
-import Button from "../../UI/Button/Button";
 import gameLogo from "../../../assets/logo.svg";
 import "./BoardHeader.css";
 
-const BoardHeader = (props) => {
+const BoardHeader = () => {
   return (
     <Flex className="game__header flex--center">
       <div className="game__logo-wrapper">

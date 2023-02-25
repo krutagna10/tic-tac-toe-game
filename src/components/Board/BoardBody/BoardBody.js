@@ -9,40 +9,39 @@ const icons = {
   o: `url(${oIcon})`,
 };
 
-const BoardBody = (props) => {
-  const clickHandler = (event) => {
-    const value = Number(event.target.dataset.value);
-    props.onUserChoice(value);
-  };
-
+const BoardBody = ({
+  user,
+  computer,
+  userArray,
+  computerArray,
+  onUserChoice,
+}) => {
   const indexExists = (index) => {
-    // Used set for faster performance
-    const indices = new Set([...props.userArray, ...props.computerArray]);
-
+    // Searching for index (Used set for faster performance)
+    const indices = new Set([...userArray, ...computerArray]);
     return indices.has(index);
   };
 
   return (
-    <Grid className="game__board-body grid grid--3-columns grid--gap">
+    <Grid className="game__board-body grid--3-columns grid--gap">
       {[...new Array(9)].map((_, index) =>
         indexExists(index) ? (
           <button
             key={index}
             className="game__btn clicked"
-            data-value={index}
-            onClick={clickHandler}
             style={{
-              backgroundImage: props.userArray.includes(index)
-                ? icons[props.user.choice]
-                : icons[props.computer.choice],
+              backgroundImage: userArray.includes(index)
+                ? icons[user.choice]
+                : icons[computer.choice],
             }}
           />
         ) : (
           <button
             key={index}
             className="game__btn"
-            data-value={index}
-            onClick={clickHandler}
+            onClick={() => {
+              onUserChoice(index);
+            }}
           />
         )
       )}

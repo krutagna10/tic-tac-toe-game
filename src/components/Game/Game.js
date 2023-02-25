@@ -2,7 +2,7 @@ import BoardHeader from "../Board/BoardHeader/BoardHeader";
 import BoardBody from "../Board/BoardBody/BoardBody";
 import BoardFooter from "../Board/BoardFooter/BoardFooter";
 import Result from "../Result/Result";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Game.css";
 
 // Win Condition Array
@@ -20,14 +20,19 @@ const winConditions = [
 // Choices Array which contains all the choices
 let choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-const Game = (props) => {
-  const [isGameFinished, setIsGameFinished] = useState(false);
-  const [result, setResult] = useState("");
-  const [winner, setWinner] = useState("");
-  const [scores, setScores] = useState({ user: 0, computer: 0, draw: 0 });
-
+const Game = ({
+  user,
+  computer,
+  onQuit,
+  swapChoices,
+  showOverlay,
+  hideOverlay,
+}) => {
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
+  const [isGameFinished, setIsGameFinished] = useState(false);
+  const [result, setResult] = useState("");
+  const [scores, setScores] = useState({ user: 0, computer: 0, draw: 0 });
 
   // Function for checking for win
   const checkForWin = (arr, player) => {
@@ -35,11 +40,6 @@ const Game = (props) => {
       if (condition.every((element) => arr.includes(element))) {
         // Setting the result
         player.name === "user" ? setResult("win") : setResult("lose");
-
-        // Setting the winner
-        player.name === "user"
-          ? setWinner({ ...props.user })
-          : setWinner({ ...props.computer });
 
         // Setting the scores
         player.name === "user"
@@ -50,7 +50,7 @@ const Game = (props) => {
         setIsGameFinished(true);
 
         // Showing overlay
-        props.showOverlay();
+        showOverlay();
 
         return true;
       }
@@ -62,9 +62,6 @@ const Game = (props) => {
   // Function for checking for draw
   const checkForDraw = () => {
     if (choices.length === 0) {
-      // Setting the winner to draw
-      setWinner({ name: "none", choice: "draw" });
-
       // Setting result to draw
       setResult("draw");
 
@@ -75,7 +72,7 @@ const Game = (props) => {
       setIsGameFinished(true);
 
       // Showing overlay
-      props.showOverlay();
+      showOverlay();
 
       // Returning true is there is a draw
       return true;
@@ -95,7 +92,7 @@ const Game = (props) => {
     setComputerArray([...newChoices]);
 
     // Checking for win and draw
-    checkForWin([...newChoices], props.computer);
+    checkForWin([...newChoices], computer);
     checkForDraw();
   };
 
@@ -108,7 +105,7 @@ const Game = (props) => {
     setUserArray([...userArray, value]);
 
     // Check for win and checking for draw, and if they are both false the calling the getComputerChoice() function
-    if (!checkForWin([...userArray, value], props.user) && !checkForDraw()) {
+    if (!checkForWin([...userArray, value], user) && !checkForDraw()) {
       handleComputerChoice();
     }
   };
@@ -130,10 +127,10 @@ const Game = (props) => {
     handleReset();
 
     // Swapping Choices
-    props.swapChoices();
+    swapChoices();
 
     // Hiding the overlay
-    props.hideOverlay();
+    hideOverlay();
 
     // Setting game finished to false
     setIsGameFinished(false);
@@ -144,7 +141,7 @@ const Game = (props) => {
     handleReset();
 
     // Calling App.js handleQuit
-    props.onQuit();
+    onQuit();
   };
 
   return (
@@ -152,19 +149,20 @@ const Game = (props) => {
       <div className="game__board flow">
         <BoardHeader />
         <BoardBody
-          user={props.user}
-          computer={props.computer}
+          user={user}
+          computer={computer}
           userArray={userArray}
           computerArray={computerArray}
           onUserChoice={handleUserChoice}
         />
-        <BoardFooter scores={scores} user={props.user} />
+        <BoardFooter scores={scores} user={user} />
       </div>
 
       {isGameFinished && (
         <Result
           result={result}
-          winner={winner}
+          user={user}
+          computer={computer}
           onNextRound={handleNextRound}
           onQuit={handleQuit}
         />

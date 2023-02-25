@@ -13,7 +13,6 @@ const icons = {
 const roundTextColor = {
   x: "text-blue",
   o: "text-yellow",
-  draw: "text-silver",
 };
 
 const resultText = {
@@ -21,8 +20,15 @@ const resultText = {
   lose: "You lose",
 };
 
-const Result = ({ result, winner, onNextRound, onQuit }) => {
-  let roundText = result === "draw" ? "Round Tied" : "Takes the round";
+const Result = ({ result, onNextRound, onQuit, user, computer }) => {
+  let winnerChoice;
+  if (result === "win") {
+    winnerChoice = user.choice;
+  }
+
+  if (result === "lose") {
+    winnerChoice = computer.choice;
+  }
 
   return (
     <section className="result-section">
@@ -37,18 +43,17 @@ const Result = ({ result, winner, onNextRound, onQuit }) => {
           {result !== "draw" && (
             <img
               className="result__icon"
-              src={icons[winner.choice]}
-              alt=""
-              aria-hidden="true"
+              src={icons[winnerChoice]}
+              alt={`Icon representing ${winnerChoice}`}
             />
           )}
-          <h1
+          <h2
             className={`result__heading font-size-500 ${
-              roundTextColor[winner.choice]
+              result === "draw" ? "text-silver" : roundTextColor[winnerChoice]
             }`}
           >
-            {roundText}
-          </h1>
+            {result === "draw" ? "Round Tied" : "Takes the round"}
+          </h2>
         </Flex>
 
         <Flex className="result__buttons flex--gap">
