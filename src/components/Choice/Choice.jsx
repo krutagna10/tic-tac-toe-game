@@ -1,11 +1,19 @@
-import { useState } from "react";
+import GameContext from "../../context/GameContext";
+import { useEffect, useState } from "react";
+import { useContext } from "react";
 
 function Choice() {
   const [choices, setChoices] = useState({ user: "x", computer: "o" });
+  const { onChoice } = useContext(GameContext);
+  const context = useContext(GameContext);
+
+  useEffect(() => {
+    console.log(context.choices);
+  }, [context.choices]);
 
   function handleRadioChange(event) {
     // Storing user choice in user choice variable
-    const userChoice = event.target.dataset.choice;
+    const userChoice = event.target.value;
 
     // Setting computer choice the opposite of user choice
     const computerChoice = userChoice === "x" ? "o" : "x";
@@ -16,6 +24,7 @@ function Choice() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    onChoice(choices.user, choices.computer);
   }
 
   return (

@@ -1,10 +1,13 @@
 import Choice from "./components/Choice/Choice";
+import GameProvider from "./context/GameProvider";
 
 function App() {
   return (
     <div className="app">
-      <h1>Tic Tac Toe Game</h1>
-      <Choice />
+      <GameProvider>
+        <h1>Tic Tac Toe Game</h1>
+        <Choice />
+      </GameProvider>
     </div>
   );
 }
