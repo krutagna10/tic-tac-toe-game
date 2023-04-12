@@ -56,7 +56,7 @@ function Choice() {
           </tr>
           <tr>
             <td colSpan="2">
-              <button>Start Game</button>
+              <button type="submit">Start Game</button>
             </td>
           </tr>
         </tbody>

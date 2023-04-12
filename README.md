@@ -1,8 +1,8 @@
 # Frontend Mentor - Tic Tac Toe
 
-### Screenshot
+[//]: # (### Screenshot)
 
-![](screenshot/Screenshot.png)
+[//]: # (![]&#40;screenshot/Screenshot.png&#41;)
 
 ### Links
 
