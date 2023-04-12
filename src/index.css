@@ -1,6 +1,7 @@
 :root {
   /* Font Family*/
-  --font-family-outfit: "Outfit", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-barlow-semi: "Barlow Semi Condensed", sans-serif;
 
   /* Font sizes */
   --font-size-500: 1.5rem;
@@ -76,7 +77,7 @@ html {
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  font-family: var(--font-family-outfit);
+  font-family: var(--font-barlow-semi);
   /*background-color: var(--dark-navy);*/
   /*font-weight: var(--font-weight-medium);*/
   position: relative;
@@ -111,6 +112,7 @@ input[type="radio"] {
 button {
   cursor: pointer;
   padding: 0.5rem 1.25rem;
+  text-transform: inherit;
 }
 
 /* Sr only class */
