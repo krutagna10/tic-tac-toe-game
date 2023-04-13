@@ -15,6 +15,15 @@ const WIN_CONDITIONS = [
   [2, 4, 6],
 ];
 
+// function checkForWin() {
+//   for (const element of WIN_CONDITIONS) {
+//   }
+// }
+
+function checkForDraw() {
+  return choices.length === 0;
+}
+
 function Game() {
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);

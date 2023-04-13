@@ -1,2 +1,3 @@
-const arr = new Array(9).fill(0);
-console.log(arr);
+const arr = [1, 2, 3, 4];
+
+arr.splice(0);
