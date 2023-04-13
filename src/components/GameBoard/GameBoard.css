@@ -7,10 +7,13 @@
 .game__btn {
   width: 6rem;
   height: 6rem;
-  background-image: url("/src/assets/images/x-icon.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 40%;
   border: 2px solid black;
   border-radius: 0.25rem;
+}
+
+.game__btn.clicked {
+  pointer-events: none;
 }

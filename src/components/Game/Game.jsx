@@ -20,18 +20,36 @@ function Game() {
   const [computerArray, setComputerArray] = useState([]);
 
   function handleUserChoice(index) {
+    // Setting User Array
     setUserArray((prevUserArray) => [...prevUserArray, index]);
+
+    // Removing the index from choices array
     choices = choices.filter((item) => item !== index);
+
+    // Getting computer choice
+    handleComputerChoice();
   }
 
   function handleComputerChoice() {
-    let random = Math.floor(Math.random() * choices.length);
+    // Generating a random index
+    const random = Math.floor(Math.random() * choices.length);
+    const index = choices[random];
+
+    // Setting Computer Array
+    setComputerArray((prevComputerArray) => [...prevComputerArray, index]);
+
+    // Removing index from choices array
+    choices = choices.filter((item) => item !== index);
   }
 
   return (
     <div className="game">
       <h2>Game Board</h2>
-      <GameBoard />
+      <GameBoard
+        onUserChoice={handleUserChoice}
+        userArray={userArray}
+        computerArray={computerArray}
+      />
     </div>
   );
 }
