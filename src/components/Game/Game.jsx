@@ -4,7 +4,7 @@ import { useState } from "react";
 
 let choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
-const WIN_CONDITIONS = [
+const winConditions = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -15,28 +15,38 @@ const WIN_CONDITIONS = [
   [2, 4, 6],
 ];
 
-// function checkForWin() {
-//   for (const element of WIN_CONDITIONS) {
-//   }
-// }
-
-function checkForDraw() {
-  return choices.length === 0;
-}
-
-function Game() {
+function Game({ onResultChange }) {
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
 
+  function checkForWin(arr, player) {
+    for (const condition of winConditions) {
+      if (condition.every((element) => arr.includes(element))) {
+        player === "user" ? onResultChange("win") : onResultChange("lose");
+        return true;
+      }
+    }
+  }
+
+  function checkForDraw() {
+    if (choices.length === 0) {
+      onResultChange("draw");
+      return true;
+    }
+    return false;
+  }
+
   function handleUserChoice(index) {
     // Setting User Array
-    setUserArray((prevUserArray) => [...prevUserArray, index]);
+    const nextArray = [...userArray, index];
+    setUserArray(nextArray);
 
     // Removing the index from choices array
     choices = choices.filter((item) => item !== index);
 
-    // Getting computer choice
-    handleComputerChoice();
+    if (!checkForWin(nextArray, "user") && !checkForDraw()) {
+      handleComputerChoice();
+    }
   }
 
   function handleComputerChoice() {
@@ -44,11 +54,17 @@ function Game() {
     const random = Math.floor(Math.random() * choices.length);
     const index = choices[random];
 
+    const nextArray = [...computerArray, index];
+
     // Setting Computer Array
-    setComputerArray((prevComputerArray) => [...prevComputerArray, index]);
+    setComputerArray(nextArray);
 
     // Removing index from choices array
     choices = choices.filter((item) => item !== index);
+
+    if (!checkForDraw()) {
+      checkForWin(nextArray, "computer");
+    }
   }
 
   return (

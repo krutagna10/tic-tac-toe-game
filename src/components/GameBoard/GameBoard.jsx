@@ -11,7 +11,6 @@ const icons = {
 
 function GameBoard({ onUserChoice, userArray, computerArray }) {
   const { choices } = useContext(GameContext);
-  console.log(choices);
 
   function isIndexPresent(index) {
     let set = new Set([...userArray, ...computerArray]);
