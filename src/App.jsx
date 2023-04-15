@@ -5,9 +5,13 @@ import { useState } from "react";
 import Result from "./components/Result/Result";
 
 function App() {
-  const [isChoiceSelected, setIsChoiceSelected] = useState(true);
+  const [isChoiceSelected, setIsChoiceSelected] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
   const [result, setResult] = useState("");
+
+  function handleStartGame() {
+    setIsChoiceSelected(true);
+  }
 
   function handleResultChange(result) {
     setIsGameFinished(true);
@@ -22,7 +26,7 @@ function App() {
     <div className="app">
       <GameProvider>
         <h1>Tic Tac Toe Game</h1>
-        {!isChoiceSelected && <Choice />}
+        {!isChoiceSelected && <Choice onStartGame={handleStartGame} />}
         {isChoiceSelected && !isGameFinished && (
           <Game onResultChange={handleResultChange} />
         )}

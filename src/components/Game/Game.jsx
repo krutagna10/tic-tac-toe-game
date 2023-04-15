@@ -1,8 +1,5 @@
-import "./Game.css";
 import GameBoard from "../GameBoard/GameBoard";
-import { useState } from "react";
-
-let choices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+import { useRef, useState } from "react";
 
 const winConditions = [
   [0, 1, 2],
@@ -18,6 +15,7 @@ const winConditions = [
 function Game({ onResultChange }) {
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
+  let choices = useRef([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
   function checkForWin(arr, player) {
     for (const condition of winConditions) {
@@ -29,7 +27,7 @@ function Game({ onResultChange }) {
   }
 
   function checkForDraw() {
-    if (choices.length === 0) {
+    if (choices.current.length === 0) {
       onResultChange("draw");
       return true;
     }
@@ -42,7 +40,7 @@ function Game({ onResultChange }) {
     setUserArray(nextArray);
 
     // Removing the index from choices array
-    choices = choices.filter((item) => item !== index);
+    choices.current = choices.current.filter((item) => item !== index);
 
     if (!checkForWin(nextArray, "user") && !checkForDraw()) {
       handleComputerChoice();
@@ -51,8 +49,8 @@ function Game({ onResultChange }) {
 
   function handleComputerChoice() {
     // Generating a random index
-    const random = Math.floor(Math.random() * choices.length);
-    const index = choices[random];
+    const random = Math.floor(Math.random() * choices.current.length);
+    const index = choices.current[random];
 
     const nextArray = [...computerArray, index];
 
@@ -60,12 +58,14 @@ function Game({ onResultChange }) {
     setComputerArray(nextArray);
 
     // Removing index from choices array
-    choices = choices.filter((item) => item !== index);
+    choices.current = choices.current.filter((item) => item !== index);
 
     if (!checkForDraw()) {
       checkForWin(nextArray, "computer");
     }
   }
+
+  console.log({ choices: choices.current, userArray, computerArray });
 
   return (
     <div className="game">

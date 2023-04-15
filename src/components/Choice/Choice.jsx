@@ -2,7 +2,7 @@ import GameContext from "../../context/GameContext";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 
-function Choice() {
+function Choice({ onStartGame }) {
   const [choices, setChoices] = useState({ user: "x", computer: "o" });
   const { onChoice } = useContext(GameContext);
 
@@ -20,6 +20,7 @@ function Choice() {
   function handleSubmit(event) {
     event.preventDefault();
     onChoice(choices.user, choices.computer);
+    onStartGame();
   }
 
   return (
