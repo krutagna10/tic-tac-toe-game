@@ -1,4 +1,4 @@
-function Score() {
+function Score({ user, draw, computer }) {
   return (
     <>
       <h2>Scores</h2>
@@ -12,9 +12,9 @@ function Score() {
         </thead>
         <tbody>
           <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
+            <td>{user}</td>
+            <td>{draw}</td>
+            <td>{computer}</td>
           </tr>
         </tbody>
       </table>

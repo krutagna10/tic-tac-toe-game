@@ -15,7 +15,7 @@ const winConditions = [
   [2, 4, 6],
 ];
 
-function Game({ onResultChange }) {
+function Game({ onResultChange, scores }) {
   const { choices } = useContext(GameContext);
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
@@ -96,7 +96,7 @@ function Game({ onResultChange }) {
       <div className="grid grid--items-center margin-200">
         <button onClick={handleRestart}>Restart Game</button>
       </div>
-      <Score />
+      <Score {...scores} />
       <Arrays
         userArray={userArray}
         computerArray={computerArray}

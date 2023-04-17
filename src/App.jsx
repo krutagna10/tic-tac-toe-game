@@ -5,9 +5,40 @@ import { useState } from "react";
 import Result from "./components/Result/Result";
 
 function App() {
-  const [isChoiceSelected, setIsChoiceSelected] = useState(true);
+  const [isChoiceSelected, setIsChoiceSelected] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
   const [result, setResult] = useState("");
+  const [scores, setScores] = useState({
+    user: 0,
+    draw: 0,
+    computer: 0,
+  });
+
+  function handleUpdateScore(result) {
+    switch (result) {
+      case "win": {
+        setScores((prevScore) => {
+          return { ...prevScore, user: prevScore.user + 1 };
+        });
+        break;
+      }
+      case "draw": {
+        setScores((prevScore) => {
+          return { ...prevScore, draw: prevScore.draw + 1 };
+        });
+        break;
+      }
+      case "lose": {
+        setScores((prevScore) => {
+          return { ...prevScore, computer: prevScore.computer + 1 };
+        });
+        break;
+      }
+      default: {
+        console.error("Invalid action");
+      }
+    }
+  }
 
   function handleStartGame() {
     setIsChoiceSelected(true);
@@ -16,6 +47,7 @@ function App() {
   function handleResultChange(result) {
     setIsGameFinished(true);
     setResult(result);
+    handleUpdateScore(result);
   }
 
   function handlePlayAgain() {
@@ -33,7 +65,7 @@ function App() {
         <h1>Tic Tac Toe Game</h1>
         {!isChoiceSelected && <Choice onStartGame={handleStartGame} />}
         {isChoiceSelected && !isGameFinished && (
-          <Game onResultChange={handleResultChange} />
+          <Game onResultChange={handleResultChange} scores={scores} />
         )}
         {isGameFinished && (
           <Result
