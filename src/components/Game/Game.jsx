@@ -1,5 +1,6 @@
+import GameContext from "../../context/GameContext";
 import GameBoard from "../GameBoard/GameBoard";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 
 const winConditions = [
   [0, 1, 2],
@@ -13,9 +14,16 @@ const winConditions = [
 ];
 
 function Game({ onResultChange }) {
+  const { choices } = useContext(GameContext);
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
-  let choices = useRef([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+  const options = useRef([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+
+  useEffect(() => {
+    if (choices.computer === "x") {
+      handleComputerChoice();
+    }
+  }, []);
 
   function checkForWin(arr, player) {
     for (const condition of winConditions) {
@@ -27,7 +35,7 @@ function Game({ onResultChange }) {
   }
 
   function checkForDraw() {
-    if (choices.current.length === 0) {
+    if (options.current.length === 0) {
       onResultChange("draw");
       return true;
     }
@@ -40,7 +48,7 @@ function Game({ onResultChange }) {
     setUserArray(nextArray);
 
     // Removing the index from choices array
-    choices.current = choices.current.filter((item) => item !== index);
+    options.current = options.current.filter((item) => item !== index);
 
     if (!checkForWin(nextArray, "user") && !checkForDraw()) {
       handleComputerChoice();
@@ -49,8 +57,8 @@ function Game({ onResultChange }) {
 
   function handleComputerChoice() {
     // Generating a random index
-    const random = Math.floor(Math.random() * choices.current.length);
-    const index = choices.current[random];
+    const random = Math.floor(Math.random() * options.current.length);
+    const index = options.current[random];
 
     const nextArray = [...computerArray, index];
 
@@ -58,14 +66,12 @@ function Game({ onResultChange }) {
     setComputerArray(nextArray);
 
     // Removing index from choices array
-    choices.current = choices.current.filter((item) => item !== index);
+    options.current = options.current.filter((item) => item !== index);
 
     if (!checkForDraw()) {
       checkForWin(nextArray, "computer");
     }
   }
-
-  console.log({ choices: choices.current, userArray, computerArray });
 
   return (
     <div className="game">

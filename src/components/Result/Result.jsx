@@ -2,7 +2,12 @@ import GameContext from "../../context/GameContext";
 import { useContext } from "react";
 
 function Result({ result, onPlayAgain }) {
-  const { choices } = useContext(GameContext);
+  const { choices, onSwapChoices } = useContext(GameContext);
+
+  function handlePlayAgain() {
+    onPlayAgain();
+    onSwapChoices();
+  }
 
   return (
     <table>
@@ -20,7 +25,7 @@ function Result({ result, onPlayAgain }) {
           <td>{choices.computer}</td>
           <td>{result}</td>
           <td>
-            <button onClick={onPlayAgain}>Play Again</button>
+            <button onClick={handlePlayAgain}>Play Again</button>
           </td>
         </tr>
       </tbody>
