@@ -1,6 +1,8 @@
 import GameContext from "../../context/GameContext";
 import GameBoard from "../GameBoard/GameBoard";
 import { useEffect, useRef, useState, useContext } from "react";
+import Score from "../Score/Score";
+import Arrays from "../Arrays/Arrays";
 
 const winConditions = [
   [0, 1, 2],
@@ -94,22 +96,12 @@ function Game({ onResultChange }) {
       <div className="grid grid--items-center margin-200">
         <button onClick={handleRestart}>Restart Game</button>
       </div>
-      <table className="margin-200">
-        <thead>
-          <tr>
-            <th>User Array</th>
-            <th>Computer Array</th>
-            <th>Options Array</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[{userArray.join(", ")}]</td>
-            <td>[{computerArray.join(", ")}]</td>
-            <td>[{options.current.join(", ")}]</td>
-          </tr>
-        </tbody>
-      </table>
+      <Score />
+      <Arrays
+        userArray={userArray}
+        computerArray={computerArray}
+        optionsArray={options.current}
+      />
     </div>
   );
 }
