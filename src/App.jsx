@@ -1,42 +1,46 @@
 import Choice from "./components/Choice/Choice";
 import Game from "./components/Game/Game";
 import GameProvider from "./context/GameProvider";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import Result from "./components/Result/Result";
+
+function reducer(scores, action) {
+  switch (action.type) {
+    case "increment-user-score": {
+      return { ...scores, user: scores.user + 1 };
+    }
+    case "increment-draw-score": {
+      return { ...scores, draw: scores.draw + 1 };
+    }
+    case "increment-computer-score": {
+      return { ...scores, computer: scores.computer + 1 };
+    }
+    case "reset-scores": {
+      return { user: 0, draw: 0, computer: 0 };
+    }
+    default: {
+      throw new Error("Invalid action: " + action.type);
+    }
+  }
+}
 
 function App() {
   const [isChoiceSelected, setIsChoiceSelected] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
   const [result, setResult] = useState("");
-  const [scores, setScores] = useState({
+  const [scores, dispatch] = useReducer(reducer, {
     user: 0,
     draw: 0,
     computer: 0,
   });
 
   function handleUpdateScore(result) {
-    switch (result) {
-      case "win": {
-        setScores((prevScore) => {
-          return { ...prevScore, user: prevScore.user + 1 };
-        });
-        break;
-      }
-      case "draw": {
-        setScores((prevScore) => {
-          return { ...prevScore, draw: prevScore.draw + 1 };
-        });
-        break;
-      }
-      case "lose": {
-        setScores((prevScore) => {
-          return { ...prevScore, computer: prevScore.computer + 1 };
-        });
-        break;
-      }
-      default: {
-        console.error("Invalid action");
-      }
+    if (result === "win") {
+      dispatch({ type: "increment-user-score" });
+    } else if (result === "draw") {
+      dispatch({ type: "increment-draw-score" });
+    } else {
+      dispatch({ type: "increment-computer-score" });
     }
   }
 
@@ -57,6 +61,7 @@ function App() {
   function handleQuit() {
     setIsChoiceSelected(false);
     setIsGameFinished(false);
+    dispatch({ type: "reset-scores" });
   }
 
   return (
