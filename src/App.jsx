@@ -5,7 +5,7 @@ import { useState } from "react";
 import Result from "./components/Result/Result";
 
 function App() {
-  const [isChoiceSelected, setIsChoiceSelected] = useState(false);
+  const [isChoiceSelected, setIsChoiceSelected] = useState(true);
   const [isGameFinished, setIsGameFinished] = useState(false);
   const [result, setResult] = useState("");
 
@@ -22,6 +22,11 @@ function App() {
     setIsGameFinished(false);
   }
 
+  function handleQuit() {
+    setIsChoiceSelected(false);
+    setIsGameFinished(false);
+  }
+
   return (
     <div className="app">
       <GameProvider>
@@ -31,7 +36,11 @@ function App() {
           <Game onResultChange={handleResultChange} />
         )}
         {isGameFinished && (
-          <Result result={result} onPlayAgain={handlePlayAgain} />
+          <Result
+            result={result}
+            onPlayAgain={handlePlayAgain}
+            onQuit={handleQuit}
+          />
         )}
       </GameProvider>
     </div>

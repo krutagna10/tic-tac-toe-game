@@ -73,6 +73,16 @@ function Game({ onResultChange }) {
     }
   }
 
+  function handleRestart() {
+    const restartGame = window.confirm("Restart the Game");
+
+    if (restartGame) {
+      setUserArray([]);
+      setComputerArray([]);
+      options.current = [1, 2, 3, 4, 5, 6, 7, 8];
+    }
+  }
+
   return (
     <div className="game">
       <h2>Game Board</h2>
@@ -81,6 +91,25 @@ function Game({ onResultChange }) {
         userArray={userArray}
         computerArray={computerArray}
       />
+      <div className="grid grid--items-center margin-200">
+        <button onClick={handleRestart}>Restart Game</button>
+      </div>
+      <table className="margin-200">
+        <thead>
+          <tr>
+            <th>User Array</th>
+            <th>Computer Array</th>
+            <th>Options Array</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[{userArray.join(", ")}]</td>
+            <td>[{computerArray.join(", ")}]</td>
+            <td>[{options.current.join(", ")}]</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

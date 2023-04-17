@@ -2,51 +2,6 @@
   /* Font Family*/
   --font-outfit: "Outfit", sans-serif;
   --font-barlow-semi: "Barlow Semi Condensed", sans-serif;
-
-  /* Font sizes */
-  --font-size-500: 1.5rem;
-  --font-size-400: 1.25rem;
-  --font-size-300: 1rem;
-  --font-size-200: 0.875rem;
-  --font-size-100: 0.875rem;
-
-  /* Font weights */
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-
-  /*  Colors */
-  --light-blue: hsl(178, 60%, 48%);
-  --light-blue-hover: hsl(178, 75%, 65%);
-  --light-yellow: hsl(39, 88%, 58%);
-  --light-yellow-hover: hsl(39, 100%, 69%);
-  --dark-navy: hsl(202, 32%, 15%);
-  --semi-dark-navy: hsl(199, 35%, 19%);
-  --silver: hsl(198, 23%, 72%);
-  --silver-hover: hsl(197, 33%, 89%);
-
-  --raw-light-yellow: 39 88% 58%;
-  --raw-light-blue: 178 60% 48%;
-  --raw-semi-dark-navy: 199 35% 19%;
-  --raw-silver: 198 23% 72%;
-
-  /* Border Radius */
-  --border-radius-1: 0.75rem;
-
-  /* Spacing */
-  --flow-space: 1.25rem;
-  --gap: 0.75rem;
-}
-
-@media (min-width: 48em) {
-  :root {
-    --font-size-500: 2.5rem;
-    --font-size-400: 1.5rem;
-    --font-size-300: 1.25rem;
-    --font-size-200: 1rem;
-
-    --flow-space: 1.5rem;
-    --gap: 1.25rem;
-  }
 }
 
 *,
@@ -68,10 +23,25 @@ input {
   font: inherit;
 }
 
+input[type="radio"] {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem 1.25rem;
+  text-transform: inherit;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   width: 100%;
+}
+
+h1,
+h2 {
+  text-align: center;
 }
 
 body {
@@ -86,7 +56,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Temporary Styling */
 table {
   width: 100%;
   margin-top: 1.75rem;
@@ -105,95 +74,86 @@ td {
   padding: 1rem;
 }
 
-input[type="radio"] {
-  cursor: pointer;
+.form {
+  display: flex;
+  gap: 0.5rem;
 }
 
-button {
-  cursor: pointer;
-  padding: 0.5rem 1.25rem;
-  text-transform: inherit;
+.form > input {
+  width: 100%;
 }
 
-/* Sr only class */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap; /* added line */
-  border: 0;
+/* Text Utility */
+.text--center {
+  text-align: center;
 }
 
-/* Utility Classes */
-.flow > * + * {
-  margin-top: var(--flow-space);
+/* Flex Utility */
+.flex {
+  display: flex;
+  gap: 0.5rem;
 }
 
-/* Layouts*/
-.container {
-  max-width: 32rem;
-  padding-inline: 1rem;
+.flex--gap-200 {
+  gap: 2rem;
 }
 
-/* Background */
-.background-blue {
-  background-color: var(--light-blue);
+.flex--gap-100 {
+  gap: 1rem;
 }
 
-.background-yellow {
-  background-color: var(--light-yellow);
+.flex--justify-center {
+  justify-content: center;
 }
 
-.background-semi-dark {
-  background-color: var(--semi-dark-navy);
+.flex--justify-space {
+  justify-content: space-between;
 }
 
-.background-dark {
-  background-color: var(--dark-navy);
+.flex--align-center {
+  align-items: center;
 }
 
-.background-silver {
-  background-color: var(--silver);
+.flex--center {
+  justify-content: center;
+  align-items: center;
 }
 
-/* Text Color */
-.text-silver {
-  color: var(--silver);
+/* Grid Utility */
+.grid {
+  display: grid;
 }
 
-.text-navy {
-  color: var(--dark-navy);
+.grid--content-center {
+  place-content: center;
 }
 
-.text-yellow {
-  color: var(--light-yellow);
+.grid--items-center {
+  place-items: center;
 }
 
-.text-blue {
-  color: var(--light-blue);
+/* Margins */
+.margin-300 {
+  margin-top: 2rem;
 }
 
-/* Font size */
-.font-size-500 {
-  font-size: var(--font-size-500);
+.margin-200 {
+  margin-top: 1.5rem;
 }
 
-.font-size-400 {
-  font-size: var(--font-size-400);
+.margin-100 {
+  margin-top: 1rem;
 }
 
-.font-size-300 {
-  font-size: var(--font-size-300);
+/* Width */
+.width-300 {
+  width: 64rem;
 }
 
-.font-size-200 {
-  font-size: var(--font-size-200);
+.width-200 {
+  width: 48rem;
 }
 
-.font-size-100 {
-  font-size: var(--font-size-100);
+.width-100 {
+  width: 36rem;
 }

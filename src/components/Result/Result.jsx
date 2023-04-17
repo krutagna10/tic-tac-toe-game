@@ -1,7 +1,7 @@
 import GameContext from "../../context/GameContext";
 import { useContext } from "react";
 
-function Result({ result, onPlayAgain }) {
+function Result({ result, onPlayAgain, onQuit }) {
   const { choices, onSwapChoices } = useContext(GameContext);
 
   function handlePlayAgain() {
@@ -17,6 +17,7 @@ function Result({ result, onPlayAgain }) {
           <th>Computer Choice</th>
           <th>Result</th>
           <th>Play Again Button</th>
+          <th>Quit Button</th>
         </tr>
       </thead>
       <tbody>
@@ -26,6 +27,9 @@ function Result({ result, onPlayAgain }) {
           <td>{result}</td>
           <td>
             <button onClick={handlePlayAgain}>Play Again</button>
+          </td>
+          <td>
+            <button onClick={onQuit}>Quit</button>
           </td>
         </tr>
       </tbody>
