@@ -38,8 +38,8 @@ function Game({ onGameFinished }) {
   }
 
   function checkForDraw() {
+    console.log(options.current);
     if (options.current.length === 0) {
-      onResultChange("draw");
       onGameFinished();
       return true;
     }
@@ -95,6 +95,18 @@ function Game({ onGameFinished }) {
         <button onClick={handleRestart}>Restart Game</button>
       </div>
       <Score />
+      <table>
+        <thead>
+          <tr>
+            <th>Options Array</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[{options.current.join(",  ")}]</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

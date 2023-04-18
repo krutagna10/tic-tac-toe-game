@@ -64,7 +64,6 @@ function GameProvider({ children }) {
   }
 
   function handleUpdateScore(result) {
-    console.log(scores);
     if (result === "win") {
       scoresDispatch({ type: "increment-user-score" });
     } else if (result === "draw") {
