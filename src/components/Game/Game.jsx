@@ -2,7 +2,6 @@ import { ChoiceContext, GameContext } from "../../context/GameContext";
 import GameBoard from "../GameBoard/GameBoard";
 import { useEffect, useRef, useState, useContext } from "react";
 import Score from "../Score/Score";
-import Arrays from "../Arrays/Arrays";
 
 const winConditions = [
   [0, 1, 2],
@@ -79,13 +78,9 @@ function Game({ onGameFinished }) {
   }
 
   function handleRestart() {
-    const restartGame = window.confirm("Restart the Game");
-
-    if (restartGame) {
-      setUserArray([]);
-      setComputerArray([]);
-      options.current = [1, 2, 3, 4, 5, 6, 7, 8];
-    }
+    setUserArray([]);
+    setComputerArray([]);
+    options.current = [1, 2, 3, 4, 5, 6, 7, 8];
   }
 
   return (
@@ -100,11 +95,6 @@ function Game({ onGameFinished }) {
         <button onClick={handleRestart}>Restart Game</button>
       </div>
       <Score />
-      <Arrays
-        userArray={userArray}
-        computerArray={computerArray}
-        optionsArray={options.current}
-      />
     </div>
   );
 }

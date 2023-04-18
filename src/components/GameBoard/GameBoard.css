@@ -5,11 +5,11 @@
 }
 
 .game__btn {
-  width: 8.5rem;
-  height: 8.5rem;
+  width: 7.5rem;
+  height: 7.5rem;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 30%;
+  background-size: 25%;
   border: 2px solid black;
   border-radius: 0.25rem;
 }

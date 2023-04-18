@@ -3,11 +3,17 @@ import { useContext } from "react";
 
 function Result({ onPlayAgain, onQuit }) {
   const { choices, onSwapChoices } = useContext(ChoiceContext);
+  const { onResetScores } = useContext(GameContext);
   const { result } = useContext(GameContext);
 
   function handlePlayAgain() {
     onPlayAgain();
     onSwapChoices();
+  }
+
+  function handleQuit() {
+    onQuit();
+    onResetScores();
   }
 
   return (
@@ -30,7 +36,7 @@ function Result({ onPlayAgain, onQuit }) {
             <button onClick={handlePlayAgain}>Play Again</button>
           </td>
           <td>
-            <button onClick={onQuit}>Quit</button>
+            <button onClick={handleQuit}>Quit</button>
           </td>
         </tr>
       </tbody>

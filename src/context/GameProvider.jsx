@@ -74,6 +74,10 @@ function GameProvider({ children }) {
     }
   }
 
+  function handleResetScores() {
+    scoresDispatch({ type: "reset-scores" });
+  }
+
   const choiceContextValue = {
     choices: { ...choices },
     onChoice: handleChoice,
@@ -84,6 +88,7 @@ function GameProvider({ children }) {
     result: result,
     scores: scores,
     onResultChange: handleResultChange,
+    onResetScores: handleResetScores,
   };
 
   return (

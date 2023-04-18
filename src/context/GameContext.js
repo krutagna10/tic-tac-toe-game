@@ -10,6 +10,7 @@ const GameContext = createContext({
   result: "",
   scores: {},
   onResultChange: (result) => {},
+  onResetScores: () => {},
 });
 
 export { ChoiceContext, GameContext };
