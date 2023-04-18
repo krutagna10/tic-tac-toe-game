@@ -1,4 +1,9 @@
-function Score({ user, draw, computer }) {
+import { GameContext } from "../../context/GameContext";
+import { useContext } from "react";
+
+function Score() {
+  const { scores } = useContext(GameContext);
+
   return (
     <>
       <h2>Scores</h2>
@@ -12,9 +17,9 @@ function Score({ user, draw, computer }) {
         </thead>
         <tbody>
           <tr>
-            <td>{user}</td>
-            <td>{draw}</td>
-            <td>{computer}</td>
+            <td>{scores.user}</td>
+            <td>{scores.draw}</td>
+            <td>{scores.computer}</td>
           </tr>
         </tbody>
       </table>

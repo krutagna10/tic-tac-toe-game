@@ -1,4 +1,4 @@
-import GameContext from "../../context/GameContext";
+import { ChoiceContext, GameContext } from "../../context/GameContext";
 import GameBoard from "../GameBoard/GameBoard";
 import { useEffect, useRef, useState, useContext } from "react";
 import Score from "../Score/Score";
@@ -15,8 +15,9 @@ const winConditions = [
   [2, 4, 6],
 ];
 
-function Game({ onResultChange, scores }) {
-  const { choices } = useContext(GameContext);
+function Game({ onGameFinished }) {
+  const { choices } = useContext(ChoiceContext);
+  const { onResultChange } = useContext(GameContext);
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
   const options = useRef([0, 1, 2, 3, 4, 5, 6, 7, 8]);
@@ -31,6 +32,7 @@ function Game({ onResultChange, scores }) {
     for (const condition of winConditions) {
       if (condition.every((element) => arr.includes(element))) {
         player === "user" ? onResultChange("win") : onResultChange("lose");
+        onGameFinished();
         return true;
       }
     }
@@ -39,6 +41,7 @@ function Game({ onResultChange, scores }) {
   function checkForDraw() {
     if (options.current.length === 0) {
       onResultChange("draw");
+      onGameFinished();
       return true;
     }
     return false;
@@ -96,7 +99,7 @@ function Game({ onResultChange, scores }) {
       <div className="grid grid--items-center margin-200">
         <button onClick={handleRestart}>Restart Game</button>
       </div>
-      <Score {...scores} />
+      <Score />
       <Arrays
         userArray={userArray}
         computerArray={computerArray}

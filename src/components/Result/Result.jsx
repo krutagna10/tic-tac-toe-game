@@ -1,8 +1,9 @@
-import GameContext from "../../context/GameContext";
+import { ChoiceContext, GameContext } from "../../context/GameContext";
 import { useContext } from "react";
 
-function Result({ result, onPlayAgain, onQuit }) {
-  const { choices, onSwapChoices } = useContext(GameContext);
+function Result({ onPlayAgain, onQuit }) {
+  const { choices, onSwapChoices } = useContext(ChoiceContext);
+  const { result } = useContext(GameContext);
 
   function handlePlayAgain() {
     onPlayAgain();

@@ -1,10 +1,10 @@
-import GameContext from "../../context/GameContext";
-import { useEffect, useState } from "react";
+import { ChoiceContext } from "../../context/GameContext";
+import { useState } from "react";
 import { useContext } from "react";
 
 function Choice({ onStartGame }) {
   const [choices, setChoices] = useState({ user: "x", computer: "o" });
-  const { onChoice } = useContext(GameContext);
+  const { onChoice } = useContext(ChoiceContext);
 
   function handleRadioChange(event) {
     // Storing user choice in user choice variable

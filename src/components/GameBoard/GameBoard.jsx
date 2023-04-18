@@ -1,4 +1,4 @@
-import GameContext from "../../context/GameContext";
+import { ChoiceContext } from "../../context/GameContext";
 import React, { useContext } from "react";
 import xIcon from "../../assets/images/x-icon.png";
 import oIcon from "../../assets/images/o-icon.png";
@@ -10,7 +10,7 @@ const icons = {
 };
 
 function GameBoard({ onUserChoice, userArray, computerArray }) {
-  const { choices } = useContext(GameContext);
+  const { choices } = useContext(ChoiceContext);
 
   function isIndexPresent(index) {
     let set = new Set([...userArray, ...computerArray]);

@@ -1,9 +1,15 @@
 import { createContext } from "react";
 
-const GameContext = createContext({
+const ChoiceContext = createContext({
   choices: {},
   onChoice: (userChoice, computerChoice) => {},
   onSwapChoices: () => {},
 });
 
-export default GameContext;
+const GameContext = createContext({
+  result: "",
+  scores: {},
+  onResultChange: (result) => {},
+});
+
+export { ChoiceContext, GameContext };
