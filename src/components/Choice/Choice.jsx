@@ -26,6 +26,7 @@ function Choice({ onStartGame }) {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Pick your choice</h2>
+      <h4 className="text--center">(X Goes First)</h4>
       <table>
         <thead>
           <tr>
