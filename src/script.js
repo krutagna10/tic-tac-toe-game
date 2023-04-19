@@ -1,18 +1,12 @@
-const winConditions = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
+const sentence = "There was a monkey who knew Javascript";
 
-const userArray = [0, 1];
+const pattern = /w[a-z]s/;
 
-for (const condition of winConditions) {
-  if (condition.every((element) => userArray.includes(element))) {
-    console.log("True");
-  }
-}
+// [abc] => contains a, b or c | [^abc] => not a, b, or c
+
+const test = pattern.test(sentence);
+console.log(test);
+
+const match = sentence.match(pattern);
+
+console.log(match);

@@ -95,22 +95,6 @@ function Game({ onGameFinished }) {
         <button onClick={handleRestart}>Restart Game</button>
       </div>
       <Score />
-      <table>
-        <thead>
-          <tr>
-            <th>User Array</th>
-            <th>Options Array</th>
-            <th>Computer Array</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[{userArray.join(", ")}]</td>
-            <td>[{computerArray.join(", ")}]</td>
-            <td>[{options.current.join(", ")}]</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   );
 }
