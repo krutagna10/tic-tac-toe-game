@@ -38,8 +38,8 @@ function Game({ onGameFinished }) {
   }
 
   function checkForDraw() {
-    console.log(options.current);
     if (options.current.length === 0) {
+      onResultChange("draw");
       onGameFinished();
       return true;
     }
@@ -72,8 +72,8 @@ function Game({ onGameFinished }) {
     // Removing index from choices array
     options.current = options.current.filter((item) => item !== index);
 
-    if (!checkForDraw()) {
-      checkForWin(nextArray, "computer");
+    if (!checkForWin(nextArray, "computer")) {
+      checkForDraw();
     }
   }
 
@@ -98,12 +98,16 @@ function Game({ onGameFinished }) {
       <table>
         <thead>
           <tr>
+            <th>User Array</th>
             <th>Options Array</th>
+            <th>Computer Array</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>[{options.current.join(",  ")}]</td>
+            <td>[{userArray.join(", ")}]</td>
+            <td>[{computerArray.join(", ")}]</td>
+            <td>[{options.current.join(", ")}]</td>
           </tr>
         </tbody>
       </table>
