@@ -1,0 +1,25 @@
+.choice__label {
+  color: var(--silver);
+  width: 100%;
+  background-color: purple;
+  border: 2px solid lightgreen;
+  padding-block: 1rem;
+  cursor: pointer;
+  display: block;
+}
+
+.division {
+  border: 3px solid orange;
+}
+
+.inner-division {
+  border: 3px solid cadetblue;
+}
+
+.choice__radio {
+  display: none;
+}
+
+.choice__btn {
+  width: 100%;
+}

@@ -1,73 +1,55 @@
-import { ChoiceContext } from "../../context/GameContext";
+import Button from "../UI/Button/Button";
+import logo from "../../assets/logo.svg";
+import "./Choice.css";
 import { useState } from "react";
-import { useContext } from "react";
 
-function Choice({ onStartGame }) {
-  const [choices, setChoices] = useState({ user: "x", computer: "o" });
-  const { onChoice } = useContext(ChoiceContext);
+function Choice() {
+  const [userChoice, setUserChoice] = useState("");
 
-  function handleRadioChange(event) {
-    // Storing user choice in user choice variable
-    const userChoice = event.target.value;
-
-    // Setting computer choice the opposite of user choice
-    const computerChoice = userChoice === "x" ? "o" : "x";
-
-    // Setting choices
-    setChoices({ user: userChoice, computer: computerChoice });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    onChoice(choices.user, choices.computer);
-    onStartGame();
+  function handleUserChoiceChange(event) {
+    console.log(event.target.value);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Pick your choice</h2>
-      <h4 className="text--center">(X Goes First)</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>X Choice Button</th>
-            <th>O Choice Button</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <label>
-                X :{" "}
-                <input
-                  type="radio"
-                  onChange={handleRadioChange}
-                  name="input__radio"
-                  value="x"
-                  checked={choices.user === "x"}
-                />
-              </label>
-            </td>
-            <td>
-              <label>
-                O :{" "}
-                <input
-                  type="radio"
-                  onChange={handleRadioChange}
-                  name="input__radio"
-                  value="o"
-                />
-              </label>
-            </td>
-          </tr>
-          <tr>
-            <td colSpan="2">
-              <button type="submit">Start Game</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
+    <div className="choice grid grid--items-center">
+      <img className="choice__logo" src={logo} alt="Tic Tac Toe" />
+
+      <form className="choice__form flow">
+        <div className="choice__radio-wrapper">
+          <p className="choice__radio-text">Pick Player 1's mark</p>
+          <div className="division">
+            <div className="inner-division">
+              <input
+                className="choice__radio"
+                id="choice__radio-x"
+                onChange={handleUserChoiceChange}
+                type="radio"
+                name="choice__radio"
+                value="x"
+              />
+              <label className="choice__label" htmlFor="choice__radio-x" />
+            </div>
+            <div className="inner-division">
+              <input
+                className="choice__radio"
+                id="choice__radio-o"
+                onChange={handleUserChoiceChange}
+                type="radio"
+                name="choice__radio"
+                value="o"
+              />
+              <label className="choice__label" htmlFor="choice__radio-o" />
+            </div>
+          </div>
+        </div>
+        <Button className="choice__btn btn--yellow" type="submit">
+          New Game (vs CPU)
+        </Button>
+        <Button className="choice__btn btn--silver" type="submit">
+          New Game (vs CPU)
+        </Button>
+      </form>
+    </div>
   );
 }
 

@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="app">
       <GameProvider>
-        <h1>Tic Tac Toe Game</h1>
+        <h1 className="sr-only">Tic Tac Toe Game</h1>
         <Choice />
       </GameProvider>
     </div>

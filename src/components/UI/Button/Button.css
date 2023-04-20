@@ -1,0 +1,31 @@
+.btn {
+  font-size: var(--font-size-300);
+  font-weight: var(--font-weight-bold);
+  display: block;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  text-transform: inherit;
+  border: none;
+  border-radius: 0.6125rem;
+  letter-spacing: 1.25px;
+}
+
+.btn--yellow {
+  background-color: var(--yellow);
+  box-shadow: 0 6px hsla(var(--raw-yellow), 0.6);
+}
+
+.btn--yellow:hover {
+  background-color: var(--light-yellow);
+}
+
+.btn--silver {
+  background-color: var(--silver);
+  box-shadow: 0 6px hsla(var(--raw-silver), 0.6);
+}
+
+.btn--silver:hover {
+  background-color: var(--light-silver);
+}

@@ -73,8 +73,6 @@ function GameProvider({ children }) {
     }
   }
 
-  console.log(result);
-
   function handleResetScores() {
     scoresDispatch({ type: "reset-scores" });
   }
