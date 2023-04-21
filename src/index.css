@@ -31,6 +31,10 @@
   /* Spacing */
   --flow-space: 1rem;
   --gap: 1rem;
+
+  /* Border Radius  */
+  --border-radius-200: 1rem;
+  --border-radius-100: 0.75rem;
 }
 
 @media (min-width: 48em) {

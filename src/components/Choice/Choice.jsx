@@ -1,51 +1,55 @@
+import { ChoiceContext, GameContext } from "../../context/GameContext";
 import Button from "../UI/Button/Button";
 import logo from "../../assets/logo.svg";
+import { useState, useContext } from "react";
 import "./Choice.css";
-import { useState } from "react";
+
+const choices = ["x", "o"];
 
 function Choice() {
-  const [userChoice, setUserChoice] = useState("");
+  const { onChoice } = useContext(ChoiceContext);
+
+  const [userChoice, setUserChoice] = useState("x");
 
   function handleUserChoiceChange(event) {
-    console.log(event.target.value);
+    setUserChoice(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const computerChoice = userChoice === "x" ? "o" : "x";
+    onChoice(userChoice, computerChoice);
   }
 
   return (
     <div className="choice grid grid--items-center">
       <img className="choice__logo" src={logo} alt="Tic Tac Toe" />
 
-      <form className="choice__form flow">
-        <div className="choice__radio-wrapper">
-          <p className="choice__radio-text">Pick Player 1's mark</p>
-          <div className="division">
-            <div className="inner-division">
-              <input
-                className="choice__radio"
-                id="choice__radio-x"
-                onChange={handleUserChoiceChange}
-                type="radio"
-                name="choice__radio"
-                value="x"
-              />
-              <label className="choice__label" htmlFor="choice__radio-x" />
-            </div>
-            <div className="inner-division">
-              <input
-                className="choice__radio"
-                id="choice__radio-o"
-                onChange={handleUserChoiceChange}
-                type="radio"
-                name="choice__radio"
-                value="o"
-              />
-              <label className="choice__label" htmlFor="choice__radio-o" />
-            </div>
+      <form className="choice__form flow" onSubmit={handleSubmit}>
+        <div className="choice__content flow">
+          <p className="choice__text">Pick Player 1's mark</p>
+          <div className="choice__radios  flex">
+            {choices.map((choice, index) => (
+              <div className="choice__radio-wrapper" key={index}>
+                <input
+                  className="choice__radio"
+                  id={`choice__radio--${choice}`}
+                  name="choice__radio"
+                  type="radio"
+                  onChange={handleUserChoiceChange}
+                  value={choice}
+                  checked={userChoice === choice}
+                />
+                <label
+                  className={`choice__label choice__label--${choice}`}
+                  htmlFor={`choice__radio--${choice}`}
+                />
+              </div>
+            ))}
           </div>
+          <p className="choice__text">Remember X Goes first</p>
         </div>
         <Button className="choice__btn btn--yellow" type="submit">
-          New Game (vs CPU)
-        </Button>
-        <Button className="choice__btn btn--silver" type="submit">
           New Game (vs CPU)
         </Button>
       </form>
