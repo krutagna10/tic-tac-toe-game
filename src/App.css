@@ -1,0 +1,115 @@
+/* Table Styling */
+table {
+  width: 100%;
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+th,
+td {
+  padding: 1rem;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+/* Form utility */
+.form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form > input {
+  width: 100%;
+}
+
+/* Text Utility */
+.text--center {
+  text-align: center;
+}
+
+/* Flex Utility */
+.flex {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.flex--gap-200 {
+  gap: 2rem;
+}
+
+.flex--gap-100 {
+  gap: 1rem;
+}
+
+.flex--justify-center {
+  justify-content: center;
+}
+
+.flex--justify-space {
+  justify-content: space-between;
+}
+
+.flex--align-center {
+  align-items: center;
+}
+
+.flex--center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Grid Utility */
+.grid {
+  display: grid;
+}
+
+.grid--content-center {
+  place-content: center;
+}
+
+.grid--items-center {
+  place-items: center;
+}
+
+/* Margins */
+.margin-300 {
+  margin-top: 2rem;
+}
+
+.margin-200 {
+  margin-top: 1.5rem;
+}
+
+.margin-100 {
+  margin-top: 1rem;
+}
+
+/* Width */
+.width-300 {
+  width: 64rem;
+}
+
+.width-200 {
+  width: 48rem;
+}
+
+.width-100 {
+  width: 36rem;
+}
+
+.width-100-percent {
+  width: 100%;
+}
+
+.width-50-percent {
+  width: 50%;
+}
+
+.width-25-percent {
+  width: 25%;
+}

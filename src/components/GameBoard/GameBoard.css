@@ -1,0 +1,17 @@
+.game__btns {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.game__btn {
+  width: 8rem;
+  height: 8rem;
+  cursor: pointer;
+  background-color: var(--semi-dark-navy);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  border-radius: var(--border-radius-100);
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+  border: none;
+}

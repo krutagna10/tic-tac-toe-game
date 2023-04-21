@@ -6,7 +6,7 @@ import "./Choice.css";
 
 const choices = ["x", "o"];
 
-function Choice() {
+function Choice({ onStartGame }) {
   const { onChoice } = useContext(ChoiceContext);
 
   const [userChoice, setUserChoice] = useState("x");
@@ -19,6 +19,7 @@ function Choice() {
     event.preventDefault();
     const computerChoice = userChoice === "x" ? "o" : "x";
     onChoice(userChoice, computerChoice);
+    onStartGame();
   }
 
   return (
