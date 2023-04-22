@@ -17,14 +17,8 @@ function GameBoard({ userArray, computerArray, onUserChoice }) {
     return set.has(index);
   }
 
-  function handleClick() {
-    console.log("Hello World");
-  }
-
-  console.log({ userArray, computerArray });
-
   return (
-    <div className="game__btns grid">
+    <div className="game__btns grid margin-300">
       {[...new Array(9)].map((_, index) =>
         isIndexPresent(index) ? (
           <button
