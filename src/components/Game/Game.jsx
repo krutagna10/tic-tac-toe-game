@@ -18,7 +18,7 @@ const WIN_CONDITIONS = [
   [2, 4, 6],
 ];
 
-function Game() {
+function Game({ onQuit }) {
   const { choices, onSwapChoices } = useContext(ChoiceContext);
   const { onResultChange } = useContext(GameContext);
   const [isGameFinished, setIsGameFinished] = useState(false);
@@ -110,7 +110,9 @@ function Game() {
         computerArray={computerArray}
         optionsArray={options.current}
       />
-      {isGameFinished && <Result onPlayAgain={handlePlayAgain} />}
+      {isGameFinished && (
+        <Result onPlayAgain={handlePlayAgain} onQuit={onQuit} />
+      )}
     </div>
   );
 }

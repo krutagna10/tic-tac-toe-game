@@ -3,9 +3,14 @@ import { useContext } from "react";
 import Backdrop from "../UI/Backdrop/Backdrop";
 import "./Result.css";
 
-function Result({ onPlayAgain }) {
+function Result({ onPlayAgain, onQuit }) {
   const { choices } = useContext(ChoiceContext);
-  const { result } = useContext(GameContext);
+  const { result, onResetScores } = useContext(GameContext);
+
+  function handleQuit() {
+    onQuit();
+    onResetScores();
+  }
 
   return (
     <>
@@ -30,7 +35,7 @@ function Result({ onPlayAgain }) {
                 <button onClick={onPlayAgain}>Play Again</button>
               </td>
               <td>
-                <button>Quit</button>
+                <button onClick={handleQuit}>Quit</button>
               </td>
             </tr>
           </tbody>

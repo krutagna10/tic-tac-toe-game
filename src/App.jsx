@@ -11,11 +11,19 @@ function App() {
     setIsChoiceSelected(true);
   }
 
+  function handleQuit() {
+    setIsChoiceSelected(false);
+  }
+
   return (
     <div className="app">
       <GameProvider>
         <h1 className="sr-only">Tic Tac Toe Game</h1>
-        {isChoiceSelected ? <Game /> : <Choice onStartGame={handleStartGame} />}
+        {isChoiceSelected ? (
+          <Game onQuit={handleQuit} />
+        ) : (
+          <Choice onStartGame={handleStartGame} />
+        )}
       </GameProvider>
     </div>
   );
