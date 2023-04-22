@@ -1,9 +1,9 @@
 import GameBoard from "../GameBoard/GameBoard";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import "./Game.css";
 import choice from "../Choice/Choice";
 import Result from "../Result/Result";
-import { GameContext } from "../../context/GameContext";
+import { ChoiceContext, GameContext } from "../../context/GameContext";
 import Arrays from "../Arrays/Arrays";
 import Score from "../Score/Score";
 
@@ -19,11 +19,19 @@ const WIN_CONDITIONS = [
 ];
 
 function Game() {
+  const { choices, onSwapChoices } = useContext(ChoiceContext);
   const { onResultChange } = useContext(GameContext);
   const [isGameFinished, setIsGameFinished] = useState(false);
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
   const options = useRef([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+
+  // Getting computer choices when the choice of computer is x
+  useEffect(() => {
+    if (choices.computer === "x") {
+      handleComputerChoice();
+    }
+  }, []);
 
   function checkForWin(arr, player) {
     for (const condition of WIN_CONDITIONS) {
@@ -72,11 +80,20 @@ function Game() {
     }
   }
 
-  function handlePlayAgain() {
-    setIsGameFinished(false);
+  function handleResetValues() {
     setUserArray([]);
     setComputerArray([]);
     options.current = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  }
+
+  function handlePlayAgain() {
+    // Setting is Game Finished to false
+    setIsGameFinished(false);
+
+    //  Calling reset values function
+    handleResetValues();
+
+    onSwapChoices();
   }
 
   return (
