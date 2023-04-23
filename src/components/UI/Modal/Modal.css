@@ -1,0 +1,12 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: var(--semi-dark-navy);
+  z-index: 99;
+  display: grid;
+  place-content: center;
+  min-height: 18rem;
+}

@@ -6,6 +6,7 @@ import Result from "../Result/Result";
 import { ChoiceContext, GameContext } from "../../context/GameContext";
 import Arrays from "../Arrays/Arrays";
 import Score from "../Score/Score";
+import Restart from "../Restart/Restart";
 
 const WIN_CONDITIONS = [
   [0, 1, 2],
@@ -22,6 +23,7 @@ function Game({ onQuit }) {
   const { choices, onSwapChoices } = useContext(ChoiceContext);
   const { onResultChange } = useContext(GameContext);
   const [isGameFinished, setIsGameFinished] = useState(false);
+  const [isRestartVisible, setIsRestartVisible] = useState(false);
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
   const options = useRef([0, 1, 2, 3, 4, 5, 6, 7, 8]);
@@ -86,6 +88,14 @@ function Game({ onQuit }) {
     options.current = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   }
 
+  function handleRestart() {
+    handleResetValues();
+  }
+
+  function handleCancelRestart() {
+    setIsRestartVisible(false);
+  }
+
   function handlePlayAgain() {
     // Setting is Game Finished to false
     setIsGameFinished(false);
@@ -99,6 +109,14 @@ function Game({ onQuit }) {
   return (
     <div className="game">
       <h1 className="text--center">Game Board</h1>
+      <div className="grid grid--items-center">
+        <button
+          className="margin-300"
+          onClick={() => setIsRestartVisible(true)}
+        >
+          Restart
+        </button>
+      </div>
       <GameBoard
         userArray={userArray}
         computerArray={computerArray}
@@ -110,6 +128,13 @@ function Game({ onQuit }) {
         computerArray={computerArray}
         optionsArray={options.current}
       />
+
+      {isRestartVisible && (
+        <Restart
+          onResetValues={handleResetValues}
+          onCancelRestart={handleCancelRestart}
+        />
+      )}
       {isGameFinished && (
         <Result onPlayAgain={handlePlayAgain} onQuit={onQuit} />
       )}
