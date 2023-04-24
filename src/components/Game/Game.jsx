@@ -1,12 +1,9 @@
 import GameBoard from "../GameBoard/GameBoard";
 import { useState, useRef, useContext, useEffect } from "react";
 import "./Game.css";
-import choice from "../Choice/Choice";
 import Result from "../Result/Result";
 import { ChoiceContext, GameContext } from "../../context/GameContext";
-import Arrays from "../Arrays/Arrays";
 import GameFooter from "../GameFooter/GameFooter";
-import Restart from "../Restart/Restart";
 import GameHeader from "../GameHeader/GameHeader";
 
 const WIN_CONDITIONS = [
@@ -109,11 +106,6 @@ function Game({ onQuit }) {
         onUserChoice={handleUserChoice}
       />
       <GameFooter />
-      <Arrays
-        userArray={userArray}
-        computerArray={computerArray}
-        optionsArray={options.current}
-      />
       {isGameFinished && (
         <Result onPlayAgain={handlePlayAgain} onQuit={onQuit} />
       )}
