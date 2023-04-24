@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GameContext } from "../../context/GameContext";
 
-function Score() {
+function GameFooter() {
   const { scores } = useContext(GameContext);
 
   return (
@@ -24,4 +24,4 @@ function Score() {
   );
 }
 
-export default Score;
+export default GameFooter;

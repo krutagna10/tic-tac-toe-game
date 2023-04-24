@@ -1,6 +1,6 @@
 import Modal from "../UI/Modal/Modal";
 
-function Restart({ onCancelRestart }) {
+function Restart({ onRestart, onCancelRestart }) {
   return (
     <Modal>
       <table>
@@ -16,7 +16,7 @@ function Restart({ onCancelRestart }) {
               <button onClick={onCancelRestart}>Cancel</button>
             </td>
             <td>
-              <button>Restart</button>
+              <button onClick={onRestart}>Restart</button>
             </td>
           </tr>
         </tbody>
