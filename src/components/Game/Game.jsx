@@ -98,14 +98,13 @@ function Game({ onQuit }) {
 
   return (
     <div className="game">
-      <h1 className="text--center">Game Board</h1>
       <GameHeader onResetValues={handleResetValues} />
       <GameBoard
         userArray={userArray}
         computerArray={computerArray}
         onUserChoice={handleUserChoice}
       />
-      <GameFooter />
+      {/*<GameFooter />*/}
       {isGameFinished && (
         <Result onPlayAgain={handlePlayAgain} onQuit={onQuit} />
       )}

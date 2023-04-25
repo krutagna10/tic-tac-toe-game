@@ -1,6 +1,8 @@
+import { GameContext } from "../../context/GameContext";
 import { useContext, useState } from "react";
 import Restart from "../Restart/Restart";
-import { GameContext } from "../../context/GameContext";
+import restartIcon from "../../assets/icon-restart.svg";
+import logo from "../../assets/logo.svg";
 
 function GameHeader({ onResetValues }) {
   const { onResetScores } = useContext(GameContext);
@@ -20,12 +22,15 @@ function GameHeader({ onResetValues }) {
     setIsRestartVisible(false);
   }
 
-  // function handleRestart()
-
   return (
     <>
-      <div className="grid grid--items-center margin-300">
-        <button onClick={showRestart}>Restart</button>
+      <div className="header flex flex--justify-space">
+        <div className="header__logo-wrapper">
+          <img src={logo} alt="Tic Tac Toe Game" />
+        </div>
+        <button className="header__btn" onClick={showRestart}>
+          <img src={restartIcon} alt="restart" />
+        </button>
       </div>
       {isRestartVisible && (
         <Restart

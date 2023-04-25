@@ -1,9 +1,13 @@
+.choice {
+  padding-inline: 1rem;
+}
+
 .choice__logo {
   margin-bottom: 2.5rem;
 }
 
 .choice__form {
-  min-width: 24rem;
+  width: min(calc(100vw - 2rem), 30rem);
   text-align: center;
 }
 
@@ -38,7 +42,13 @@
   cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 20%;
+  background-size: 25%;
+}
+
+@media (min-width: 24rem) {
+  .choice__label {
+    background-size: 17.5%;
+  }
 }
 
 .choice__radio:checked + .choice__label {

@@ -4,8 +4,8 @@
 }
 
 .game__btn {
-  width: 9.5rem;
-  height: 9.5rem;
+  width: min(30vw, 144px);
+  height: min(30vw, 144px);
   cursor: pointer;
   background-color: var(--semi-dark-navy);
   background-repeat: no-repeat;

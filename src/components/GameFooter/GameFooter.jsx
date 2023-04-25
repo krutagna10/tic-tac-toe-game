@@ -5,22 +5,20 @@ function GameFooter() {
   const { scores } = useContext(GameContext);
 
   return (
-    <table className="margin-300">
-      <thead>
-        <tr>
-          <th>User Score</th>
-          <th>Draw Score</th>
-          <th>Computer Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{scores.user}</td>
-          <td>{scores.draw}</td>
-          <td>{scores.computer}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div className="flex margin-300">
+      <div>
+        <p>User</p>
+        <p>{scores.user}</p>
+      </div>
+      <div>
+        <p>Draw</p>
+        <p>{scores.draw}</p>
+      </div>
+      <div>
+        <p>Computer</p>
+        <p>{scores.computer}</p>
+      </div>
+    </div>
   );
 }
 
