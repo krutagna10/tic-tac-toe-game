@@ -25,11 +25,10 @@ function Choice({ onStartGame }) {
   return (
     <div className="choice grid grid--items-center">
       <img className="choice__logo" src={logo} alt="Tic Tac Toe" />
-
       <form className="choice__form flow" onSubmit={handleSubmit}>
         <div className="choice__content flow">
           <p className="choice__text">Pick Player 1's mark</p>
-          <div className="choice__radios  flex">
+          <div className="choice__radios flex">
             {choices.map((choice, index) => (
               <div className="choice__radio-wrapper" key={index}>
                 <input
@@ -48,7 +47,9 @@ function Choice({ onStartGame }) {
               </div>
             ))}
           </div>
-          <p className="choice__text">Remember X Goes first</p>
+          <p className="choice__remainder-text font-size-100">
+            Remember : X Goes first
+          </p>
         </div>
         <Button className="choice__btn btn--yellow" type="submit">
           New Game (vs CPU)

@@ -17,10 +17,6 @@
   border-radius: var(--border-radius-100);
 }
 
-.choice__text {
-  color: white;
-}
-
 .choice__radios {
   border-radius: var(--border-radius-100);
   overflow: hidden;
@@ -28,6 +24,8 @@
 
 .choice__radio-wrapper {
   width: 100%;
+  background-color: var(--dark-navy);
+  padding: 0.4rem;
 }
 
 .choice__radio {
@@ -43,6 +41,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 25%;
+  border-radius: var(--border-radius-100);
 }
 
 @media (min-width: 24rem) {
@@ -69,6 +68,10 @@
 
 .choice__radio:checked + .choice__label--o {
   background-image: url("/src/assets/icon-o-dark-navy.svg");
+}
+
+.choice__remainder-text {
+  color: hsl(var(--raw-silver), 0.85);
 }
 
 .choice__btn {
