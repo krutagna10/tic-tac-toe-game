@@ -5,7 +5,7 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [isChoiceSelected, setIsChoiceSelected] = useState(false);
+  const [isChoiceSelected, setIsChoiceSelected] = useState(true);
 
   function handleStartGame() {
     setIsChoiceSelected(true);

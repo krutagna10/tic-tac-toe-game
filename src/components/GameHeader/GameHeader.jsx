@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import Restart from "../Restart/Restart";
 import restartIcon from "../../assets/icon-restart.svg";
 import logo from "../../assets/logo.svg";
+import "./GameHeader.css";
 
 function GameHeader({ onResetValues }) {
   const { onResetScores } = useContext(GameContext);

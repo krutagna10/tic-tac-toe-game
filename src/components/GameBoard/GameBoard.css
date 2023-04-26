@@ -1,6 +1,6 @@
 .game__btns {
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+  gap: clamp(0.75rem, 2vw, 1rem);
 }
 
 .game__btn {
@@ -12,6 +12,6 @@
   background-position: center;
   background-size: 40%;
   border-radius: var(--border-radius-100);
-  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px rgba(0, 0, 0, 0.35);
   border: none;
 }

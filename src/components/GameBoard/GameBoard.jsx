@@ -18,7 +18,7 @@ function GameBoard({ userArray, computerArray, onUserChoice }) {
   }
 
   return (
-    <div className="game__btns grid margin-300">
+    <div className="game__btns grid">
       {[...new Array(9)].map((_, index) =>
         isIndexPresent(index) ? (
           <button

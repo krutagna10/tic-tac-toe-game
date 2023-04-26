@@ -2,13 +2,14 @@
   padding-inline: 1rem;
 }
 
-.choice__logo {
-  margin-bottom: 2.5rem;
-}
-
 .choice__form {
   width: min(calc(100vw - 2rem), 30rem);
   text-align: center;
+}
+
+.choice__content,
+.choice__btn {
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .choice__content {
@@ -46,7 +47,7 @@
 
 @media (min-width: 24rem) {
   .choice__label {
-    background-size: 17.5%;
+    background-size: 16.5%;
   }
 }
 

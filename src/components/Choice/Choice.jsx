@@ -23,9 +23,11 @@ function Choice({ onStartGame }) {
   }
 
   return (
-    <div className="choice grid grid--items-center">
-      <img className="choice__logo" src={logo} alt="Tic Tac Toe" />
-      <form className="choice__form flow" onSubmit={handleSubmit}>
+    <div className="choice">
+      <form className="choice__form" onSubmit={handleSubmit}>
+        <div className="grid grid--items-center">
+          <img className="choice__logo" src={logo} alt="Tic Tac Toe" />
+        </div>
         <div className="choice__content flow">
           <p className="choice__text">Pick Player 1's mark</p>
           <div className="choice__radios flex">

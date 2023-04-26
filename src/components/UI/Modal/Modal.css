@@ -8,5 +8,5 @@
   z-index: 99;
   display: grid;
   place-content: center;
-  min-height: 18rem;
+  min-height: 15rem;
 }
