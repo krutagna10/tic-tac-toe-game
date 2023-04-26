@@ -44,9 +44,9 @@ function Game({ onQuit }) {
     return false;
   }
 
-  function checkForDraw() {
+  function checkForTie() {
     if (options.current.length === 0) {
-      onResultChange("draw");
+      onResultChange("tie");
       setIsGameFinished(true);
       return true;
     }
@@ -60,7 +60,7 @@ function Game({ onQuit }) {
     // Removing the index from options array
     options.current = options.current.filter((item) => item !== index);
 
-    if (!checkForWin(nextArray, "user") && !checkForDraw()) {
+    if (!checkForWin(nextArray, "user") && !checkForTie()) {
       handleComputerChoice();
     }
   }
@@ -76,7 +76,7 @@ function Game({ onQuit }) {
     options.current = options.current.filter((item) => item !== index);
 
     if (!checkForWin(nextArray, "computer")) {
-      checkForDraw();
+      checkForTie();
     }
   }
 

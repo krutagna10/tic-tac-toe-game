@@ -1,0 +1,29 @@
+.footer__score-wrapper {
+  width: 100%;
+  text-align: center;
+  border-radius: var(--border-radius-100);
+  background: darkcyan;
+  padding-block: 0.5rem;
+  color: var(--dark-navy);
+}
+
+.footer__score-label {
+  font-size: var(--font-size-100);
+}
+
+.footer__score {
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-bold);
+}
+
+.footer__score-wrapper:nth-child(1) {
+  background-color: var(--light-blue);
+}
+
+.footer__score-wrapper:nth-child(2) {
+  background-color: var(--silver);
+}
+
+.footer__score-wrapper:nth-child(3) {
+  background-color: var(--yellow);
+}

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Modal from "../UI/Modal/Modal";
 import Backdrop from "../UI/Backdrop/Backdrop";
 import "./Result.css";
+import Button from "../UI/Button/Button";
 
 function Result({ onPlayAgain, onQuit }) {
   const { choices } = useContext(ChoiceContext);
@@ -15,30 +16,17 @@ function Result({ onPlayAgain, onQuit }) {
 
   return (
     <Modal>
-      <table className="result">
-        <thead>
-          <tr>
-            <th>User Choice</th>
-            <th>Computer Choice</th>
-            <th>Result</th>
-            <th>Play Again Button</th>
-            <th>Quit Button</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{choices.user}</td>
-            <td>{choices.computer}</td>
-            <td>{result}</td>
-            <td>
-              <button onClick={onPlayAgain}>Play Again</button>
-            </td>
-            <td>
-              <button onClick={handleQuit}>Quit</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="result flow">
+        <h2 className="result__text font-size-500">{result}</h2>
+        <div className="result__btns flex flex--gap">
+          <Button className="btn--silver" onClick={handleQuit}>
+            Quit
+          </Button>
+          <Button className="btn--yellow" onClick={onPlayAgain}>
+            Next Round
+          </Button>
+        </div>
+      </div>
     </Modal>
   );
 }

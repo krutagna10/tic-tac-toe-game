@@ -2,7 +2,7 @@ import { ChoiceContext, GameContext } from "./GameContext";
 import { useReducer, useState } from "react";
 
 const INITIAL_CHOICES = { user: "x", computer: "o" };
-const INITIAL_SCORES = { user: 0, draw: 0, computer: 0 };
+const INITIAL_SCORES = { user: 0, tie: 0, computer: 0 };
 
 function choicesReducer(choices, action) {
   switch (action.type) {
@@ -23,14 +23,14 @@ function scoresReducer(scores, action) {
     case "increment-user-score": {
       return { ...scores, user: scores.user + 1 };
     }
-    case "increment-draw-score": {
-      return { ...scores, draw: scores.draw + 1 };
+    case "increment-tie-score": {
+      return { ...scores, tie: scores.tie + 1 };
     }
     case "increment-computer-score": {
       return { ...scores, computer: scores.computer + 1 };
     }
     case "reset-scores": {
-      return { user: 0, draw: 0, computer: 0 };
+      return { user: 0, tie: 0, computer: 0 };
     }
     default: {
       throw new Error("Invalid action: " + action.type);
@@ -66,8 +66,8 @@ function GameProvider({ children }) {
   function handleUpdateScore(result) {
     if (result === "win") {
       scoresDispatch({ type: "increment-user-score" });
-    } else if (result === "draw") {
-      scoresDispatch({ type: "increment-draw-score" });
+    } else if (result === "tie") {
+      scoresDispatch({ type: "increment-tie-score" });
     } else {
       scoresDispatch({ type: "increment-computer-score" });
     }

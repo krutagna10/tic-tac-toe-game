@@ -7,7 +7,7 @@ function GameFooter() {
 
   const scoresArr = [
     { label: "You", score: scores.user },
-    { label: "Ties", score: scores.draw },
+    { label: "Ties", score: scores.tie },
     { label: "CPU", score: scores.computer },
   ];
 

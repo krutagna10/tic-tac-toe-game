@@ -1,0 +1,9 @@
+.header__btn {
+  background-color: var(--silver);
+  border-radius: var(--border-radius-100);
+  transition: all 0.3s ease;
+}
+
+.header__btn:hover {
+  background-color: var(--light-silver);
+}
