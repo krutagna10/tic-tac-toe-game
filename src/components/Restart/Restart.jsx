@@ -9,10 +9,10 @@ function Restart({ onRestart, onCancelRestart }) {
         <h1 className="font-size-500">Restart Game ?</h1>
         <div className="restart__btns flex flex--center flex--gap">
           <Button className="btn--silver" onClick={onCancelRestart}>
-            Cancel
+            No, Cancel
           </Button>
           <Button className="btn--yellow" onClick={onRestart}>
-            Restart
+            Yes, Restart
           </Button>
         </div>
       </div>

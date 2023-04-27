@@ -1,10 +1,10 @@
 import GameBoard from "../GameBoard/GameBoard";
 import { useState, useRef, useContext, useEffect } from "react";
-import "./Game.css";
 import Result from "../Result/Result";
 import { ChoiceContext, GameContext } from "../../context/GameContext";
 import GameFooter from "../GameFooter/GameFooter";
 import GameHeader from "../GameHeader/GameHeader";
+import "./Game.css";
 
 const WIN_CONDITIONS = [
   [0, 1, 2],
@@ -21,7 +21,6 @@ function Game({ onQuit }) {
   const { choices, onSwapChoices } = useContext(ChoiceContext);
   const { onResultChange } = useContext(GameContext);
   const [isGameFinished, setIsGameFinished] = useState(false);
-  const [isRestartVisible, setIsRestartVisible] = useState(false);
   const [userArray, setUserArray] = useState([]);
   const [computerArray, setComputerArray] = useState([]);
   const options = useRef([0, 1, 2, 3, 4, 5, 6, 7, 8]);
@@ -93,6 +92,7 @@ function Game({ onQuit }) {
     //  Calling reset values function
     handleResetValues();
 
+    // Calling swap choices function
     onSwapChoices();
   }
 

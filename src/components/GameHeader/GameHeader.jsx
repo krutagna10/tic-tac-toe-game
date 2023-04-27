@@ -30,7 +30,7 @@ function GameHeader({ onResetValues }) {
           <img src={logo} alt="Tic Tac Toe Game" />
         </div>
         <button className="header__btn" onClick={showRestart}>
-          <img src={restartIcon} alt="restart" />
+          <img src={restartIcon} aria-hidden="true" alt="" />
         </button>
       </div>
       {isRestartVisible && (

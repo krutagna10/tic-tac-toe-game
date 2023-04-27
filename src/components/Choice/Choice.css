@@ -76,5 +76,6 @@
 }
 
 .choice__btn {
+  font-size: var(--font-size-300);
   width: 100%;
 }

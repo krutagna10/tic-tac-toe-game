@@ -8,5 +8,6 @@
   z-index: 99;
   display: grid;
   place-content: center;
-  min-height: 15rem;
+  padding-block: clamp(3rem, 10vw, 4.5rem);
+  box-shadow: 3px 15px 20px rgba(0, 0, 0, 0.5);
 }
