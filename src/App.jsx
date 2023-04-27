@@ -15,7 +15,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <main className="main">
       <GameProvider>
         <h1 className="sr-only">Tic Tac Toe Game</h1>
         {isChoiceSelected ? (
@@ -24,7 +24,7 @@ function App() {
           <Choice onStartGame={handleStartGame} />
         )}
       </GameProvider>
-    </div>
+    </main>
   );
 }
 

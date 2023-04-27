@@ -97,18 +97,20 @@ function Game({ onQuit }) {
   }
 
   return (
-    <div className="game flow">
-      <GameHeader onResetValues={handleResetValues} />
-      <GameBoard
-        userArray={userArray}
-        computerArray={computerArray}
-        onUserChoice={handleUserChoice}
-      />
-      <GameFooter />
-      {isGameFinished && (
-        <Result onPlayAgain={handlePlayAgain} onQuit={onQuit} />
-      )}
-    </div>
+    <section className="game-section">
+      <div className="game flow">
+        <GameHeader onResetValues={handleResetValues} />
+        <GameBoard
+          userArray={userArray}
+          computerArray={computerArray}
+          onUserChoice={handleUserChoice}
+        />
+        <GameFooter />
+        {isGameFinished && (
+          <Result onPlayAgain={handlePlayAgain} onQuit={onQuit} />
+        )}
+      </div>
+    </section>
   );
 }
 
