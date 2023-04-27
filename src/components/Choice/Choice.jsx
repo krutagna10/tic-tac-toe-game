@@ -30,7 +30,7 @@ function Choice({ onStartGame }) {
             <img className="choice__logo" src={logo} alt="Tic Tac Toe" />
           </div>
           <div className="choice__content flow">
-            <p className="choice__text">Pick Player 1's mark</p>
+            <h2 className="choice__text font-size-200">Pick Player 1's mark</h2>
             <div className="choice__radios flex">
               {choices.map((choice, index) => (
                 <div className="choice__radio-wrapper" key={index}>
